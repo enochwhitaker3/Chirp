@@ -4,7 +4,7 @@ A Twitter / X like React App currently in development by Enoch Whitaker.
 
 ## Elevator Pitch
 
-Chirp is a Twitter/X-inspired social app where users can share quick thoughts limited to 50 characters and reply and interact with others in a feed style format. Interaction include reply to a 'chirp' or simplying 'liking' it. It takes what Twitter/X does well at its core, and removes all of the unecessary baggage.
+Chirp is a Twitter/X-inspired social app where users can share quick thoughts limited to 250 characters and reply and interact with others in a feed style format. Interaction include reply to a 'chirp' or simplying 'liking' it. It takes what Twitter/X does well at its core, and removes all of the unecessary baggage.
 
 ## Contributors
 
