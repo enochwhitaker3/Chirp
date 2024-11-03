@@ -1,8 +1,6 @@
-import "./App.css";
-
 function App() {
   return (
-    <div className="App">
+    <div className="App dark:bg-[#262626] bg-white">
       <header className="App-header">
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
