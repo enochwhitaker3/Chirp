@@ -1,8 +1,8 @@
 function App() {
   return (
-    <div className="App dark:bg-[#262626] bg-white">
+    <div className="App dark:bg-neutral-950 bg-neutral-100">
       <header className="App-header">
-        <p>
+        <p className="text-green_accent-500">
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
 
