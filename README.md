@@ -35,3 +35,41 @@ Enoch Whitaker
 
 ## New Things
 - Websockets for real time updates
+
+## Timeline
+### Nov 6
+- [ ] Begin planning and building project scope, aiming for larger scale than Inventory Management (30 pts)
+- [ ] Implement authentication and user account support (10 pts)
+
+### Nov 9
+- [ ] Use TypeScript effectively (5 pts)
+- [ ] Set up CI/CD pipeline (5 pts)
+- [ ] Implement linting in the pipeline (5 pts)
+
+### Nov 13
+- [ ] Implement network calls for reading and writing data (5 pts)
+- [ ] Use local storage (5 pts)
+- [ ] Implement client-side state management (5 pts)
+
+### Nov 16
+- [ ] Implement error handling for API requests and render errors (5 pts)
+- [ ] Begin developing 4+ generic layout components (12 pts)
+
+### Nov 20
+- [ ] Build out at least 5 pages or views (5 pts)
+- [ ] Create 3+ generic form input components (9 pts)
+- [ ] Integrate toasts or global notifications (5 pts)
+
+### Nov 23
+- [ ] Complete 4+ generic layout components (12 pts)
+- [ ] Implement authorized and public pages (5 pts)
+
+### Nov 26
+- [ ] Ensure tests run in the pipeline and abort if they fail (5 pts)
+- [ ] Ensure mobile-friendly design for all experiences (5 pts)
+- [ ] Implement 3 instances where elements re-order themselves on smaller screens (5 pts)
+
+### Dec 4
+- [ ] Finalize and ensure a professional, organized, and smooth experience (20 pts)
+- [ ] Review the project for completeness and address any remaining items on the checklist
+
