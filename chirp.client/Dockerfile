@@ -1,3 +1,4 @@
+# First stage: Build stage
 FROM node:20 AS enoch
 WORKDIR /app
 COPY package*.json ./
@@ -6,8 +7,9 @@ COPY . .
 
 RUN npm run build
 
+# Second stage: Serve with Nginx
 FROM nginx:1.27.0
 WORKDIR /usr/share/nginx/html
 RUN rm -rf ./*
-COPY --from=builder /app/dist .
+COPY --from=enoch /app/dist . 
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
