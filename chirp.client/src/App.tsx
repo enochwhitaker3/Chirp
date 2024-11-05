@@ -1,3 +1,5 @@
+import LoginLogoutButton from "./authentication/LoginLogout";
+
 function App() {
   return (
     <div className="App dark:bg-neutral-950 bg-neutral-100">
@@ -15,6 +17,9 @@ function App() {
           Learn React
         </a>
       </header>
+      <li className="block py-2 px-3 text-white rounded bg-transparent ">
+        <LoginLogoutButton />
+      </li>
     </div>
   );
 }
