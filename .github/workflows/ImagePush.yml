@@ -39,6 +39,6 @@ jobs:
 
           export IMAGE_TAG=${{ github.run_number }}
 
-          for file in kube/*; do 
+          for file in kubernetes/*; do 
               cat "$file" | envsubst | kubectl apply -f -; 
           done
