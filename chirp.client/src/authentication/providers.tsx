@@ -7,7 +7,7 @@ const oidcConfig: AuthProviderProps = {
   client_id: "enoch-client",
   redirect_uri:
     process.env.NODE_ENV === "production"
-      ? "https://enoch-dir.duckdns.org/"
+      ? "https://enoch-dchirp.duckdns.org/"
       : "http://localhost:3000/",
   onSigninCallback: async (user) => {
     const newUrl = window.location.href.split("?")[0];
