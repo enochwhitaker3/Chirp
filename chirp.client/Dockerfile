@@ -2,14 +2,13 @@
 FROM node:20 AS enoch
 WORKDIR /app
 COPY package*.json ./
-RUN NODE_ENV=development npm i
+RUN NODE_ENV=development npm install
 COPY . .
-
 RUN npm run build
 
 # Second stage: Serve with Nginx
 FROM nginx:1.27.0
 WORKDIR /usr/share/nginx/html
 RUN rm -rf ./*
-COPY --from=enoch /app .
+COPY --from=enoch /app/public .
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
