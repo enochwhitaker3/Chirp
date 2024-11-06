@@ -1,27 +1,19 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: chirp-ingress
+  name: enoch-chirp-ingress
   namespace: enoch-final
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-    - host: enoch-chirp.duckdns.org # Main domain for the client
+    - host: enoch-chirp.duckdns.org
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: chirp-client
+                name: enoch-chirp-service
                 port:
                   number: 3000
-    # - host: api.projectplaylist.duckdns.org # Main domain for the client
-    #   http:
-    #     paths:
-    #       - path: /
-    #         pathType: Prefix
-    #         backend:
-    #           service:
-    #             name: playlist-server
-    #             port:
-    #               number: 8080
