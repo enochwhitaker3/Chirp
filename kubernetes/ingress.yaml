@@ -4,11 +4,6 @@ metadata:
   name: chirp-ingress
   namespace: enoch-final
 spec:
-  tls:
-    - hosts:
-        - enoch-chirp.duckdns.org # Frontend Client
-        - api.enoch-chirp.duckdns.org # Backend Server
-      # secretName: cert-manager-webhook-duckdns-project-playlist-webhook-tls
   rules:
     - host: enoch-chirp.duckdns.org # Main domain for the client
       http:
@@ -19,7 +14,7 @@ spec:
               service:
                 name: chirp-client
                 port:
-                  number: 80
+                  number: 3000
     # - host: api.projectplaylist.duckdns.org # Main domain for the client
     #   http:
     #     paths:
