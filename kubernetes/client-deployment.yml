@@ -3,6 +3,8 @@ kind: Deployment
 metadata:
   name: chirp-client
   namespace: enoch-final
+  labels:
+    app: chirp-client
 spec:
   replicas: 1
   selector:
@@ -14,8 +16,7 @@ spec:
         app: chirp-client
     spec:
       containers:
-      - name: chirp-client
-        image: codebras/chirpclient:${IMAGE_TAG}
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 80
+        - name: chirp-client
+          image: codebras/chirpclient:${IMAGE_TAG}
+          ports:
+            - containerPort: 80

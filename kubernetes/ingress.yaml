@@ -17,7 +17,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: chirp-client-service
+                name: chirp-client
                 port:
                   number: 80
     # - host: api.projectplaylist.duckdns.org # Main domain for the client
