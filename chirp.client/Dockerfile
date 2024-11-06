@@ -10,5 +10,5 @@ RUN npm run build
 FROM nginx:1.27.0
 WORKDIR /usr/share/nginx/html
 RUN rm -rf ./*
-COPY --from=enoch /app/public .
+COPY --from=enoch /app/dist .
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
