@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: chirp-client
-        image: ${{ secrets.DOCKER_USERNAME }}/chirpclient:${IMAGE_TAG}
+        image: codebras/chirpclient:${IMAGE_TAG}
         ports:
         - containerPort: 80
         env:
