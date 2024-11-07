@@ -17,13 +17,13 @@ spec:
     spec:
       containers:
       - name: server
-        image: codebras/chirpserver:${TAG_ID}
+        image: codebras/chirpserver:${IMAGE_TAG}
         ports:
         - containerPort: 8080
         env:
         - name: ConnectionStrings__chirpdb
-          value: "user id=${DB_USER_ID}; password=${DB_PASSWORD}; server=${DB_SERVER}; database=${DB_DB};"
+          value: user id=${DB_USER_ID}; password=${DB_PASSWORD}; server=${DB_SERVER}; database=${DB_DB};
         - name: allowAll
           value: "true"
         - name: clientUrl
-          value: "https://enoch-chirp.duckdns.org/"
+          value: https://enoch-chirp.duckdns.org/
