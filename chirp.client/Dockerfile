@@ -4,7 +4,7 @@ COPY package.json .
 RUN NODE_ENV=development npm i
 COPY . .
 ARG VITE_CERT
-ENV VITE_URL "https://api.projectplaylist.duckdns.org"
+ENV VITE_URL "https://api.enoch-chirp.duckdns.org"
 
 RUN npm run build
 
