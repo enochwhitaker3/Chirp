@@ -6,6 +6,10 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
+  tls:
+    - hosts:
+        - enoch-chirp.duckdns.org # Frontend Client
+        - api.enoch-chirp.duckdns.org # Backend Server
   rules:
     - host: enoch-chirp.duckdns.org
       http:
@@ -17,3 +21,13 @@ spec:
                 name: chirp-client-service
                 port:
                   number: 80
+    - host: api.enoch-chirp.duckdns.org
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: chirp-server
+                port:
+                  number: 8080

@@ -4,6 +4,9 @@ WORKDIR /app
 COPY package*.json ./
 RUN NODE_ENV=development npm install
 COPY . .
+ARG VITE_CERT
+ENV VITE_URL "https://api.enoch-chirp.duckdns.org"
+
 RUN npm run build
 
 # Second stage: Serve with Nginx

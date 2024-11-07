@@ -20,3 +20,6 @@ spec:
           image: codebras/chirpclient:${IMAGE_TAG}
           ports:
             - containerPort: 80
+          env:
+            - name: VITE_URL
+          value: https://enoch-chirp.duckdns.org/api
