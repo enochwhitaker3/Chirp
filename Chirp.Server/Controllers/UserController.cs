@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Chirp.Server.Controllers;
 [ApiController]
-[Route("/[controller]")]
+[Route("[controller]")]
 public class UserController : ControllerBase
 {
     private readonly IUserService userService;

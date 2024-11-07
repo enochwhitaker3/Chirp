@@ -18,7 +18,32 @@ builder.Services.AddDbContextFactory<ChirpDbContext>(config => config.UseNpgsql(
 
 builder.Services.AddSingleton<IUserService, UserService>();
 
+bool allowAll = builder.Configuration["allowAll"] == "true";
+
+builder.Services.AddCors(options =>
+{
+	options.AddPolicy("AllowSpecificOrigin",
+		policy =>
+		{
+			if (allowAll)
+			{
+				policy.AllowAnyOrigin()
+						.AllowAnyHeader()
+						.AllowAnyMethod();
+			}
+			else
+			{
+				policy.WithOrigins("https://localhost:5173")
+						.AllowAnyHeader()
+						.AllowAnyMethod();
+			}
+		});
+});
+
+
 var app = builder.Build();
+
+app.UseCors("AllowSpecificOrigin");
 
 app.UseDefaultFiles();
 app.UseStaticFiles();

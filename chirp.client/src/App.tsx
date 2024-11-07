@@ -1,71 +1,17 @@
-import { useEffect, useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
-
-interface Forecast {
-  date: string;
-  temperatureC: number;
-  temperatureF: number;
-  summary: string;
-}
+import HomePage from "./components/HomePage";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+const queryClient = new QueryClient();
 
 function App() {
-  const [forecasts, setForecasts] = useState<Forecast[]>();
-
-  useEffect(() => {
-    populateWeatherData();
-  }, []);
-
-  const contents =
-    forecasts === undefined ? (
-      <p>
-        <em>
-          Loading... Please refresh once the ASP.NET backend has started. See{" "}
-          <a href="https://aka.ms/jspsintegrationreact">
-            https://aka.ms/jspsintegrationreact
-          </a>{" "}
-          for more details.
-        </em>
-      </p>
-    ) : (
-      <table className="table table-striped" aria-labelledby="tabelLabel">
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Temp. (C)</th>
-            <th>Temp. (F)</th>
-            <th>Summary</th>
-          </tr>
-        </thead>
-        <tbody>
-          {forecasts.map((forecast) => (
-            <tr key={forecast.date}>
-              <td>{forecast.date}</td>
-              <td>{forecast.temperatureC}</td>
-              <td>{forecast.temperatureF}</td>
-              <td>{forecast.summary}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    );
-
   return (
-    <div>
-      <h1 id="tabelLabel" className="text-red-500">
-        Weather forecast
-      </h1>
-      <p>This component demonstrates fetching data from the server.</p>
-      {contents}
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+      </Routes>
+    </QueryClientProvider>
   );
-
-  async function populateWeatherData() {
-    console.log("HERE");
-    const response = await fetch("weatherforecast");
-    const data = await response.json();
-    console.log("DATA", data);
-    setForecasts(data);
-  }
 }
 
 export default App;

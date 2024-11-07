@@ -1,6 +1,6 @@
-@Chirp.Server_HostAddress = http://localhost:5200/weatherforecast/
+@Chirp.Server_HostAddress = http://localhost:5200/User/
 
-GET {{Chirp.Server_HostAddress}}/weatherforecast/
+GET {{Chirp.Server_HostAddress}}/User/
 Accept: application/json
 
 ###
