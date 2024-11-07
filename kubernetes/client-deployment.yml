@@ -22,4 +22,4 @@ spec:
             - containerPort: 80
           env:
             - name: VITE_URL
-              value: https://enoch-chirp.duckdns.org/api
+              value: https://api.enoch-chirp.duckdns.org
