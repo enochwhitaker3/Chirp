@@ -16,10 +16,10 @@ spec:
         app: chirp-client
     spec:
       containers:
-        - name: chirp-client
-          image: ${{ secrets.DOCKER_USERNAME }}/chirpclient:${IMAGE_TAG}
-          ports:
-            - containerPort: 80
-          env:
-            - name: VITE_URL
-              value: https://api.enoch-chirp.duckdns.org
+      - name: chirp-client
+        image: ${{ secrets.DOCKER_USERNAME }}/chirpclient:${IMAGE_TAG}
+        ports:
+        - containerPort: 80
+        env:
+        - name: VITE_URL
+          value: https://api.enoch-chirp.duckdns.org
