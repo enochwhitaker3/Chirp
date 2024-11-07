@@ -43,8 +43,8 @@ Enoch Whitaker
 
 ### Nov 6
 
-- [ ] Begin planning and building project scope, aiming for larger scale than Inventory Management (30 pts)
-- [ ] Implement authentication and user account support (10 pts)
+- [ x ] Begin planning and building project scope, aiming for larger scale than Inventory Management (30 pts)
+- [ x ] Implement authentication and user account support (10 pts)
 
 ### Nov 9
 
