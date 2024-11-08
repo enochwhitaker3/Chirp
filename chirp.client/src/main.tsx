@@ -4,6 +4,8 @@ import "./index.css";
 import App from "./App.tsx";
 import { BrowserRouter } from "react-router-dom";
 import { AuthProvider, AuthProviderProps } from "react-oidc-context";
+import { UserAccountService } from "./ApiService/UserAccountService.ts";
+import { AddUserRequest } from "./@types/Requests/Add/AddUserRequest";
 
 const oidcConfig: AuthProviderProps = {
   authority: "https://auth.snowse.duckdns.org/realms/advanced-frontend/",
@@ -13,6 +15,12 @@ const oidcConfig: AuthProviderProps = {
       ? "https://enoch-chirp.duckdns.org/"
       : "http://localhost:5173/",
   onSigninCallback: async (user) => {
+    const newTempUser: AddUserRequest = {
+      username: user!.profile.name ?? "User",
+      email: user!.profile.email ?? "",
+      authId: user!.id_token ?? "",
+    };
+    UserAccountService.AddNewUser(newTempUser);
     const newUrl = window.location.href.split("?")[0];
     window.history.replaceState({}, document.title, newUrl);
     document.cookie = `jwt_token=${user?.id_token}`;

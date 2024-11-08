@@ -1,5 +1,6 @@
 import axios from "axios";
 import { UserAccount } from "../@types/UserAccount";
+import { AddUserRequest } from "../@types/Requests/Add/AddUserRequest";
 
 export const UserAccountService = {
   GetUserByUsername: async (
@@ -32,6 +33,47 @@ export const UserAccountService = {
       return response.data;
     } catch (error) {
       console.error("Failed to get user");
+      throw error;
+    }
+  },
+  GetUserByAuthId: async (authId: string) => {
+    if (!authId) {
+      console.error("Auth id was undefined or empty");
+      throw new Error("Auth id must be provided");
+    }
+    try {
+      const response = await axios.get<UserAccount>(
+        `${import.meta.env.VITE_URL}/User/getuserbyauthid`,
+        {
+          params: {
+            authId: authId,
+          },
+        }
+      );
+      return response.data;
+    } catch (error) {
+      console.error("Failed to get user by authid");
+      throw error;
+    }
+  },
+  AddNewUser: async (addUserRequest: AddUserRequest) => {
+    if (!addUserRequest) {
+      console.error("Add user request was undefined or empty");
+      throw new Error("Add user request must be provided");
+    }
+    try {
+      const response = await axios.post<boolean>(
+        `${import.meta.env.VITE_URL}/User/addnewuser`,
+        addUserRequest,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      return response.data;
+    } catch (error) {
+      console.error("Failed to add user");
       throw error;
     }
   },

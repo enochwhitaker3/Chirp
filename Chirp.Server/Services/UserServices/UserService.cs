@@ -45,9 +45,20 @@ namespace Chirp.Server.Services.UserServices
             return users;
         }
 
-        public Task<UserDTO> GetUserByAuthId(string authId)
+        public async Task<UserDTO> GetUserByAuthId(string authId)
         {
-            throw new NotImplementedException();
+            using var context = await dbContextFactory.CreateDbContextAsync();
+
+            var user = await context.UserAccounts
+                .Where(x => x.AuthId == authId)
+                .FirstOrDefaultAsync();
+
+            if (user == null)
+            {
+                return new UserDTO();
+            }
+
+            return user.ToDTO();
         }
 
         public async Task<UserDTO> GetUsersByName(string username)
@@ -104,7 +115,7 @@ namespace Chirp.Server.Services.UserServices
             user.Bio = "";
             user.UserPfp = "https://cdn-icons-png.flaticon.com/512/16925/16925339.png";
             user.Guid = Guid.NewGuid();
-            user.AuthId = null;
+            user.AuthId = addUserRequest.AuthId;
 
             using var context = await dbContextFactory.CreateDbContextAsync();
             context.UserAccounts.Add(user);

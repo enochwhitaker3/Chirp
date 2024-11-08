@@ -22,6 +22,13 @@ public class UserController : ControllerBase
         return await userService.GetUserById(userId);
     }
 
+    [HttpGet("getuserbyauthid")]
+    public async Task<UserDTO> GetUserByAuthId(string authId)
+    {
+        return await userService.GetUserByAuthId(authId);
+    }
+
+
     [HttpGet("getallusers")]
     public async Task<List<UserDTO>> GetAllUsers()
     {
