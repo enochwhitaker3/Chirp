@@ -3,7 +3,6 @@ import LoginButton from "./authentication/LoginButton";
 
 const HomePage = () => {
   const { data: Users } = UserAccountQueries.useGetAllUsers();
-  console.log(Users);
   return (
     <div>
       <h1 id="tabelLabel" className="text-red-500">

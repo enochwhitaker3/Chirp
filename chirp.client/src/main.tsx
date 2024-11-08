@@ -20,11 +20,23 @@ const oidcConfig: AuthProviderProps = {
       email: user!.profile.email ?? "",
       authId: user!.id_token ?? "",
     };
-    UserAccountService.AddNewUser(newTempUser);
+
+    try {
+      const existingUser = await UserAccountService.GetUserByAuthId(
+        newTempUser.authId
+      );
+      if (!existingUser) {
+        await UserAccountService.AddNewUser(newTempUser);
+      }
+    } catch (error) {
+      console.error("Failed to add or verify user", error);
+    }
+
+    // const authhh = await UserAccountService.GetAllUsersAuthOnly(user!.id_token!);
+    // console.log("AUTH", authhh);
     const newUrl = window.location.href.split("?")[0];
     window.history.replaceState({}, document.title, newUrl);
-    document.cookie = `jwt_token=${user?.id_token}`;
-    console.log("USER", user?.id_token);
+    document.cookie = `jwt_token=${user?.id_token}; SameSite=None; Secure`;
   },
 };
 

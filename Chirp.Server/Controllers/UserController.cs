@@ -35,6 +35,12 @@ public class UserController : ControllerBase
         return await userService.GetAllUsers();
     }
 
+    // [HttpGet("getallusersauthonly")]
+    // public async Task<List<UserDTO>> GetAllUsersAuthOnly()
+    // {
+    //     return await userService.GetAllUsersAuthOnly();
+    // }
+
     [HttpGet("getusersbyname")]
     public async Task<UserDTO> GetUsersByName(string username)
     {

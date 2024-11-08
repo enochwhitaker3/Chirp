@@ -44,6 +44,17 @@ namespace Chirp.Server.Services.UserServices
 
             return users;
         }
+        
+        // public async Task<List<UserDTO>> GetAllUsersAuthOnly()
+        // {
+        //     using var context = await dbContextFactory.CreateDbContextAsync();
+
+        //     var users = await context.UserAccounts
+        //         .Select(user => user.ToDTO())
+        //         .ToListAsync();
+
+        //     return users;
+        // }
 
         public async Task<UserDTO> GetUserByAuthId(string authId)
         {

@@ -7,6 +7,7 @@ namespace Chirp.Server.Services.UserServices;
 public interface IUserService
 {
     public Task<List<UserDTO>> GetAllUsers();
+    // public Task<List<UserDTO>> GetAllUsersAuthOnly();
     public Task<UserDTO> GetUserById(Guid guid);
     public Task<UserDTO> GetUserByAuthId(string authId);
     public Task<UserDTO> GetUsersByName(string username);

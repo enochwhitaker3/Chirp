@@ -9,7 +9,7 @@ const LoginButton = () => {
       const date = new Date((auth.user.expires_at ?? 0) * 1000);
       document.cookie = `auth_token=${
         auth.user.id_token
-      }; expires=${date.toUTCString()}`;
+      }; expires=${date.toUTCString()}; SameSite=None; Secure`;
     }
   }, [auth.user]);
 
@@ -17,7 +17,7 @@ const LoginButton = () => {
     await auth.removeUser();
 
     document.cookie =
-      "jwt_token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+      "jwt_token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT; SameSite=None; Secure`";
 
     window.location.href = "/";
   };
@@ -39,7 +39,7 @@ const LoginButton = () => {
 
   if (auth.isAuthenticated) {
     return (
-      <div>
+      <div className="text-base">
         Hello {auth.user?.profile.name}{" "}
         <button onClick={handleLogout} className="underline">
           Log out
