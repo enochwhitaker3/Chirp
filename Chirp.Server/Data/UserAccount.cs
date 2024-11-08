@@ -19,7 +19,7 @@ public partial class UserAccount
 
     public string? Bio { get; set; }
 
-    public DateTime? DateJoined { get; set; }
+    public DateTime DateJoined { get; set; }
 
     public virtual ICollection<FollowedUser> FollowedUserFollowedUserNavigations { get; set; } = new List<FollowedUser>();
 

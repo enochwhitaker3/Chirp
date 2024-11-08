@@ -1,4 +1,6 @@
 ﻿using Chirp.Server.DTOs;
+using Chirp.Server.Requests.AddRequests;
+using Chirp.Server.Requests.UpdateRequests;
 using Chirp.Server.Services.UserServices;
 using Microsoft.AspNetCore.Mvc;
 
@@ -26,5 +28,28 @@ public class UserController : ControllerBase
         return await userService.GetAllUsers();
     }
 
+    [HttpGet("getusersbyname")]
+    public async Task<UserDTO> GetUsersByName(string username)
+    {
+        return await userService.GetUsersByName(username);
+    }
+
+    [HttpPost("addnewuser")]
+    public async Task<bool> AddNewUser([FromBody] AddUserRequest addUserRequest)
+    {
+        return await userService.AddUser(addUserRequest);
+    }
+
+    [HttpDelete("deleteuser")]
+    public async Task<bool> DeleteUserById(Guid userId)
+    {
+        return await userService.DeleteUserById(userId);
+    }
+
+    [HttpPatch("updateuser")]
+    public async Task<UserDTO> UpdateUser(UpdateUserRequest request)
+    {
+        return await userService.UpdateUser(request);
+    }
 }
 
