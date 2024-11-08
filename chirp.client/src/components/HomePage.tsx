@@ -1,4 +1,5 @@
 import { UserAccountQueries } from "../hooks/UserAccountQueries";
+import LoginButton from "./authentication/LoginButton";
 
 const HomePage = () => {
   const { data: Users } = UserAccountQueries.useGetAllUsers();
@@ -15,6 +16,7 @@ const HomePage = () => {
           </li>
         ))}
       </ul>
+      <LoginButton />
     </div>
   );
 };
