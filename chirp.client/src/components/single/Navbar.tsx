@@ -14,7 +14,7 @@ const Navbar: React.FC = () => {
         backgroundPosition: "center",
       }}
     >
-      <div className="flex items-center justify-between px-4 w-[1200px] max-w-[1200px]">
+      <div className="flex items-center justify-between w-[1200px] max-w-[1200px]">
         <Link
           className="flex items-center space-x-3 rtl:space-x-reverse"
           to="/"

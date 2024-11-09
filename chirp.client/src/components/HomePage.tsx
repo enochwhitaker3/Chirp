@@ -1,4 +1,7 @@
-import Homesvg from "../assets/homesvg";
+import Center from "./layout/Center";
+import LeftSidebar from "./layout/LeftSidebar";
+import RightSidebar from "./layout/RightSidebar";
+import ChirpCard from "./single/ChirpCard";
 
 const HomePage = () => {
   // const { data: Users } = UserAccountQueries.useGetAllUsers();
@@ -16,10 +19,13 @@ const HomePage = () => {
   <LoginButton /> */
   }
   return (
-    <div>
-      <div className="flex flex-row">
-        <Homesvg />
-        <p className="text-white text-xl">Home</p>
+    <div className="flex w-screen justify-center">
+      <div className=" flex w-[1200px] max-w-[1200px]">
+        <LeftSidebar />
+        <Center>
+          <ChirpCard />
+        </Center>
+        <RightSidebar />
       </div>
     </div>
   );
