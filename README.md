@@ -48,9 +48,22 @@ Enoch Whitaker
 
 ### Nov 9
 
-- [ ] Use TypeScript effectively (5 pts)
-- [ ] Set up CI/CD pipeline (5 pts)
-- [ ] Implement linting in the pipeline (5 pts)
+- [ X ] Use TypeScript effectively (5 pts)
+- [ X ] Set up CI/CD pipeline (5 pts)
+- [ X ] Implement linting in the pipeline (5 pts)
+
+A retrospective of what you (individually) worked on this last cycle and how it went
+-   This period, I was able to get all of my services for the user in the backend fully fleshed out. I also got the those service and corresponding types to work in the front end. I was able to get all of the users from the database to appear on the frontend both locally and in kubernetes. After I had ahcieved that, I focused on getting a user to be automatically added to the database if it was their first time logging in. I did this using the onSignInCallback method, and I used the users id_token and put that it the corresponding table for the user. This will be good for the future because I won't have to worry if a user has been added to the database, as well as I have something to authorize them with. Lasty, I was able to get the frontend home page mostly set up style wise, but with no actual data getting pulled from the database.
+
+A rough plan of how you expect to implement the next cycle
+-   As of today, I should have most of what is due next cycle already done. This does not mean that I will be taking any time off though, but I will be fleshing out ore of my network calls. I will actually create an admin page that will give me the ability to test my read and write calls for the users and possible even more of my tables. I will also get farther ahead on my styles too, not just focusing on the backend.
+
+If you are in a group, comment on how your experience has been working with your group members
+- Not in a group
+
+An evaluation of how well this project is going
+- This projet has been going great and I have been enjoying working on it alot. I have been interested in this enough where I find myself wanting to spend more time on it that I usually a lot for this class. I am excited to keep going an happy to say that I haven't run into any major speed bumps (yet). I am trying to keep myself strict on the line limit because in the past projects, if I have to refactor them to be smaller, I often get stuck. So I am trying my best to not let that happen now.
+
 
 ### Nov 13
 
