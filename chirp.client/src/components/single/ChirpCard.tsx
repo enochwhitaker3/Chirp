@@ -10,12 +10,12 @@ const ChirpCard: FC<{ post: Post }> = ({ post }) => {
       <div className="flex flex-row justify-start  w-fit">
         <Profilesvg />
       </div>
-      <div className="flex flex-col justify-start items-center mr-5">
+      <div className="flex flex-col justify-start items-center mr-5 w-full">
         <div className="flex flex-row justify-start w-full">
-          <p className="font-bold">{post.username}&nbsp;</p>
+          <p className="font-bold ">{post.username}&nbsp;</p>
           <p className="text-neutral-600"> - 34 mins ago</p>
         </div>
-        <div className="mt-2">{post.body}</div>
+        <div className="mt-2 w-full">{post.body}</div>
         <div className="flex flex-row w-full justify-end my-5">
           <ChirpLike />
           <ChirpReply />
