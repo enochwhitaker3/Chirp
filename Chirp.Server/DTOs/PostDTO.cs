@@ -13,4 +13,5 @@ public class PostDTO
     public int? ParentPostId { get; set; }
 
     public bool? IsReply { get; set; }
+    public string Username { get; set; } = "";
 }

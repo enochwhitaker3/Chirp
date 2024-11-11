@@ -32,7 +32,7 @@ export const UserAccountService = {
       );
       return response.data;
     } catch (error) {
-      console.error("Failed to get user");
+      console.error("Failed to get users");
       throw error;
     }
   },

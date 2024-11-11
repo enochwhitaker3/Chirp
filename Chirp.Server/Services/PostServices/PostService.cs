@@ -40,6 +40,7 @@ public class PostService : IPostService
         using var context = await dbContextFactory.CreateDbContextAsync();
 
         var posts = await context.Posts
+            .Include(post => post.User)
             .Select(post => post.ToDTO())
             .ToListAsync();
 

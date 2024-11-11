@@ -39,6 +39,7 @@ public static class DTOConverter
             IsReply = post.IsReply,
             ParentPostId = post.ParentPostId,
             TimePosted = post.TimePosted,
+            Username = post.User.Username
         };
     }
 }
