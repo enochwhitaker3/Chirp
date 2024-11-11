@@ -4,7 +4,7 @@ import ChirpReply from "../../assets/ChirpCard/chirpreply";
 
 const ChirpCard = () => {
   return (
-    <div className="flex flex-row my-5 bg-neutral-900 w-[600px] max-w-[600px] text-white rounded-md h-fit pl-5 pt-5">
+    <div className="flex flex-row mb-5 bg-neutral-900 w-[600px] max-w-[600px] text-white rounded-md h-fit pl-5 pt-5">
       <div className="flex flex-row justify-start  w-fit">
         <Profilesvg />
       </div>

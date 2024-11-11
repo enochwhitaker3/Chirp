@@ -8,7 +8,7 @@ import Trendingsvg from "../../assets/Sidebar/trending";
 const LeftSidebar = () => {
   return (
     <div className="flex justify-center mt-5 ">
-      <div className="flex flex-col justify-between items-start w-[300px] h-96">
+      <div className="flex flex-col justify-between items-start w-[300px] h-96 sticky top-20 ">
         <div className="flex flex-row justify-start items-center">
           <Homesvg />
           <p className="text-white text-xl">Home</p>

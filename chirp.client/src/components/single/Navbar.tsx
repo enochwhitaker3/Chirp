@@ -7,7 +7,7 @@ import ChirpLogoDark from "../../assets/chirp_logo_dark.svg";
 const Navbar: React.FC = () => {
   return (
     <nav
-      className="w-full border-b-2 border-b-neutral-900 text-white h-14 flex items-center justify-center"
+      className="w-full border-b-2 border-b-neutral-900 text-white h-14 flex items-center justify-center fixed bg-black"
       style={{
         backgroundImage: `url(${Contour})`,
         backgroundSize: "cover",

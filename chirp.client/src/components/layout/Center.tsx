@@ -5,7 +5,7 @@ interface CenterProps {
 }
 
 const Center: React.FC<CenterProps> = ({ children }) => {
-  return <div className="flex flex-col">{children}</div>;
+  return <div className="flex flex-col mt-20">{children}</div>;
 };
 
 export default Center;

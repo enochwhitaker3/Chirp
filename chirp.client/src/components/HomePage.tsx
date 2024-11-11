@@ -24,6 +24,11 @@ const HomePage = () => {
         <LeftSidebar />
         <Center>
           <ChirpCard />
+          <ChirpCard />
+          <ChirpCard />
+          <ChirpCard />
+          <ChirpCard />
+          <ChirpCard />
         </Center>
         <RightSidebar />
       </div>
