@@ -2,6 +2,7 @@
 using Chirp.Server.Requests.AddRequests;
 using Chirp.Server.Requests.UpdateRequests;
 using Chirp.Server.Services.UserServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Chirp.Server.Controllers;
@@ -16,10 +17,10 @@ public class UserController : ControllerBase
         this.userService = userService;
     }
 
-    [HttpGet("getuserbyid")]
-    public async Task<UserDTO> GetUserById(Guid userId)
+    [HttpGet("getuserbyguid")]
+    public async Task<UserDTO> GetUserByGuid(Guid userId)
     {
-        return await userService.GetUserById(userId);
+        return await userService.GetUserByGuid(userId);
     }
 
     [HttpGet("getuserbyauthid")]
@@ -35,12 +36,6 @@ public class UserController : ControllerBase
         return await userService.GetAllUsers();
     }
 
-    // [HttpGet("getallusersauthonly")]
-    // public async Task<List<UserDTO>> GetAllUsersAuthOnly()
-    // {
-    //     return await userService.GetAllUsersAuthOnly();
-    // }
-
     [HttpGet("getusersbyname")]
     public async Task<UserDTO> GetUsersByName(string username)
     {
@@ -54,15 +49,29 @@ public class UserController : ControllerBase
     }
 
     [HttpDelete("deleteuser")]
-    public async Task<bool> DeleteUserById(Guid userId)
+    public async Task<bool> DeleteUserByGuid(Guid userId)
     {
-        return await userService.DeleteUserById(userId);
+        return await userService.DeleteUserByGuid(userId);
     }
 
     [HttpPatch("updateuser")]
     public async Task<UserDTO> UpdateUser(UpdateUserRequest request)
     {
         return await userService.UpdateUser(request);
+    }
+
+    [Authorize]
+    [HttpGet("getauthorizeduseremail")]
+    public async Task<IActionResult> GetAuthUserEmail()
+    {
+        var userEmail = await userService.GetAuthorizedUserEmail();
+
+        if (string.IsNullOrEmpty(userEmail))
+        {
+            return Unauthorized(new { message = "User email not found." });
+        }
+
+        return Ok(new { email = userEmail });
     }
 }
 

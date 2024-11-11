@@ -15,6 +15,16 @@ const oidcConfig: AuthProviderProps = {
       ? "https://enoch-chirp.duckdns.org/"
       : "http://localhost:5173/",
   onSigninCallback: async (user) => {
+    if (user?.id_token) {
+      const backEmail = await UserAccountService.GetAuthenticatedUserEmail(
+        user?.id_token
+      );
+      console.log("USER EMAIL FROM BACKEND", backEmail);
+    }
+    const newUrl = window.location.href.split("?")[0];
+    window.history.replaceState({}, document.title, newUrl);
+    document.cookie = `jwt_token=${user?.id_token}; SameSite=None; Secure`;
+
     const newTempUser: AddUserRequest = {
       username: user!.profile.name ?? "User",
       email: user!.profile.email ?? "",
@@ -34,9 +44,6 @@ const oidcConfig: AuthProviderProps = {
 
     // const authhh = await UserAccountService.GetAllUsersAuthOnly(user!.id_token!);
     // console.log("AUTH", authhh);
-    const newUrl = window.location.href.split("?")[0];
-    window.history.replaceState({}, document.title, newUrl);
-    document.cookie = `jwt_token=${user?.id_token}; SameSite=None; Secure`;
   },
 };
 

@@ -12,7 +12,7 @@ export const UserAccountService = {
     }
     try {
       const response = await axios.get<UserAccount>(
-        `${import.meta.env.VITE_URL}/User/getuserbyid`,
+        `${import.meta.env.VITE_URL}/User/getusersbyname`,
         {
           params: {
             username: username,
@@ -36,22 +36,6 @@ export const UserAccountService = {
       throw error;
     }
   },
-  // GetAllUsersAuthOnly: async (id_token: string): Promise<UserAccount[]> => {
-  //   try {
-  //     const response = await axios.get<UserAccount[]>(
-  //       `${import.meta.env.VITE_URL}/User/getallusersauthonly`,
-  //       {
-  //         headers: {
-  //           Authorization: `Bearer ${id_token}`,
-  //         },
-  //       }
-  //     );
-  //     return response.data;
-  //   } catch (error) {
-  //     console.error("Failed to get user");
-  //     throw error;
-  //   }
-  // },
   GetUserByAuthId: async (authId: string) => {
     if (!authId) {
       console.error("Auth id was undefined or empty");
@@ -90,6 +74,23 @@ export const UserAccountService = {
       return response.data;
     } catch (error) {
       console.error("Failed to add user");
+      throw error;
+    }
+  },
+  GetAuthenticatedUserEmail: async (id_token: string): Promise<string> => {
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_URL}/User/getauthorizeduseremail`,
+        {
+          headers: {
+            Authorization: `Bearer ${id_token}`,
+          },
+        }
+      );
+
+      return response.data.email;
+    } catch (error) {
+      console.error("Failed to get authenticated user email");
       throw error;
     }
   },

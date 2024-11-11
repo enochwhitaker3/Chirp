@@ -2,9 +2,12 @@
 using Chirp.Server.DTOs;
 using Chirp.Server.Requests.AddRequests;
 using Chirp.Server.Requests.UpdateRequests;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Chirp.Server.Services.UserServices
@@ -12,13 +15,15 @@ namespace Chirp.Server.Services.UserServices
     public class UserService : IUserService
     {
         private readonly IDbContextFactory<ChirpDbContext> dbContextFactory;
+        private readonly IHttpContextAccessor httpContextAccessor;
 
-        public UserService(IDbContextFactory<ChirpDbContext> dbContextFactory)
+        public UserService(IDbContextFactory<ChirpDbContext> dbContextFactory, IHttpContextAccessor httpContextAccessor)
         {
             this.dbContextFactory = dbContextFactory;
+            this.httpContextAccessor = httpContextAccessor;
         }
 
-        public async Task<UserDTO> GetUserById(Guid guid)
+        public async Task<UserDTO> GetUserByGuid(Guid guid)
         {
             using var context = await dbContextFactory.CreateDbContextAsync();
 
@@ -44,17 +49,6 @@ namespace Chirp.Server.Services.UserServices
 
             return users;
         }
-        
-        // public async Task<List<UserDTO>> GetAllUsersAuthOnly()
-        // {
-        //     using var context = await dbContextFactory.CreateDbContextAsync();
-
-        //     var users = await context.UserAccounts
-        //         .Select(user => user.ToDTO())
-        //         .ToListAsync();
-
-        //     return users;
-        // }
 
         public async Task<UserDTO> GetUserByAuthId(string authId)
         {
@@ -135,7 +129,7 @@ namespace Chirp.Server.Services.UserServices
             return true;
         }
 
-        public async Task<bool> DeleteUserById(Guid userId)
+        public async Task<bool> DeleteUserByGuid(Guid userId)
         {
             using var context = await dbContextFactory.CreateDbContextAsync();
 
@@ -158,6 +152,18 @@ namespace Chirp.Server.Services.UserServices
             {
                 return false;
             }
+        }
+        public async Task<string> GetAuthorizedUserEmail()
+        {
+            var userClaims = httpContextAccessor.HttpContext?.User;
+
+            if (userClaims?.Identity?.IsAuthenticated == true)
+            {
+                var emailClaim = userClaims?.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email);
+                return emailClaim?.Value ?? "Email not found";
+            }
+
+            return "Email not found";
         }
     }
 }

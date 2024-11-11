@@ -1,6 +1,10 @@
 using Chirp.Server.Data;
+using Chirp.Server.Services.PostServices;
 using Chirp.Server.Services.UserServices;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +21,7 @@ builder.Services.AddDbContextFactory<ChirpDbContext>(config => config.UseNpgsql(
 }));
 
 builder.Services.AddSingleton<IUserService, UserService>();
+builder.Services.AddSingleton<IPostService, PostService>();
 
 bool allowAll = builder.Configuration["allowAll"] == "true";
 
@@ -39,6 +44,23 @@ builder.Services.AddCors(options =>
 			}
 		});
 });
+
+builder.Services.AddHttpContextAccessor();
+
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidIssuer = "https://auth.snowse.duckdns.org/realms/advanced-frontend",
+            ValidAudience = "enoch-client",
+        };
+		options.Authority = "https://auth.snowse.duckdns.org/realms/advanced-frontend";
+    });
 
 
 var app = builder.Build();

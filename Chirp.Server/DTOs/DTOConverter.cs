@@ -23,4 +23,22 @@ public static class DTOConverter
             Guid = user.Guid ?? new Guid()
         };
     }
+
+    public static PostDTO ToDTO(this Post post)
+    {
+        if (post is null)
+        {
+            return new PostDTO();
+        }
+
+        return new PostDTO()
+        {
+            Id = post.Id,
+            UserId = post.UserId,
+            Body = post.Body,
+            IsReply = post.IsReply,
+            ParentPostId = post.ParentPostId,
+            TimePosted = post.TimePosted,
+        };
+    }
 }
