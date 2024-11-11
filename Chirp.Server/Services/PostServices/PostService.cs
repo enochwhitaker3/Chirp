@@ -3,6 +3,7 @@ using Chirp.Server.DTOs;
 using Chirp.Server.Requests.AddRequests;
 using Chirp.Server.Requests.UpdateRequests;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileSystemGlobbing.Internal.PatternContexts;
 
 namespace Chirp.Server.Services.PostServices;
 
@@ -34,11 +35,6 @@ public class PostService : IPostService
         return true;
     }
 
-    public Task<bool> DeletePostById(int id)
-    {
-        throw new NotImplementedException();
-    }
-
     public async Task<List<PostDTO>> GetAllPosts()
     {
         using var context = await dbContextFactory.CreateDbContextAsync();
@@ -50,18 +46,78 @@ public class PostService : IPostService
         return posts;
     }
 
-    public Task<PostDTO> GetPostById(int id)
+    public async Task<PostDTO> GetPostById(int id)
     {
-        throw new NotImplementedException();
+        using var context = await dbContextFactory.CreateDbContextAsync();
+
+        var post = await context.Posts
+            .Where(x => x.Id == id)
+            .FirstOrDefaultAsync();
+
+        if(post == null)
+        {
+            return new PostDTO();
+        }
+
+        return post.ToDTO();
     }
 
-    public Task<PostDTO> GetPostByUser(UserDTO user)
+    public async Task<List<PostDTO>> GetPostByUserId(int id)
     {
-        throw new NotImplementedException();
+        using var context = await dbContextFactory.CreateDbContextAsync();
+
+        var posts = await context.Posts
+            .Where(post => post.UserId == id)  
+            .ToListAsync();                    
+
+        return posts.Select(post => post.ToDTO()).ToList();
     }
 
-    public Task<PostDTO> UpdatePost(UpdateUserRequest updateUserRequest)
+
+    public async Task<PostDTO> UpdatePost(UpdatePostRequest updatePostRequest)
     {
-        throw new NotImplementedException();
+        using var context = await dbContextFactory.CreateDbContextAsync();
+
+        var puc = await context.Posts
+            .Where(x => x.Id == updatePostRequest.Id)
+            .FirstOrDefaultAsync();
+
+        if (puc == null)
+        {
+            throw new Exception("No post was found with given id");
+        }
+
+        puc.Id = updatePostRequest.Id;
+        puc.Body = updatePostRequest.Body;
+        puc.TimePosted = DateTime.Now;
+
+        context.Posts.Update(puc);
+        await context.SaveChangesAsync();
+        return puc.ToDTO();
+    }
+
+    public async Task<bool> DeletePostById(int id)
+    {
+        using var context = await dbContextFactory.CreateDbContextAsync();
+
+        var post = await context.Posts
+            .Where(x => x.Id == id)
+            .FirstOrDefaultAsync();
+
+        if (post == null)
+        {
+            return false;
+        }
+
+        try
+        {
+            var results = context.Posts.Remove(post);
+            await context.SaveChangesAsync();
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
     }
 }
