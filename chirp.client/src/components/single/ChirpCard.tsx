@@ -3,6 +3,7 @@ import ChirpLike from "../../assets/ChirpCard/chirplike";
 import ChirpReply from "../../assets/ChirpCard/chirpreply";
 import { Post } from "../../@types/Post";
 import { FC } from "react";
+import { useCalcDaysAgo } from "../../hooks/useCalcDaysAgo";
 
 const ChirpCard: FC<{ post: Post }> = ({ post }) => {
   return (
@@ -13,7 +14,9 @@ const ChirpCard: FC<{ post: Post }> = ({ post }) => {
       <div className="flex flex-col justify-start items-center mr-5 w-full">
         <div className="flex flex-row justify-start w-full">
           <p className="font-bold ">{post.username}&nbsp;</p>
-          <p className="text-neutral-600"> - 34 mins ago</p>
+          <p className="text-neutral-600">
+            - {useCalcDaysAgo(post.timePosted)}
+          </p>
         </div>
         <div className="mt-2 w-full">{post.body}</div>
         <div className="flex flex-row w-full justify-end my-5">
