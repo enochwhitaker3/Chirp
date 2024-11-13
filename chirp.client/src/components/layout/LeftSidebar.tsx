@@ -15,23 +15,23 @@ const LeftSidebar = () => {
           to="/"
         >
           <Homesvg />
-          <p className="text-white text-xl">Home</p>
+          <p className="dark:text-white text-black text-xl">Home</p>
         </Link>
         <div className="flex flex-row justify-start items-center cursor-pointer">
           <Searchsvg />
-          <p className="text-white text-xl">Search</p>
+          <p className="dark:text-white text-black text-xl">Search</p>
         </div>
         <div className="flex flex-row justify-start items-center cursor-pointer">
           <Trendingsvg />
-          <p className="text-white text-xl">Popular</p>
+          <p className="dark:text-white text-black text-xl">Popular</p>
         </div>
         <div className="flex flex-row justify-start items-center cursor-pointer">
           <Profilesvg />
-          <p className="text-white text-xl">Account</p>
+          <p className="dark:text-white text-black text-xl">Account</p>
         </div>
         <div className="flex flex-row justify-start items-center cursor-pointer">
           <Settingssvg />
-          <p className="text-white text-xl">Settings</p>
+          <p className="dark:text-white text-black text-xl">Settings</p>
         </div>
         <Link
           className="bg-brand-500 w-1/2 text-xl p-2 rounded-lg flex flex-row justify-center items-center cursor-pointer "

@@ -39,7 +39,7 @@ const LoginButton = () => {
 
   if (auth.isAuthenticated) {
     return (
-      <div className="text-base">
+      <div className="text-base dark:text-white text-black">
         Hello {auth.user?.profile.name}{" "}
         <button onClick={handleLogout} className="underline">
           Log out
@@ -48,7 +48,14 @@ const LoginButton = () => {
     );
   }
 
-  return <button onClick={() => void auth.signinRedirect()}>Log in</button>;
+  return (
+    <button
+      onClick={() => void auth.signinRedirect()}
+      className="dark:text-white text-black"
+    >
+      Log in
+    </button>
+  );
 };
 
 export default LoginButton;

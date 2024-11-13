@@ -4,6 +4,7 @@ import "../../index.css";
 import { useAddNewPost } from "../../hooks/PostQueries";
 import { UserAccountContextInterface } from "../../@types/UserAccount";
 import { UserAccountContext } from "../../context/UserAccountContext";
+import { useNavigate } from "react-router-dom";
 
 type Errors = {
   body?: string;
@@ -16,6 +17,7 @@ function AddChirpForm() {
 
   const [errors, setErrors] = useState<Errors>({});
   const progressRef = useRef<HTMLTextAreaElement>(null);
+  const navigate = useNavigate();
 
   const { mutate: addNewPost } = useAddNewPost();
 
@@ -46,7 +48,7 @@ function AddChirpForm() {
           parentPostId: null,
           isReply: false,
         })
-        
+        navigate("/")
       }
     }
   };
