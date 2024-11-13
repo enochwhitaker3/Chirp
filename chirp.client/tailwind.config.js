@@ -45,6 +45,7 @@ module.exports = {
         },
         black: "#1D1D1D",
         white: "#E7E9EA",
+        red: "#f74738",
       },
     },
   },

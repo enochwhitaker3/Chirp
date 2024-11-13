@@ -15,12 +15,12 @@ const oidcConfig: AuthProviderProps = {
       ? "https://enoch-chirp.duckdns.org/"
       : "http://localhost:5173/",
   onSigninCallback: async (user) => {
-    if (user?.id_token) {
-      const backEmail = await UserAccountService.GetAuthenticatedUserEmail(
-        user?.id_token
-      );
-      console.log("USER EMAIL FROM BACKEND", backEmail);
-    }
+    // if (user?.id_token) {
+    //   const backEmail = await UserAccountService.GetAuthenticatedUserEmail(
+    //     user?.id_token
+    //   );
+    //   console.log("USER EMAIL FROM BACKEND", backEmail);
+    // }
     const newUrl = window.location.href.split("?")[0];
     window.history.replaceState({}, document.title, newUrl);
     document.cookie = `jwt_token=${user?.id_token}; SameSite=None; Secure`;
@@ -28,22 +28,19 @@ const oidcConfig: AuthProviderProps = {
     const newTempUser: AddUserRequest = {
       username: user!.profile.name ?? "User",
       email: user!.profile.email ?? "",
-      authId: user!.id_token ?? "",
+      authId: user!.profile.sub ?? "",
     };
 
     try {
       const existingUser = await UserAccountService.GetUserByAuthId(
         newTempUser.authId
       );
-      if (!existingUser) {
+      if (existingUser.id == 0) {
         await UserAccountService.AddNewUser(newTempUser);
       }
     } catch (error) {
       console.error("Failed to add or verify user", error);
     }
-
-    // const authhh = await UserAccountService.GetAllUsersAuthOnly(user!.id_token!);
-    // console.log("AUTH", authhh);
   },
 };
 

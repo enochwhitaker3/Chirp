@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Homesvg from "../../assets/Sidebar/homesvg";
 import Plussvg from "../../assets/Sidebar/plus";
 import Profilesvg from "../../assets/Sidebar/Profile";
@@ -9,10 +10,13 @@ const LeftSidebar = () => {
   return (
     <div className="flex justify-center ">
       <div className="flex flex-col justify-between items-start w-[300px] h-96 sticky top-20 ">
-        <div className="flex flex-row justify-start items-center cursor-pointer">
+        <Link
+          className="flex flex-row justify-start items-center cursor-pointer"
+          to="/"
+        >
           <Homesvg />
           <p className="text-white text-xl">Home</p>
-        </div>
+        </Link>
         <div className="flex flex-row justify-start items-center cursor-pointer">
           <Searchsvg />
           <p className="text-white text-xl">Search</p>
@@ -29,10 +33,13 @@ const LeftSidebar = () => {
           <Settingssvg />
           <p className="text-white text-xl">Settings</p>
         </div>
-        <button className="bg-brand-500 w-3/4 text-xl p-2 rounded-lg flex flex-row justify-center items-center cursor-pointer ">
+        <Link
+          className="bg-brand-500 w-1/2 text-xl p-2 rounded-lg flex flex-row justify-center items-center cursor-pointer "
+          to="/post"
+        >
           <Plussvg />
           Post{" "}
-        </button>
+        </Link>
       </div>
     </div>
   );

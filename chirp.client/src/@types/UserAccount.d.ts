@@ -8,3 +8,9 @@ export interface UserAccount {
   dateJoined: Date;
   userPfp: string;
 }
+
+export interface UserAccountContextInterface {
+  user: UserAccount | undefined;
+  error: string | undefined;
+  isLoading: boolean;
+}
