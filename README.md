@@ -43,14 +43,14 @@ Enoch Whitaker
 
 ### Nov 6
 
-- [ x ] Begin planning and building project scope, aiming for larger scale than Inventory Management (30 pts)
-- [ x ] Implement authentication and user account support (10 pts)
+- [x] Begin planning and building project scope, aiming for larger scale than Inventory Management (30 pts)
+- [x] Implement authentication and user account support (10 pts)
 
 ### Nov 9
 
-- [ X ] Use TypeScript effectively (5 pts)
-- [ X ] Set up CI/CD pipeline (5 pts)
-- [ X ] Implement linting in the pipeline (5 pts)
+- [X] Use TypeScript effectively (5 pts)
+- [X] Set up CI/CD pipeline (5 pts)
+- [X] Implement linting in the pipeline (5 pts)
 
 A retrospective of what you (individually) worked on this last cycle and how it went
 -   This period, I was able to get all of my services for the user in the backend fully fleshed out. I also got the those service and corresponding types to work in the front end. I was able to get all of the users from the database to appear on the frontend both locally and in kubernetes. After I had ahcieved that, I focused on getting a user to be automatically added to the database if it was their first time logging in. I did this using the onSignInCallback method, and I used the users id_token and put that it the corresponding table for the user. This will be good for the future because I won't have to worry if a user has been added to the database, as well as I have something to authorize them with. Lasty, I was able to get the frontend home page mostly set up style wise, but with no actual data getting pulled from the database.
@@ -67,9 +67,21 @@ An evaluation of how well this project is going
 
 ### Nov 13
 
-- [ ] Implement network calls for reading and writing data (5 pts)
-- [ ] Use local storage (5 pts)
-- [ ] Implement client-side state management (5 pts)
+- [x] Implement network calls for reading and writing data (5 pts)
+- [x] Use local storage (5 pts)
+- [x] Implement client-side state management (5 pts)
+
+A retrospective of what you (individually) worked on this last cycle and how it went
+-   This period, I was able to get all of the backend and frontend implementation of getting posts done. On my current home page, I am currently able to get all of the posts in a feed style format. Also in this spirnt I got all of the posts formatted in their own cards how I had originally planned them to be. I also made my second page, which is the post page. This post page allows the user to make a new 'chirp' and validates them on the length of the message. It shouldn't allow you to post a chirp if you are not logged in, but as of now you are able to still view this page if you are not logged in. I also got local storage added to my project. I am using the local storage to handle the users choice of wanting the app to be in dark or light mode. I have the styles done for each mode that look okay. I also have the client side state managment done, but that was not necessarily done in this cycle. 
+
+A rough plan of how you expect to implement the next cycle
+-   My plan for the next cycle is to implement error handling. I believe that I already have the right amount of generic layout components done, so I should be able to hard focus working on the Error Handling for my API Requests. I will do this by looking back at my old projects and looking up online some better ways of doing it if I feel like I could be doing it a better way.
+
+If you are in a group, comment on how your experience has been working with your group members
+- Not in a group
+
+An evaluation of how well this project is going
+- So far, I am still enjoying this project. Most of the frustations I have while working on this are pretty self inflicted when I am trying to cut corners. I am excited to learn more about websockets in class as this is pretty integral to this project. 
 
 ### Nov 16
 
