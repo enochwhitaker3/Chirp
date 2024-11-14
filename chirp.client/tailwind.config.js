@@ -45,7 +45,7 @@ module.exports = {
           950: "#06190E",
         },
         black: "#1D1D1D",
-        white: "#E7E9EA",
+        white: "#FAF9F6",
         red: "#f74738",
       },
     },

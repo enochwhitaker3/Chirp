@@ -1,7 +1,7 @@
 import Profilesvg from "../../assets/Sidebar/Profile";
 import DarkModeSvg from "../../assets/Sidebar/darkmode";
 import LightModeSvg from "../../assets/Sidebar/lightmode";
-import useTheme from "../../hooks/useTheme";
+import { useTheme } from "../../hooks/useTheme";
 
 const RightSidebar = () => {
   const { theme, toggleTheme } = useTheme();

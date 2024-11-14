@@ -5,6 +5,7 @@ import { useAddNewPost } from "../../hooks/PostQueries";
 import { UserAccountContextInterface } from "../../@types/UserAccount";
 import { UserAccountContext } from "../../context/UserAccountContext";
 import { useNavigate } from "react-router-dom";
+import { useTheme } from "../../hooks/useTheme";
 
 type Errors = {
   body?: string;
@@ -14,6 +15,7 @@ function AddChirpForm() {
   const { user } = useContext(
     UserAccountContext
   ) as UserAccountContextInterface;
+  const { theme } = useTheme();
 
   const [errors, setErrors] = useState<Errors>({});
   const progressRef = useRef<HTMLTextAreaElement>(null);
@@ -47,8 +49,8 @@ function AddChirpForm() {
           body: body,
           parentPostId: null,
           isReply: false,
-        })
-        navigate("/")
+        });
+        navigate("/");
       }
     }
   };
@@ -56,7 +58,7 @@ function AddChirpForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="text-white flex flex-col w-[600px] max-w-[600px] items-end"
+      className="dark:text-white text-black flex flex-col w-[600px] max-w-[600px] items-end"
     >
       <textarea
         placeholder="What's on your mind today?"
@@ -65,7 +67,7 @@ function AddChirpForm() {
         required
         onInput={handleInput}
         ref={progressRef}
-        className={`w-full h-96 text-white p-2 bg-transparent rounded-lg ${
+        className={`w-full h-96 dark:text-white text-black p-2 bg-transparent rounded-lg ${
           errors.body ? "border-red border-2" : "border-2 border-neutral-900"
         } outline-none`}
       />
@@ -73,10 +75,12 @@ function AddChirpForm() {
       <div className="flex flex-row w-full items-center justify-end mt-2">
         <Circle
           percent={((progressRef.current?.value.length || 0) / 250) * 100}
-          strokeWidth={4}
+          strokeWidth={8}
           strokeColor={`${
             progressRef.current?.value.length == 250 ? `#f74738` : `#F7E638`
           } `}
+          trailColor={theme == "light" ? `#1D1D1D` : "#D9D9D9"}
+          trailWidth={3}
           className="w-8 h-8 mx-4"
         />
         <button
@@ -85,8 +89,8 @@ function AddChirpForm() {
             progressRef.current?.value.length == 0 ||
             progressRef.current?.value.length == 250
               ? `bg-brand-800`
-              : `bg-brand-500`
-          } w-1/6 text-black text-base p-2 rounded-lg flex flex-row justify-center items-center cursor-pointer`}
+              : `dark:bg-brand-500 bg-black`
+          } w-1/6 dark:text-black text-brand-500 text-base p-2 rounded-lg flex flex-row justify-center items-center cursor-pointer`}
         >
           Submit
         </button>

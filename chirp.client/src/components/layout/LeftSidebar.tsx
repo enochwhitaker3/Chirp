@@ -34,7 +34,7 @@ const LeftSidebar = () => {
           <p className="dark:text-white text-black text-xl">Settings</p>
         </div>
         <Link
-          className="bg-brand-500 w-1/2 text-xl p-2 rounded-lg flex flex-row justify-center items-center cursor-pointer "
+          className="dark:bg-brand-500 dark:text-black bg-black text-brand-500 w-1/2 text-xl p-2 rounded-lg flex flex-row justify-center items-center cursor-pointer "
           to="/post"
         >
           <Plussvg />
