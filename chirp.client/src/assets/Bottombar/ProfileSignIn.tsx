@@ -28,17 +28,25 @@ const ProfileSignIn = () => {
 
   switch (auth.activeNavigator) {
     case "signinSilent":
-      return <div>Signing you in...</div>;
+      return (
+        <div className="dark:text-white text-black">Signing you in...</div>
+      );
     case "signoutRedirect":
-      return <div>Signing you out...</div>;
+      return (
+        <div className="dark:text-white text-black">Signing you out...</div>
+      );
   }
 
   if (auth.isLoading || isLoading) {
-    return <div>Loading...</div>;
+    return <div className="dark:text-white text-black">Loading...</div>;
   }
 
   if (auth.error) {
-    return <div>Oops... {auth.error.message}</div>;
+    return (
+      <div className="dark:text-white text-black">
+        Oops... {auth.error.message}
+      </div>
+    );
   }
 
   if (auth.isAuthenticated) {
