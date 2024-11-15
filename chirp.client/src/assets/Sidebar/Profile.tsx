@@ -4,7 +4,7 @@ const Profilesvg = () => {
       fill="currentColor"
       viewBox="0 0 30.586 30.586"
       xmlns="http://www.w3.org/2000/svg"
-      className="w-8 h-8 dark:stroke-white dark:bg-black stroke-black dark:text-white text-black bg-white fill-current mr-2"
+      className="w-8 h-8 dark:stroke-white dark:bg-black stroke-black dark:text-white text-black bg-white fill-current mr-2 rounded-full"
     >
       <g transform="translate(-546.269 -195.397)">
         <path
