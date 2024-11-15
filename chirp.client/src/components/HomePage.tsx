@@ -1,5 +1,5 @@
 import { PostQueries } from "../hooks/PostQueries";
-import MainLayout from "../MainLayout";
+import MainLayout from "./layout/MainLayout";
 import ChirpCard from "./single/ChirpCard";
 
 const HomePage = () => {

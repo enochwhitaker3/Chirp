@@ -75,12 +75,12 @@ function AddChirpForm() {
       <div className="flex flex-row w-full items-center justify-end mt-2">
         <Circle
           percent={((progressRef.current?.value.length || 0) / 250) * 100}
-          strokeWidth={8}
+          strokeWidth={15}
           strokeColor={`${
             progressRef.current?.value.length == 250 ? `#f74738` : `#F7E638`
           } `}
           trailColor={theme == "light" ? `#1D1D1D` : "#D9D9D9"}
-          trailWidth={3}
+          trailWidth={8}
           className="w-8 h-8 mx-4"
         />
         <button

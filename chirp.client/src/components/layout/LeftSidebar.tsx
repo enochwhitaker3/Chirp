@@ -8,8 +8,8 @@ import Trendingsvg from "../../assets/Sidebar/trending";
 
 const LeftSidebar = () => {
   return (
-    <div className="flex justify-center ">
-      <div className="flex flex-col justify-between items-start w-[300px] h-96 sticky top-20 ">
+    <div className="mobile:flex mobile:justify-center hidden">
+      <div className="flex flex-col justify-between items-start desk:w-[300px] w-[200px] h-96 sticky top-20 ">
         <Link
           className="flex flex-row justify-start items-center cursor-pointer"
           to="/"
@@ -34,7 +34,7 @@ const LeftSidebar = () => {
           <p className="dark:text-white text-black text-xl">Settings</p>
         </div>
         <Link
-          className="dark:bg-brand-500 dark:text-black bg-black text-brand-500 w-1/2 text-xl p-2 rounded-lg flex flex-row justify-center items-center cursor-pointer "
+          className="dark:bg-brand-500 dark:text-black bg-black text-brand-500 desk:w-1/2 avg:w-3/4 mobile:w-2/3 w-full text-xl p-2 rounded-lg flex flex-row justify-center items-center cursor-pointer "
           to="/post"
         >
           <Plussvg />

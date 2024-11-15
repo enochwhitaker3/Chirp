@@ -14,4 +14,5 @@ public class PostDTO
 
     public bool? IsReply { get; set; }
     public string Username { get; set; } = "";
+    public string UserPfp { get; set; } = "";
 }

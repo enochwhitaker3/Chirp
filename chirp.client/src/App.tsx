@@ -6,6 +6,7 @@ import Navbar from "./components/single/Navbar";
 import PostPage from "./components/PostPage";
 import { UserAccountProvider } from "./context/UserAccountContext";
 import { ThemeProvider } from "./hooks/useTheme";
+import Bottombar from "./components/single/Bottombar";
 
 const queryClient = new QueryClient();
 
@@ -22,6 +23,7 @@ function App() {
               <Route path="/" element={<HomePage />} />
               <Route path="/post" element={<PostPage />} />
             </Routes>
+            <Bottombar />
           </div>
         </UserAccountProvider>
       </ThemeProvider>

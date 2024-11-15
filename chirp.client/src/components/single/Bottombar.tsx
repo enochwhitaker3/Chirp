@@ -1,14 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import LoginButton from "../authentication/LoginButton";
 import Contour from "../../assets/topographic.svg";
 import ContourLight from "../../assets/topographic_light.svg";
-import ChirpLogoDark from "../../assets/chirp_logo_dark.svg";
-import ChirpLogoLight from "../../assets/chirp_logo_light.svg";
 import { useTheme } from "../../hooks/useTheme";
-import DisplayMode from "./DisplayMode";
+import Homesvg from "../../assets/Bottombar/homesvg";
+import Profilesvg from "../../assets/Bottombar/Profile";
+import Searchsvg from "../../assets/Bottombar/search";
 
-const Navbar: React.FC = () => {
+const Bottombar: React.FC = () => {
   const { theme } = useTheme();
 
   const backgroundImage =
@@ -16,36 +15,35 @@ const Navbar: React.FC = () => {
 
   return (
     <nav
-      className={`w-full border-b-2 ${
+      className={`w-full border-t-2 mobile:hidden block ${
         theme === "dark" ? "shadow-lg shadow-gray-700/30" : "shadow-xl"
-      } dark:border-b-neutral-900 border-b-neutral-300 text-white mobile:h-14 h-24 flex items-center justify-center fixed dark:bg-black bg-white`}
+      } dark:border-t-neutral-900 border-t-neutral-300 text-white h-14 flex items-center justify-center fixed bottom-0 left-0 z-10 dark:bg-black bg-white`}
       style={{
         backgroundImage,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
-      <div className="flex items-center justify-between max-w-[1200px] desk:w-[1200px] avg:w-[800px] w-[500px]">
+      <div className="flex items-center justify-between desk:w-[1200px] desk:max-w-[1200px] w-full">
         <Link
           className="flex items-center space-x-3 rtl:space-x-reverse sm:px-0 px-4"
           to="/"
         >
-          <img
-            className="h-10 w-10"
-            src={theme === "dark" ? ChirpLogoDark : ChirpLogoLight}
-            alt="PP Logo"
-          />
+          <Homesvg />
         </Link>
 
         <div className="w-auto flex flex-row" id="navbar-dropdown">
-          <ul className="mobile:flex hidden font-medium">
+          <ul className="flex font-medium">
             <li className="py-2 sm:px-3 px-4 text-white">
-              <LoginButton />
+              <Searchsvg />
             </li>
           </ul>
-          <ul className="mobile:hidden flex font-medium justify-center items-center">
+        </div>
+
+        <div className="w-auto flex flex-row" id="navbar-dropdown">
+          <ul className="flex font-medium">
             <li className="py-2 sm:px-3 px-4 text-white">
-              <DisplayMode showText={false} />
+              <Profilesvg />
             </li>
           </ul>
         </div>
@@ -54,4 +52,4 @@ const Navbar: React.FC = () => {
   );
 };
 
-export default Navbar;
+export default Bottombar;

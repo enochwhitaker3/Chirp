@@ -1,9 +1,9 @@
 // components/layout/MainLayout.tsx
 
 import React from "react";
-import Center from "./components/layout/Center";
-import LeftSidebar from "./components/layout/LeftSidebar";
-import RightSidebar from "./components/layout/RightSidebar";
+import Center from "./Center";
+import LeftSidebar from "./LeftSidebar";
+import RightSidebar from "./RightSidebar";
 
 interface MainLayoutProps {
   children: React.ReactNode;
@@ -12,7 +12,7 @@ interface MainLayoutProps {
 const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   return (
     <div className="flex w-screen justify-center min-h-screen">
-      <div className="flex w-[1200px] max-w-[1200px]">
+      <div className="flex desk:w-[1200px] desk:max-w-[1200px] avg:w-[800px] mobile:w-[500px]">
         <LeftSidebar />
         <Center>{children}</Center>
         <RightSidebar />
