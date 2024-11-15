@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import LoginButton from "../authentication/LoginButton";
 import Contour from "../../assets/topographic.svg";
 import ContourLight from "../../assets/topographic_light.svg";
 import ChirpLogoDark from "../../assets/chirp_logo_dark.svg";
 import ChirpLogoLight from "../../assets/chirp_logo_light.svg";
 import { useTheme } from "../../hooks/useTheme";
 import DisplayMode from "./DisplayMode";
+import ProfileSignIn from "../../assets/Bottombar/ProfileSignIn";
 
 const Navbar: React.FC = () => {
   const { theme } = useTheme();
@@ -39,8 +39,8 @@ const Navbar: React.FC = () => {
 
         <div className="w-auto flex flex-row" id="navbar-dropdown">
           <ul className="mobile:flex hidden font-medium">
-            <li className="py-2 sm:px-3 px-4 text-white">
-              <LoginButton />
+            <li className="py-2 sm:px-3 px-4 text-white flex justify-center">
+              <ProfileSignIn />
             </li>
           </ul>
           <ul className="mobile:hidden flex font-medium justify-center items-center">

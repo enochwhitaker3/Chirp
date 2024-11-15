@@ -15,7 +15,7 @@ public partial class UserAccount
 
     public string Email { get; set; } = null!;
 
-    public string? UserPfp { get; set; }
+    public string? UserPFP { get; set; }
 
     public string? Bio { get; set; }
 

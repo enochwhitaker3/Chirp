@@ -88,7 +88,7 @@ function AddChirpForm() {
           className={`${
             progressRef.current?.value.length == 0 ||
             progressRef.current?.value.length == 250
-              ? `bg-brand-800`
+              ? `dark:bg-brand-800 bg-neutral-600 cursor-default`
               : `dark:bg-brand-500 bg-black`
           } w-1/6 dark:text-black text-brand-500 text-base p-2 rounded-lg flex flex-row justify-center items-center cursor-pointer`}
         >

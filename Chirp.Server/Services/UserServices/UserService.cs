@@ -98,7 +98,7 @@ namespace Chirp.Server.Services.UserServices
             uuc.Username = updateUserRequest.Username ?? uuc.Username;
             uuc.Email = updateUserRequest.Email ?? uuc.Email;
             uuc.Bio = updateUserRequest.Bio;
-            uuc.UserPfp = updateUserRequest.UserPFP;
+            uuc.UserPFP = updateUserRequest.UserPFP;
             uuc.Guid = updateUserRequest?.Guid;
 
             context.UserAccounts.Update(uuc);
@@ -118,7 +118,7 @@ namespace Chirp.Server.Services.UserServices
             user.Username = addUserRequest.Username;
             user.Email = addUserRequest.Email;
             user.Bio = "";
-            user.UserPfp = "https://cdn-icons-png.flaticon.com/512/16925/16925339.png";
+            user.UserPFP = "https://cdn-icons-png.flaticon.com/512/16925/16925339.png";
             user.Guid = Guid.NewGuid();
             user.AuthId = addUserRequest.AuthId;
 

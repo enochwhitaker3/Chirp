@@ -6,5 +6,5 @@ export interface Post {
   parentPostId: number;
   isReply: boolean;
   username: string;
-  userPfp: string;
+  userPFP: string;
 }

@@ -18,7 +18,7 @@ public static class DTOConverter
             Username = user.Username,
             Bio = user.Bio,
             Email = user.Email ?? "",
-            UserPFP = user.UserPfp,
+            UserPFP = user.UserPFP,
             DateJoined = user.DateJoined,
             Guid = user.Guid ?? new Guid()
         };
@@ -40,7 +40,7 @@ public static class DTOConverter
             ParentPostId = post.ParentPostId,
             TimePosted = post.TimePosted,
             Username = post.User.Username,
-            UserPfp = post.User.UserPfp ?? ""
+            UserPFP = post.User.UserPFP ?? ""
         };
     }
 }

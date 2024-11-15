@@ -6,7 +6,7 @@ export interface UserAccount {
   email: string;
   bio: string;
   dateJoined: Date;
-  userPfp: string;
+  userPFP: string;
 }
 
 export interface UserAccountContextInterface {

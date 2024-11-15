@@ -4,7 +4,7 @@ import Contour from "../../assets/topographic.svg";
 import ContourLight from "../../assets/topographic_light.svg";
 import { useTheme } from "../../hooks/useTheme";
 import Homesvg from "../../assets/Bottombar/homesvg";
-import Profilesvg from "../../assets/Bottombar/Profile";
+import ProfileSignIn from "../../assets/Bottombar/ProfileSignIn";
 import Searchsvg from "../../assets/Bottombar/search";
 
 const Bottombar: React.FC = () => {
@@ -41,9 +41,9 @@ const Bottombar: React.FC = () => {
         </div>
 
         <div className="w-auto flex flex-row" id="navbar-dropdown">
-          <ul className="flex font-medium">
-            <li className="py-2 sm:px-3 px-4 text-white">
-              <Profilesvg />
+          <ul className="flex justify-center font-medium">
+            <li className="sm:px-3 px-4 text-white flex justify-center">
+              <ProfileSignIn />
             </li>
           </ul>
         </div>
