@@ -23,8 +23,8 @@ public class PostController : ControllerBase
         return await postService.GetAllPosts();
     }
 
-    [HttpGet("getpostsbyid")]
-    public async Task<PostDTO> GetPostsById(int id)
+    [HttpGet("getpostbyid")]
+    public async Task<PostDTO> GetPostById(int id)
     {
         return await postService.GetPostById(id);
     }

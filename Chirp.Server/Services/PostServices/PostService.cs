@@ -52,6 +52,7 @@ public class PostService : IPostService
         using var context = await dbContextFactory.CreateDbContextAsync();
 
         var post = await context.Posts
+            .Include(post => post.User)
             .Where(x => x.Id == id)
             .FirstOrDefaultAsync();
 

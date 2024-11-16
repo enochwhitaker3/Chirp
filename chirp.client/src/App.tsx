@@ -7,6 +7,7 @@ import PostPage from "./components/PostPage";
 import { UserAccountProvider } from "./context/UserAccountContext";
 import { ThemeProvider } from "./hooks/useTheme";
 import Bottombar from "./components/single/Bottombar";
+import ViewChirpPage from "./components/ViewChirpPage";
 
 const queryClient = new QueryClient();
 
@@ -22,6 +23,7 @@ function App() {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/post" element={<PostPage />} />
+              <Route path="/post/:id" element={<ViewChirpPage />} />
             </Routes>
             <Bottombar />
           </div>

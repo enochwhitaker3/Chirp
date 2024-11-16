@@ -35,4 +35,15 @@ export const PostService = {
       throw error;
     }
   },
+  GetPostById: async (id: number): Promise<Post> => {
+    try {
+      const response = await axios.get<Post>(
+        `${import.meta.env.VITE_URL}/Post/getpostbyid?id=${id}`
+      );
+      return response.data;
+    } catch (error) {
+      console.error("Failed to load post");
+      throw error;
+    }
+  },
 };

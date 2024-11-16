@@ -10,6 +10,12 @@ export const PostQueries = {
       queryKey: keys.GetAllPosts,
     });
   },
+  useGetPostById: (id: number) => {
+    return useQuery({
+      queryFn: () => PostService.GetPostById(id),
+      queryKey: keys.GetPostById,
+    });
+  },
 };
 
 export const useAddNewPost = () => {
