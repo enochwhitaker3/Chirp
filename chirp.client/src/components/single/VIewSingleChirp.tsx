@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { Post } from "../../@types/Post";
 import ChirpLike from "../../assets/ChirpCard/chirplike";
 import ChirpReply from "../../assets/ChirpCard/chirpreply";
