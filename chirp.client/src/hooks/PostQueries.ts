@@ -16,6 +16,12 @@ export const PostQueries = {
       queryKey: keys.GetPostById,
     });
   },
+  useGetAllRepliesToPost: (parentId: number) => {
+    return useQuery({
+      queryFn: () => PostService.GetAllRepliesToPost(parentId),
+      queryKey: keys.GetAllRepliesToPost,
+    });
+  },
 };
 
 export const useAddNewPost = () => {

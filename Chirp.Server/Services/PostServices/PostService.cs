@@ -41,6 +41,7 @@ public class PostService : IPostService
 
         var posts = await context.Posts
             .Include(post => post.User)
+            .Where(x => x.IsReply == false)
             .Select(post => post.ToDTO())
             .ToListAsync();
 
@@ -122,4 +123,19 @@ public class PostService : IPostService
             return false;
         }
     }
+
+    public async Task<List<PostDTO>> GetAllRepliesToPost(int parentId)
+    {
+        using var context = await dbContextFactory.CreateDbContextAsync();
+
+        var posts = await context.Posts
+            .Include(post => post.User) 
+            .Where(p => p.ParentPostId == parentId) 
+            .ToListAsync(); 
+
+        var postDTOs = posts.Select(post => post.ToDTO()).ToList();
+
+        return postDTOs;
+    }
+
 }

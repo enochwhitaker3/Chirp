@@ -46,4 +46,15 @@ export const PostService = {
       throw error;
     }
   },
+  GetAllRepliesToPost: async (parentId: number): Promise<Post[]> => {
+    try {
+      const response = await axios.get<Post[]>(
+        `${import.meta.env.VITE_URL}/Post/getrepliestopost?parentId=${parentId}`
+      );
+      return response.data;
+    } catch (error) {
+      console.error("Failed to load replies");
+      throw error;
+    }
+  },
 };

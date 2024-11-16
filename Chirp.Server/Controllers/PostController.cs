@@ -53,5 +53,10 @@ public class PostController : ControllerBase
         return await postService.DeletePostById(id);
     }
 
+    [HttpGet("getrepliestopost")]
+    public async Task<List<PostDTO>> GetAllRepliesToPost(int parentId)
+    {
+        return await postService.GetAllRepliesToPost(parentId);
+    }
 
 }
