@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { PostQueries } from "../../hooks/PostQueries";
-import Reply from "./Reply";
-import VIewSingleChirp from "./VIewSingleChirp";
+import Reply from "../single/Reply";
+import VIewSingleChirp from "../single/VIewSingleChirp";
 
 const ViewChirp = () => {
   const { id } = useParams<{ id: string }>();
@@ -12,11 +12,10 @@ const ViewChirp = () => {
     <>
       {Post ? (
         <div className="flex flex-col mb-5 max-w-[600px] dark:text-white text-black rounded-md h-fit cursor-pointer w-screen mobile:px-0 px-4">
-          <div className="sticky top-0 z-10">
+          <div>
             <VIewSingleChirp Post={Post} />
           </div>
-
-          <div className="p-4 overflow-y-auto max-h-[400px]">
+          <div className="p-4">
             {Replies?.map((reply, i) => (
               <>
                 <Reply key={i} reply={reply} />

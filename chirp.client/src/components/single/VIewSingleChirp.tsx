@@ -1,9 +1,9 @@
 import { FC } from "react";
 import { Post } from "../../@types/Post";
 import ChirpLike from "../../assets/ChirpCard/chirplike";
-import ChirpReply from "../../assets/ChirpCard/chirpreply";
 import Profilesvg from "../../assets/Sidebar/Profile";
 import { formatTimePosted } from "../../hooks/useCalcDaysAgo";
+import AddReplyModal from "./AddReplyModal";
 
 const VIewSingleChirp: FC<{ Post: Post }> = ({ Post }) => {
   const timePosted = formatTimePosted(Post?.timePosted!);
@@ -25,7 +25,7 @@ const VIewSingleChirp: FC<{ Post: Post }> = ({ Post }) => {
       </div>
       <div className="flex flex-row w-full justify-end my-4">
         <ChirpLike />
-        <ChirpReply />
+        <AddReplyModal post={Post} />
       </div>
       <hr className="border-neutral-900 my-2" />
       <div>

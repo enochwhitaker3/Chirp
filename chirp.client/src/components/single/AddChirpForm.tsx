@@ -1,4 +1,4 @@
-import React, { useState, useRef, useContext } from "react";
+import React, { useState, useRef, useContext, FC } from "react";
 import { Circle } from "rc-progress";
 import "../../index.css";
 import { useAddNewPost } from "../../hooks/PostQueries";
@@ -11,7 +11,10 @@ type Errors = {
   body?: string;
 };
 
-function AddChirpForm() {
+const AddChirpForm: FC<{ parentPostId?: number; isReply?: boolean }> = ({
+  parentPostId,
+  isReply,
+}) => {
   const { user } = useContext(
     UserAccountContext
   ) as UserAccountContextInterface;
@@ -47,8 +50,8 @@ function AddChirpForm() {
         addNewPost({
           userId: user?.id ?? 0,
           body: body,
-          parentPostId: null,
-          isReply: false,
+          parentPostId: parentPostId ?? null,
+          isReply: isReply ?? false,
         });
         navigate("/");
       }
@@ -58,7 +61,7 @@ function AddChirpForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="dark:text-white text-black flex flex-col w-[600px] max-w-[600px] items-end"
+      className="dark:text-white text-black flex flex-col items-end mobile:w-full w-screen"
     >
       <textarea
         placeholder="What's on your mind today?"
@@ -67,7 +70,7 @@ function AddChirpForm() {
         required
         onInput={handleInput}
         ref={progressRef}
-        className={`w-full h-96 dark:text-white text-black p-2 bg-transparent rounded-lg ${
+        className={`w-full h-48 dark:text-white text-black p-2 bg-transparent rounded-lg ${
           errors.body ? "border-red border-2" : "border-2 border-neutral-900"
         } outline-none`}
       />
@@ -97,6 +100,6 @@ function AddChirpForm() {
       </div>
     </form>
   );
-}
+};
 
 export default AddChirpForm;

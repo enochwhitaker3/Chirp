@@ -1,5 +1,5 @@
 import MainLayout from "./layout/MainLayout";
-import ViewChirp from "./single/ViewChirpLayout";
+import ViewChirp from "./layout/ViewChirpLayout";
 
 const ViewChirpPage = () => {
   return (

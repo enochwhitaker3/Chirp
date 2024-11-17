@@ -13,13 +13,13 @@ export const PostQueries = {
   useGetPostById: (id: number) => {
     return useQuery({
       queryFn: () => PostService.GetPostById(id),
-      queryKey: keys.GetPostById,
+      queryKey: keys.GetPostById(id),
     });
   },
   useGetAllRepliesToPost: (parentId: number) => {
     return useQuery({
       queryFn: () => PostService.GetAllRepliesToPost(parentId),
-      queryKey: keys.GetAllRepliesToPost,
+      queryKey: keys.GetAllRepliesToPost(parentId),
     });
   },
 };
