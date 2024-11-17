@@ -8,6 +8,7 @@ export const PostQueries = {
     return useQuery({
       queryFn: () => PostService.GetAllPosts(),
       queryKey: keys.GetAllPosts,
+      retry: false,
     });
   },
   useGetPostById: (id: number) => {

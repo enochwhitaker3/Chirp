@@ -1,5 +1,3 @@
-// components/layout/MainLayout.tsx
-
 import React from "react";
 import Center from "./Center";
 import LeftSidebar from "./LeftSidebar";
