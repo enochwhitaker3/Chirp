@@ -85,8 +85,21 @@ An evaluation of how well this project is going
 
 ### Nov 16
 
-- [ ] Implement error handling for API requests and render errors (5 pts)
-- [ ] Begin developing 4+ generic layout components (12 pts)
+- [x] Implement error handling for API requests and render errors (5 pts)
+- [x] Begin developing 4+ generic layout components (12 pts)
+
+A retrospective of what you (individually) worked on this last cycle and how it went
+-   This period, I was able to get a lot done. I first noticed that my dark mode wasn't working as expected with images needing to change, so I was able to get that to work. This makes it so the contour on my header and mobile footer changes appropriately as well as the brand logo. I then spent a good chunk of time making sure that every page looks good in mobile as well as on bigger display. I had wanted to design mobile first but I had gotten distracted, so I know can do mobile first. I then added the feature where if the user is signed in, then it would display that users profile picture rather than the default I had in its place. I then added the error handling for API calls so they no longer crash my site if they occur. Then, I added the ability to see and leave replies to a post. I then had to make sure that when I got all posts, I left out the posts with the boolean of 'isReply' == false.
+
+A rough plan of how you expect to implement the next cycle
+-   My plan for the next cycle is to get toasts added when a user leaves a post or a reply to signify a success. I will most likely be using hot-toasts and I really would like them to not look generic but match the overall theme of my site. I then will spend the rest of my time getting more pages and features fleshed out
+
+If you are in a group, comment on how your experience has been working with your group members
+- Not in a group
+
+An evaluation of how well this project is going
+- As of right now, I am really proud of how this project is coming together. I am trying my best to follow the practiecs of the Refactoring UI book and I can really see just how much the principles taught in that book help. I feel much more confident in myself becuase of that and it has saved me so much time on designing and developing.
+
 
 ### Nov 20
 
