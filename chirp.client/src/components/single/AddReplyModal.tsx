@@ -8,26 +8,14 @@ const AddReplyModal: FC<{ post: Post }> = ({ post }) => {
   const [isOpen, setIsOpen] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
 
-  const openModal = () => {
-    setIsOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsOpen(false);
-  };
-
-  const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
-
-    closeModal();
-  };
+  const openModal = () => setIsOpen(true);
+  const closeModal = () => setIsOpen(false);
 
   const handleBackdropClick = (event: React.MouseEvent) => {
     if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
       closeModal();
     }
   };
-
   return (
     <>
       <button onClick={openModal} className="" type="button">
@@ -43,18 +31,18 @@ const AddReplyModal: FC<{ post: Post }> = ({ post }) => {
       >
         <div
           ref={modalRef}
-          className={`relative mx-auto w-full max-w-[48rem] h-auto rounded-lg overflow-hidden shadow-xl dark:shadow-gray-800 dark:bg-black bg-white dark:bg-clay-400 transition-transform duration-300 flex flex-col p-8 animation-fill-mode: forwards;${
+          className={`relative mx-auto w-full max-w-[48rem] h-auto rounded-lg overflow-hidden shadow-xl dark:shadow-gray-800 dark:bg-black bg-white dark:bg-clay-400 transition-transform duration-300 flex flex-col p-8 ${
             isOpen ? "scale-100" : "scale-95"
           }`}
         >
-          <form
-            onSubmit={handleSubmit}
-            className="flex flex-col gap-4 p-6 mx-5"
-          >
+          <div className="flex flex-col gap-4 p-6 mx-5">
             <div>Reply to {post.username}'s Chirp</div>
-            <AddChirpForm parentPostId={post.id} isReply={true} />
-            <div className="flex justify-end"></div>
-          </form>
+            <AddChirpForm
+              replyPostId={post.id}
+              isReply={true}
+              onSuccess={closeModal}
+            />
+          </div>
         </div>
       </div>
     </>

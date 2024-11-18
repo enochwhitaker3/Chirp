@@ -4,17 +4,18 @@ import "../../index.css";
 import { useAddNewPost } from "../../hooks/PostQueries";
 import { UserAccountContextInterface } from "../../@types/UserAccount";
 import { UserAccountContext } from "../../context/UserAccountContext";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { useTheme } from "../../hooks/useTheme";
 
 type Errors = {
   body?: string;
 };
 
-const AddChirpForm: FC<{ parentPostId?: number; isReply?: boolean }> = ({
-  parentPostId,
-  isReply,
-}) => {
+const AddChirpForm: FC<{
+  replyPostId?: number;
+  isReply?: boolean;
+  onSuccess?: () => void;
+}> = ({ replyPostId, isReply, onSuccess }) => {
   const { user } = useContext(
     UserAccountContext
   ) as UserAccountContextInterface;
@@ -22,9 +23,9 @@ const AddChirpForm: FC<{ parentPostId?: number; isReply?: boolean }> = ({
 
   const [errors, setErrors] = useState<Errors>({});
   const progressRef = useRef<HTMLTextAreaElement>(null);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const { mutate: addNewPost } = useAddNewPost();
+  const { mutate: addNewPost } = useAddNewPost(replyPostId!);
 
   const handleInput = (event: React.FormEvent<HTMLTextAreaElement>) => {
     const input = event.currentTarget;
@@ -50,10 +51,11 @@ const AddChirpForm: FC<{ parentPostId?: number; isReply?: boolean }> = ({
         addNewPost({
           userId: user?.id ?? 0,
           body: body,
-          parentPostId: parentPostId ?? null,
+          ParentId: replyPostId ?? null,
           isReply: isReply ?? false,
         });
-        navigate("/");
+        onSuccess!();
+        // navigate("/");
       }
     }
   };

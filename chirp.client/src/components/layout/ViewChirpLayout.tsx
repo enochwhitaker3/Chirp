@@ -11,15 +11,13 @@ const ViewChirp = () => {
   return (
     <>
       {Post ? (
-        <div className="flex flex-col mb-5 max-w-[600px] dark:text-white text-black rounded-md h-fit cursor-pointer w-screen mobile:px-0 px-4">
+        <div className="flex flex-col mb-5 dark:text-white text-black rounded-md h-fit cursor-pointer mobile:px-0 px-4">
           <div>
             <VIewSingleChirp Post={Post} />
           </div>
           <div className="p-4">
             {Replies?.map((reply, i) => (
-              <>
-                <Reply key={i} reply={reply} />
-              </>
+              <Reply key={i} reply={reply} />
             ))}
           </div>
         </div>

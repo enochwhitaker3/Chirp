@@ -1,6 +1,6 @@
 export interface AddPostRequest {
   userId: number;
   body: string;
-  parentPostId: number | null;
+  ParentId: number | null;
   isReply: boolean;
 }

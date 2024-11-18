@@ -25,7 +25,7 @@ export const PostQueries = {
   },
 };
 
-export const useAddNewPost = () => {
+export const useAddNewPost = (parentId: number) => {
   const queryClient = useQueryClient();
 
   return useMutation({
@@ -34,6 +34,9 @@ export const useAddNewPost = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: keys.AddNewPost });
       queryClient.invalidateQueries({ queryKey: keys.GetAllPosts });
+      queryClient.invalidateQueries({
+        queryKey: keys.GetAllRepliesToPost(parentId),
+      });
     },
   });
 };
