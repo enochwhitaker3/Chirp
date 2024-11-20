@@ -39,20 +39,17 @@ export function useCalcDaysAgo(date: Date | string) {
 export function formatTimePosted(timePosted: Date): string {
   const date = new Date(timePosted);
 
-  // Format hours and minutes
   let hours = date.getHours();
   const minutes = date.getMinutes();
   const ampm = hours >= 12 ? "PM" : "AM";
-  hours = hours % 12 || 12; // Convert to 12-hour format, handle 0 as 12
+  hours = hours % 12 || 12;
 
-  // Format date
   const day = date.getDate();
-  const month = date.toLocaleString("default", { month: "short" }); // Abbreviated month
+  const month = date.toLocaleString("default", { month: "short" });
   const year = date.getFullYear();
 
-  // Ordinal suffix for day
   const ordinalSuffix = (n: number): string => {
-    if (n > 3 && n < 21) return "th"; // Special cases for 11th-13th
+    if (n > 3 && n < 21) return "th";
     switch (n % 10) {
       case 1:
         return "st";
@@ -73,20 +70,15 @@ export function formatTimePosted(timePosted: Date): string {
 export function formatJoinDate(timePosted: Date): string {
   const date = new Date(timePosted);
 
-  // Format hours and minutes
   let hours = date.getHours();
-  const minutes = date.getMinutes();
-  const ampm = hours >= 12 ? "PM" : "AM";
-  hours = hours % 12 || 12; // Convert to 12-hour format, handle 0 as 12
+  hours = hours % 12 || 12;
 
-  // Format date
   const day = date.getDate();
-  const month = date.toLocaleString("default", { month: "short" }); // Abbreviated month
+  const month = date.toLocaleString("default", { month: "short" });
   const year = date.getFullYear();
 
-  // Ordinal suffix for day
   const ordinalSuffix = (n: number): string => {
-    if (n > 3 && n < 21) return "th"; // Special cases for 11th-13th
+    if (n > 3 && n < 21) return "th";
     switch (n % 10) {
       case 1:
         return "st";

@@ -10,7 +10,7 @@ import { UserAccountContextInterface } from "../../@types/UserAccount";
 import { UserAccountContext } from "../../context/UserAccountContext";
 
 const LeftSidebar = () => {
-  const { user, isLoading } = useContext(
+  const { user } = useContext(
     UserAccountContext
   ) as UserAccountContextInterface;
 
