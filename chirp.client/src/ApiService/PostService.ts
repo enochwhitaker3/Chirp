@@ -47,6 +47,28 @@ export const PostService = {
       throw error;
     }
   },
+  GetPostsByUserId: async (id: number): Promise<Post[]> => {
+    try {
+      const response = await axios.get<Post[]>(
+        `${import.meta.env.VITE_URL}/Post/getpostsbyuserid?id=${id}`
+      );
+      return response.data;
+    } catch (error) {
+      console.error("Failed to load post");
+      throw error;
+    }
+  },
+  GetRepliesByUserId: async (id: number): Promise<Post[]> => {
+    try {
+      const response = await axios.get<Post[]>(
+        `${import.meta.env.VITE_URL}/Post/getrepliesbyuserid?id=${id}`
+      );
+      return response.data;
+    } catch (error) {
+      console.error("Failed to load user replies");
+      throw error;
+    }
+  },
   GetAllRepliesToPost: async (parentId: number): Promise<Post[]> => {
     try {
       const response = await axios.get<Post[]>(

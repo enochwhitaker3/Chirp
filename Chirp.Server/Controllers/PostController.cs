@@ -59,4 +59,10 @@ public class PostController : ControllerBase
         return await postService.GetAllRepliesToPost(parentId);
     }
 
+    [HttpGet("getrepliesbyuserid")]
+    public async Task<List<PostDTO>> GetRepliesByUserId(int id)
+    {
+        return await postService.GetRepliesByUserId(id);
+    }
+
 }

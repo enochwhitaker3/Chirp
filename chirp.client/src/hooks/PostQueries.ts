@@ -17,6 +17,18 @@ export const PostQueries = {
       queryKey: keys.GetPostById(id),
     });
   },
+  useGetPostsByUserId: (id: number) => {
+    return useQuery({
+      queryFn: () => PostService.GetPostsByUserId(id),
+      queryKey: keys.GetPostById(id),
+    });
+  },
+  useGetRepliesByUserId: (id: number) => {
+    return useQuery({
+      queryFn: () => PostService.GetRepliesByUserId(id),
+      queryKey: keys.GetRepliesByUserId(id),
+    });
+  },
   useGetAllRepliesToPost: (parentId: number) => {
     return useQuery({
       queryFn: () => PostService.GetAllRepliesToPost(parentId),

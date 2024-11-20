@@ -1,5 +1,5 @@
 import MainLayout from "./layout/MainLayout";
-import Account from "./single/Account";
+import Account from "./single/Account/Account";
 const AccountPage = () => {
   return (
     <MainLayout>
