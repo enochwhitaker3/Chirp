@@ -17,6 +17,8 @@ public partial class UserAccount
 
     public string? UserPFP { get; set; }
 
+    public string? Banner { get; set; }
+
     public string? Bio { get; set; }
 
     public DateTime DateJoined { get; set; }

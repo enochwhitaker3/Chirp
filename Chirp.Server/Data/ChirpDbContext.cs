@@ -120,6 +120,7 @@ public partial class ChirpDbContext : DbContext
                 .HasColumnName("email");
             entity.Property(e => e.Guid).HasColumnName("guid");
             entity.Property(e => e.UserPFP).HasColumnName("user_pfp");
+            entity.Property(e => e.Banner).HasColumnName("banner");
             entity.Property(e => e.Username)
                 .HasMaxLength(15)
                 .HasColumnName("username");

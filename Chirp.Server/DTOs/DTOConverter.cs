@@ -19,6 +19,7 @@ public static class DTOConverter
             Bio = user.Bio,
             Email = user.Email ?? "",
             UserPFP = user.UserPFP,
+            Banner = user.Banner,
             DateJoined = user.DateJoined,
             Guid = user.Guid ?? new Guid()
         };

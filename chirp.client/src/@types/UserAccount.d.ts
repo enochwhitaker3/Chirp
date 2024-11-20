@@ -7,6 +7,7 @@ export interface UserAccount {
   bio: string;
   dateJoined: Date;
   userPFP: string;
+  banner: string;
 }
 
 export interface UserAccountContextInterface {
