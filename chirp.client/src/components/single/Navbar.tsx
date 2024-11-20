@@ -16,7 +16,7 @@ const Navbar: React.FC = () => {
 
   return (
     <nav
-      className={`w-full border-b-2 ${
+      className={`w-full border-b-2 z-50 ${
         theme === "dark" ? "shadow-lg shadow-gray-700/30" : "shadow-xl"
       } dark:border-b-neutral-900 border-b-neutral-300 text-white mobile:h-14 h-24 flex items-center justify-center fixed dark:bg-black bg-white`}
       style={{
