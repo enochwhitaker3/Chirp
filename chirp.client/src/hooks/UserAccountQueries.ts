@@ -10,6 +10,12 @@ export const UserAccountQueries = {
       queryKey: keys.GetAllUser,
     });
   },
+  useGetUserByUsername: (username: string) => {
+    return useQuery({
+      queryFn: () => UserAccountService.GetUserByUsername(username),
+      queryKey: keys.GetAllUser,
+    });
+  },
   useGetUserByAuthId: (authId: string) => {
     return useQuery({
       queryFn: () => UserAccountService.GetUserByAuthId(authId),

@@ -8,6 +8,7 @@ import { UserAccountProvider } from "./context/UserAccountContext";
 import { ThemeProvider } from "./hooks/useTheme";
 import Bottombar from "./components/single/Bottombar";
 import ViewChirpPage from "./components/ViewChirpPage";
+import AccountPage from "./components/AccountPage";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +24,7 @@ function App() {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/post" element={<PostPage />} />
+              <Route path="/account/:userName" element={<AccountPage />} />
               <Route path="/post/:id" element={<ViewChirpPage />} />
             </Routes>
             <Bottombar />

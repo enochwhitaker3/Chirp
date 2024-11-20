@@ -5,8 +5,15 @@ import Profilesvg from "../../assets/Sidebar/Profile";
 import Searchsvg from "../../assets/Sidebar/search";
 import Settingssvg from "../../assets/Sidebar/settigns";
 import Trendingsvg from "../../assets/Sidebar/trending";
+import { useContext } from "react";
+import { UserAccountContextInterface } from "../../@types/UserAccount";
+import { UserAccountContext } from "../../context/UserAccountContext";
 
 const LeftSidebar = () => {
+  const { user, isLoading } = useContext(
+    UserAccountContext
+  ) as UserAccountContextInterface;
+
   return (
     <div className="mobile:flex mobile:justify-center hidden">
       <div className="flex flex-col justify-between items-start desk:w-[300px] w-[200px] h-96 sticky top-20 ">
@@ -25,10 +32,13 @@ const LeftSidebar = () => {
           <Trendingsvg />
           <p className="dark:text-white text-black text-xl">Popular</p>
         </div>
-        <div className="flex flex-row justify-start items-center cursor-pointer">
+        <Link
+          className="flex flex-row justify-start items-center cursor-pointer"
+          to={user?.username ? `/account/${user.username}` : "#"}
+        >
           <Profilesvg />
           <p className="dark:text-white text-black text-xl">Account</p>
-        </div>
+        </Link>
         <div className="flex flex-row justify-start items-center cursor-pointer">
           <Settingssvg />
           <p className="dark:text-white text-black text-xl">Settings</p>
