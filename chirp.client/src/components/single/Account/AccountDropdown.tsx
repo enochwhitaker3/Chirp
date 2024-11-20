@@ -10,7 +10,7 @@ const AccountDropdown: React.FC<{
   };
 
   return (
-    <Menu as="div" className="relative inline-block text-left ml-6">
+    <Menu as="div" className="relative inline-block text-left mobile:mx-0 mx-4">
       <div>
         <MenuButton className="inline-flex w-full justify-center gap-x-1.5 rounded-md dark:bg-neutral-900 bg-[#ffffff]  px-3 py-2 text-sm font-semibold dark:text-white text-black shadow-sm ring-1 ring-inset dark:ring-neutral-700 ring-gray-300 ">
           {selectedFilter}

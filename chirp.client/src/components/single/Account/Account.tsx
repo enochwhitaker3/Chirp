@@ -37,7 +37,7 @@ export const Account = () => {
   }
 
   return (
-    <div className="w-full flex flex-col items-start ">
+    <div className="w-full flex flex-col items-start">
       <BannerNPfp User={User} />
       <AccountInfo User={User} />
       <AccountDropdown
