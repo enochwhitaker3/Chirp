@@ -8,11 +8,8 @@ const HomePage = () => {
   if (isLoading && !error) {
     return (
       <MainLayout>
-        {" "}
         <div className="flex items-center justify-center">
-          <div className="dark:text-white text-black">
-            Loading...
-          </div>
+          <div className="dark:text-white text-black">Loading...</div>
         </div>
       </MainLayout>
     );

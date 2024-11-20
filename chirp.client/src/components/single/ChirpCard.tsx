@@ -32,7 +32,7 @@ const ChirpCard: FC<{ post: Post }> = ({ post }) => {
             - {useCalcDaysAgo(post.timePosted)}
           </p>
         </div>
-        <div className="mt-2 w-full">{post.body}</div>
+        <div className="mt-2 w-full grow">{post.body}</div>
         <div className="flex flex-row w-full justify-end my-5">
           <ChirpLike />
           <ChirpReply />
