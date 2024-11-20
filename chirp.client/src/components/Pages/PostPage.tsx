@@ -1,5 +1,5 @@
-import MainLayout from "./layout/MainLayout";
-import AddChirpForm from "./single/AddChirpForm";
+import MainLayout from "../layout/MainLayout";
+import AddChirpForm from "../single/AddChirpForm";
 
 const PostPage = () => {
   return (

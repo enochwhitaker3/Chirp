@@ -1,6 +1,6 @@
-import { PostQueries } from "../hooks/PostQueries";
-import MainLayout from "./layout/MainLayout";
-import ChirpCard from "./single/ChirpCard";
+import { PostQueries } from "../../hooks/PostQueries";
+import MainLayout from "../layout/MainLayout";
+import ChirpCard from "../single/ChirpCard";
 
 const HomePage = () => {
   const { data: Posts, error, isLoading } = PostQueries.useGetAllPosts();

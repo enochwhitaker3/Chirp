@@ -1,14 +1,15 @@
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import HomePage from "./components/HomePage";
+import HomePage from "./components/Pages/HomePage";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Navbar from "./components/single/Navbar";
-import PostPage from "./components/PostPage";
 import { UserAccountProvider } from "./context/UserAccountContext";
 import { ThemeProvider } from "./hooks/useTheme";
 import Bottombar from "./components/single/Bottombar";
-import ViewChirpPage from "./components/ViewChirpPage";
-import AccountPage from "./components/AccountPage";
+import AccountPage from "./components/Pages/AccountPage";
+import PostPage from "./components/Pages/PostPage";
+import ViewChirpPage from "./components/Pages/ViewChirpPage";
+import SearchPage from "./components/Pages/SearchPage";
 
 const queryClient = new QueryClient();
 
@@ -24,7 +25,8 @@ function App() {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/post" element={<PostPage />} />
-              <Route path="/account/:userName" element={<AccountPage />} />
+              <Route path="/search" element={<SearchPage />} />
+              <Route path="/user/:userName" element={<AccountPage />} />
               <Route path="/post/:id" element={<ViewChirpPage />} />
             </Routes>
             <Bottombar />

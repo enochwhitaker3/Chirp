@@ -9,11 +9,11 @@ const AccountPosts = ({ posts }: { posts: Post[] }) => {
           Nothing to find here...
         </div>
         <hr
+          className="w-screen"
           style={{
-            width: "499px",
-            visibility: "hidden", // Makes it invisible but still takes up space
-            height: "0", // Prevents it from taking up vertical space
-            border: "none", // Removes the default border of `hr`
+            visibility: "hidden",
+            height: "0",
+            border: "none",
           }}
         />
       </div>
@@ -24,11 +24,11 @@ const AccountPosts = ({ posts }: { posts: Post[] }) => {
         <ChirpCard key={i} post={post} />
       ))}
       <hr
+        className="w-screen"
         style={{
-          width: "499px",
-          visibility: "hidden", // Makes it invisible but still takes up space
-          height: "0", // Prevents it from taking up vertical space
-          border: "none", // Removes the default border of `hr`
+          visibility: "hidden",
+          height: "0",
+          border: "none",
         }}
       />
     </div>
