@@ -3,7 +3,7 @@ import { Post } from "../../@types/Post";
 import ChirpLike from "../../assets/ChirpCard/chirplike";
 import Profilesvg from "../../assets/Sidebar/Profile";
 import { formatTimePosted } from "../../hooks/useCalcDaysAgo";
-import AddReplyModal from "./AddReplyModal";
+import AddReplyModal from "./Post/AddReplyModal";
 
 const VIewSingleChirp: FC<{ Post: Post }> = ({ Post }) => {
   const timePosted = formatTimePosted(Post?.timePosted!);

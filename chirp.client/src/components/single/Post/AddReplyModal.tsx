@@ -1,9 +1,7 @@
-
-import React, { FC } from "react";
-import { useRef, useState } from "react";
-import ChirpReply from "../../assets/ChirpCard/chirpreply";
+import { FC, useState, useRef } from "react";
+import { Post } from "../../../@types/Post";
+import ChirpReply from "../../../assets/ChirpCard/chirpreply";
 import AddChirpForm from "./AddChirpForm";
-import { Post } from "../../@types/Post";
 
 const AddReplyModal: FC<{ post: Post }> = ({ post }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,11 +30,11 @@ const AddReplyModal: FC<{ post: Post }> = ({ post }) => {
       >
         <div
           ref={modalRef}
-          className={`relative mobile:mx-auto w-full max-w-[48rem] h-auto rounded-lg overflow-hidden shadow-xl dark:shadow-gray-800 dark:bg-black bg-white dark:bg-clay-400 transition-transform duration-300 flex flex-col p-8 ${
+          className={`flex flex-col relative mobile:mx-auto desk:w-1/3 mobile:w-1/2 w-3/4 max-w-[48rem] h-auto rounded-lg overflow-hidden shadow-xl dark:shadow-gray-800 dark:bg-black bg-white dark:bg-clay-400 transition-transform duration-300 ${
             isOpen ? "scale-100" : "scale-95"
           }`}
         >
-          <div className="flex flex-col gap-4 p-6 mx-5">
+          <div className="flex flex-col p-6 w-full">
             <div>Reply to {post.username}'s Chirp</div>
             <AddChirpForm
               replyPostId={post.id}

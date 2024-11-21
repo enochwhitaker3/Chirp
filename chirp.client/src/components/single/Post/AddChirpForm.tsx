@@ -1,11 +1,12 @@
-import React, { useState, useRef, useContext, FC } from "react";
 import { Circle } from "rc-progress";
-import "../../index.css";
-import { useAddNewPost } from "../../hooks/PostQueries";
-import { UserAccountContextInterface } from "../../@types/UserAccount";
-import { UserAccountContext } from "../../context/UserAccountContext";
+import { FC, useContext, useState, useRef } from "react";
+import { UserAccountContextInterface } from "../../../@types/UserAccount";
+import { UserAccountContext } from "../../../context/UserAccountContext";
+import { useAddNewPost } from "../../../hooks/PostQueries";
+import { useTheme } from "../../../hooks/useTheme";
+import "../../../index.css";
+import SubmitButton from "./SubmitButton";
 // import { useNavigate } from "react-router-dom";
-import { useTheme } from "../../hooks/useTheme";
 
 type Errors = {
   body?: string;
@@ -63,18 +64,20 @@ const AddChirpForm: FC<{
   return (
     <form
       onSubmit={handleSubmit}
-      className="dark:text-white text-black flex flex-col items-end mobile:w-full w-screen px-4"
+      className={`dark:text-white text-black flex flex-col items-end mobile:w-full  ${
+        isReply ? "w-full" : ""
+      }`}
     >
       <textarea
-        placeholder="What's on your mind today?"
+        placeholder={isReply ? `What do they need to hear?` : `What's on your mind today?`}
         name="body"
         maxLength={250}
         required
         onInput={handleInput}
         ref={progressRef}
-        className={`w-full h-48 dark:text-white text-black p-2 bg-transparent rounded-lg ${
+        className={`w-full dark:text-white text-black p-2 bg-transparent rounded-lg ${
           errors.body ? "border-red border-2" : "border-2 border-neutral-900"
-        } outline-none`}
+        } outline-none ${isReply ? "h-24" : "h-48"}`}
       />
       {errors.body && <div className="error text-red">{errors.body}</div>}
       <div className="flex flex-row w-full items-center justify-end mt-2">
@@ -88,17 +91,7 @@ const AddChirpForm: FC<{
           trailWidth={8}
           className="w-8 h-8 mx-4"
         />
-        <button
-          type="submit"
-          className={`${
-            progressRef.current?.value.length == 0 ||
-            progressRef.current?.value.length == 250
-              ? `dark:bg-brand-800 bg-neutral-600 cursor-default`
-              : `dark:bg-brand-500 bg-black`
-          } w-1/6 dark:text-black text-brand-500 text-base p-2 rounded-lg flex flex-row justify-center items-center cursor-pointer`}
-        >
-          Submit
-        </button>
+        <SubmitButton chirpLength={Number(progressRef.current?.value.length)} />
       </div>
     </form>
   );
