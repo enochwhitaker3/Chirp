@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import Homesvg from "../../assets/Sidebar/homesvg";
-import Plussvg from "../../assets/Sidebar/plus";
-import Profilesvg from "../../assets/Sidebar/Profile";
-import Searchsvg from "../../assets/Sidebar/search";
-import Settingssvg from "../../assets/Sidebar/settigns";
-import Trendingsvg from "../../assets/Sidebar/trending";
+import Homesvg from "../single/Sidebar/homesvg";
+import Plussvg from "../single/Sidebar/plus";
+import Profilesvg from "../single/Sidebar/Profile";
+import Searchsvg from "../single/Sidebar/search";
+import Settingssvg from "../single/Sidebar/settigns";
+import Trendingsvg from "../single/Sidebar/trending";
 import { useContext } from "react";
 import { UserAccountContextInterface } from "../../@types/UserAccount";
 import { UserAccountContext } from "../../context/UserAccountContext";

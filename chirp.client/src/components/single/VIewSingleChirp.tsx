@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Post } from "../../@types/Post";
-import ChirpLike from "../../assets/ChirpCard/chirplike";
-import Profilesvg from "../../assets/Sidebar/Profile";
+import ChirpLike from "./ChirpCard/chirplike";
+import Profilesvg from "./Sidebar/Profile";
 import { formatTimePosted } from "../../hooks/useCalcDaysAgo";
 import AddReplyModal from "./Post/AddReplyModal";
 

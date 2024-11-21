@@ -1,4 +1,4 @@
-import Profilesvg from "../../assets/Sidebar/Profile";
+import Profilesvg from "../single/Sidebar/Profile";
 import DisplayMode from "../single/DisplayMode";
 
 const RightSidebar = () => {

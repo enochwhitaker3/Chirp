@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import Contour from "../../assets/topographic.svg";
 import ContourLight from "../../assets/topographic_light.svg";
 import { useTheme } from "../../hooks/useTheme";
-import Homesvg from "../../assets/Bottombar/homesvg";
-import ProfileSignIn from "../../assets/Bottombar/ProfileSignIn";
-import Searchsvg from "../../assets/Bottombar/search";
+import Homesvg from "./Navigation/homesvg";
+import ProfileSignIn from "./Navigation/ProfileSignIn";
+import Searchsvg from "./Navigation/search";
 
 const Bottombar: React.FC = () => {
   const { theme } = useTheme();

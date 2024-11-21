@@ -14,6 +14,7 @@ const oidcConfig: AuthProviderProps = {
     process.env.NODE_ENV === "production"
       ? "https://enoch-chirp.duckdns.org/"
       : "http://localhost:5173/",
+
   onSigninCallback: async (user) => {
     // if (user?.id_token) {
     //   const backEmail = await UserAccountService.GetAuthenticatedUserEmail(

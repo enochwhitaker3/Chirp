@@ -1,6 +1,6 @@
 import { FC } from "react";
-import DarkModeSvg from "../../assets/Sidebar/darkmode";
-import LightModeSvg from "../../assets/Sidebar/lightmode";
+import DarkModeSvg from "./Sidebar/darkmode";
+import LightModeSvg from "./Sidebar/lightmode";
 import { useTheme } from "../../hooks/useTheme";
 
 const DisplayModeForm: FC<{ showText: boolean }> = ({ showText }) => {

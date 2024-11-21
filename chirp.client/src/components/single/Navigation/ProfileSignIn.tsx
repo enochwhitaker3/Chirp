@@ -1,8 +1,10 @@
 import { useContext, useEffect } from "react";
 import { useAuth } from "react-oidc-context";
-import { UserAccountContext } from "../../context/UserAccountContext";
-import { UserAccountContextInterface } from "../../@types/UserAccount";
+import { UserAccountContextInterface } from "../../../@types/UserAccount";
+import { UserAccountContext } from "../../../context/UserAccountContext";
 import Profilesvg from "../Sidebar/Profile";
+import ProfileButton from "./ProfileButton";
+import { Link } from "react-router-dom";
 
 const ProfileSignIn = () => {
   const auth = useAuth();
@@ -18,13 +20,6 @@ const ProfileSignIn = () => {
       }; expires=${date.toUTCString()}; SameSite=None; Secure`;
     }
   }, [auth.user]);
-
-  const handleLogout = async () => {
-    await auth.removeUser();
-    document.cookie =
-      "jwt_token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT; SameSite=None; Secure";
-    window.location.href = "/";
-  };
 
   switch (auth.activeNavigator) {
     case "signinSilent":
@@ -49,31 +44,17 @@ const ProfileSignIn = () => {
     );
   }
 
-  if (auth.isAuthenticated) {
-    return (
-      <div className="text-base dark:text-white text-black flex justify-center">
-        <button onClick={handleLogout} className="underline">
-          {user ? (
-            <img
-              src={user.userPFP}
-              className="h-10 w-10 rounded-full"
-              alt="Profile"
-            />
-          ) : (
-            <Profilesvg />
-          )}
-        </button>
-      </div>
-    );
+  if (auth.isAuthenticated && user) {
+    return <ProfileButton user={user} auth={auth} />;
   }
 
   return (
-    <button
-      onClick={() => void auth.signinRedirect()}
+    <Link
+      to="/signup"
       className="dark:text-white text-black"
     >
       <Profilesvg />
-    </button>
+    </Link>
   );
 };
 

@@ -1,6 +1,6 @@
-import Profilesvg from "../../assets/Sidebar/Profile";
-import ChirpLike from "../../assets/ChirpCard/chirplike";
-import ChirpReply from "../../assets/ChirpCard/chirpreply";
+import Profilesvg from "./Sidebar/Profile";
+import ChirpLike from "./ChirpCard/chirplike";
+import ChirpReply from "./ChirpCard/chirpreply";
 import { Post } from "../../@types/Post";
 import { FC } from "react";
 import { useCalcDaysAgo } from "../../hooks/useCalcDaysAgo";

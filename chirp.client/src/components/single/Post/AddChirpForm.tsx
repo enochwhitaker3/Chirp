@@ -62,38 +62,49 @@ const AddChirpForm: FC<{
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className={`dark:text-white text-black flex flex-col items-end mobile:w-full  ${
-        isReply ? "w-full" : ""
-      }`}
-    >
-      <textarea
-        placeholder={isReply ? `What do they need to hear?` : `What's on your mind today?`}
-        name="body"
-        maxLength={250}
-        required
-        onInput={handleInput}
-        ref={progressRef}
-        className={`w-full dark:text-white text-black p-2 bg-transparent rounded-lg ${
-          errors.body ? "border-red border-2" : "border-2 border-neutral-900"
-        } outline-none ${isReply ? "h-24" : "h-48"}`}
-      />
-      {errors.body && <div className="error text-red">{errors.body}</div>}
-      <div className="flex flex-row w-full items-center justify-end mt-2">
-        <Circle
-          percent={((progressRef.current?.value.length || 0) / 250) * 100}
-          strokeWidth={15}
-          strokeColor={`${
-            progressRef.current?.value.length == 250 ? `#f74738` : `#F7E638`
-          } `}
-          trailColor={theme == "light" ? `#1D1D1D` : "#D9D9D9"}
-          trailWidth={8}
-          className="w-8 h-8 mx-4"
-        />
-        <SubmitButton chirpLength={Number(progressRef.current?.value.length)} />
+    <>
+      <div className="dark:text-white text-black text-xl font-bold mb-4 mobile:px-0 px-4">
+        Create Chirp
       </div>
-    </form>
+      <form
+        onSubmit={handleSubmit}
+        className={`dark:text-white text-black flex flex-col items-end mobile:w-full  ${
+          isReply ? "w-full" : ""
+        }`}
+      >
+        <textarea
+          placeholder={
+            isReply
+              ? `What do they need to hear?`
+              : `What's on your mind today?`
+          }
+          name="body"
+          maxLength={250}
+          required
+          onInput={handleInput}
+          ref={progressRef}
+          className={`w-full dark:text-white text-black p-2 bg-transparent rounded-lg ${
+            errors.body ? "border-red border-2" : "border-2 border-neutral-900"
+          } outline-none ${isReply ? "h-24" : "h-48"}`}
+        />
+        {errors.body && <div className="error text-red">{errors.body}</div>}
+        <div className="flex flex-row w-full items-center justify-end mt-2">
+          <Circle
+            percent={((progressRef.current?.value.length || 0) / 250) * 100}
+            strokeWidth={15}
+            strokeColor={`${
+              progressRef.current?.value.length == 250 ? `#f74738` : `#F7E638`
+            } `}
+            trailColor={theme == "light" ? `#1D1D1D` : "#D9D9D9"}
+            trailWidth={8}
+            className="w-8 h-8 mx-4"
+          />
+          <SubmitButton
+            chirpLength={Number(progressRef.current?.value.length)}
+          />
+        </div>
+      </form>
+    </>
   );
 };
 

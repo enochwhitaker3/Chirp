@@ -1,6 +1,6 @@
 import { FC, useState, useRef } from "react";
 import { Post } from "../../../@types/Post";
-import ChirpReply from "../../../assets/ChirpCard/chirpreply";
+import ChirpReply from "../ChirpCard/chirpreply";
 import AddChirpForm from "./AddChirpForm";
 
 const AddReplyModal: FC<{ post: Post }> = ({ post }) => {

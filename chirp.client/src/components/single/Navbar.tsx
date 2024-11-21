@@ -6,7 +6,7 @@ import ChirpLogoDark from "../../assets/chirp_logo_dark.svg";
 import ChirpLogoLight from "../../assets/chirp_logo_light.svg";
 import { useTheme } from "../../hooks/useTheme";
 import DisplayMode from "./DisplayMode";
-import ProfileSignIn from "../../assets/Bottombar/ProfileSignIn";
+import ProfileSignIn from "./Navigation/ProfileSignIn";
 
 const Navbar: React.FC = () => {
   const { theme } = useTheme();
