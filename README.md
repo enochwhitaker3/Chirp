@@ -24,16 +24,16 @@ Enoch Whitaker
 
 ## Pages
 
-- Home Feed
-- Profile
-- Edit Profile
-- Post Chirp
-- View single chirp
-- Search Results
-- User Page
-- Login / Register
-- Settings
-- 404 Page
+- [x] Home Feed
+- [x] Profile
+- [ ] Edit Profile
+- [x] Post Chirp
+- [x] View single chirp
+- [x] Search Results
+- [ ] User Page
+- [ ] Login / Register
+- [ ] Settings
+- [ ] 404 Page
 
 ## New Things
 
@@ -103,9 +103,9 @@ An evaluation of how well this project is going
 
 ### Nov 20
 
-- [ ] Build out at least 5 pages or views (5 pts)
-- [ ] Create 3+ generic form input components (9 pts)
-- [ ] Integrate toasts or global notifications (5 pts)
+- [x] Build out at least 5 pages or views (5 pts)
+- [x] Create 3+ generic form input components (9 pts)
+- [x] Integrate toasts or global notifications (5 pts)
 
 A retrospective of what you (individually) worked on this last cycle and how it went
 -   This period, I was not able to get as much done as last period, but I still got a good amount of things done. The first thing that I got done was making it so that I could reuse my post chirp component so it could also be used in a modal. This allowed me to reply to other chirps without having to navigate pages. The functionality was pretty easy to use since I had done all the work for making a post, just changing the boolean to true in the reply column. I then started to work on creating more pages for this check in, so I then created the Account page. This shows the user, their pfp, their banner, what day they joined the platform, and their bio. Below that, I made a dropdown input to filter between that user's chirps, what they have replied to, and in the future I will show their likes. After that I created a search page with a basic search bar to bring my page total to 5. Afer that I added toasts to show when a user has succesfully made a post.
