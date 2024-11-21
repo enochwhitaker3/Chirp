@@ -10,6 +10,7 @@ import AccountPage from "./components/Pages/AccountPage";
 import PostPage from "./components/Pages/PostPage";
 import ViewChirpPage from "./components/Pages/ViewChirpPage";
 import SearchPage from "./components/Pages/SearchPage";
+import { Toaster } from "react-hot-toast";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +32,7 @@ function App() {
             </Routes>
             <Bottombar />
           </div>
+          <Toaster />
         </UserAccountProvider>
       </ThemeProvider>
     </QueryClientProvider>

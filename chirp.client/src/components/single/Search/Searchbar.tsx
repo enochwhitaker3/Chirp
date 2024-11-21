@@ -24,13 +24,13 @@ const SearchBar: React.FC<SearchBarProps> = ({
   }, [inputValue, debounceDelay, onSearch]);
 
   return (
-    <div className="relative w-full">
+    <form className="relative mobile:w-full w-screen px-2">
       <input
         type="text"
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
         placeholder={placeholder}
-        className="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-blue-300"
+        className="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none dark:bg-neutral-900 bg-[#FFFFFF] "
       />
 
       <svg
@@ -47,7 +47,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
           strokeLinejoin="round"
         />
       </svg>
-    </div>
+    </form>
   );
 };
 

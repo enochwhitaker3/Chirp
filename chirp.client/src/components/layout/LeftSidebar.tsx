@@ -24,17 +24,20 @@ const LeftSidebar = () => {
           <Homesvg />
           <p className="dark:text-white text-black text-xl">Home</p>
         </Link>
-        <div className="flex flex-row justify-start items-center cursor-pointer">
+        <Link
+          className="flex flex-row justify-start items-center cursor-pointer"
+          to="/search"
+        >
           <Searchsvg />
           <p className="dark:text-white text-black text-xl">Search</p>
-        </div>
+        </Link>
         <div className="flex flex-row justify-start items-center cursor-pointer">
           <Trendingsvg />
           <p className="dark:text-white text-black text-xl">Popular</p>
         </div>
         <Link
           className="flex flex-row justify-start items-center cursor-pointer"
-          to={user?.username ? `/account/${user.username}` : "#"}
+          to={user?.username ? `/user/${user.username}` : "#"}
         >
           <Profilesvg />
           <p className="dark:text-white text-black text-xl">Account</p>

@@ -30,8 +30,10 @@ const RightSidebar = () => {
             Mode
           </p>
           <hr className="w-full border-t-2 border-neutral-900" />
-          <div className="mt-2">
-            <DisplayMode showText={true} />
+          <div className="border-2 border-neutral-800 rounded-lg p-2 mt-2 w-full flex justify-center">
+            <div>
+              <DisplayMode showText={true} />
+            </div>
           </div>
         </div>
       </div>

@@ -2,6 +2,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { PostService } from "../ApiService/PostService";
 import keys from "../hooks/QueryKeys/PostKeys";
 import { AddPostRequest } from "../@types/Requests/Add/AddPostRequest";
+import toast from "react-hot-toast";
 
 export const PostQueries = {
   useGetAllPosts: () => {
@@ -44,6 +45,7 @@ export const useAddNewPost = (parentId: number) => {
     mutationFn: (addPostRequest: AddPostRequest) =>
       PostService.AddNewPost(addPostRequest),
     onSuccess: () => {
+      toast.success("Posted Chirp!");
       queryClient.invalidateQueries({ queryKey: keys.AddNewPost });
       queryClient.invalidateQueries({ queryKey: keys.GetAllPosts });
       queryClient.invalidateQueries({
