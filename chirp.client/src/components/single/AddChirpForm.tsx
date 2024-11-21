@@ -63,7 +63,7 @@ const AddChirpForm: FC<{
   return (
     <form
       onSubmit={handleSubmit}
-      className="dark:text-white text-black flex flex-col items-end mobile:w-full w-screen"
+      className="dark:text-white text-black flex flex-col items-end mobile:w-full w-screen px-4"
     >
       <textarea
         placeholder="What's on your mind today?"

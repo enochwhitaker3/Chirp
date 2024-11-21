@@ -8,7 +8,7 @@ import AddReplyModal from "./AddReplyModal";
 const VIewSingleChirp: FC<{ Post: Post }> = ({ Post }) => {
   const timePosted = formatTimePosted(Post?.timePosted!);
   return (
-    <div className="flex flex-col justify-start w-full">
+    <div className="flex flex-col justify-start w-full mobile:px-0 px-4">
       <div className="flex flex-row justify-start items-center w-full mb-4">
         {Post.userPFP && Post.userPFP != null ? (
           <img src={Post.userPFP} className="w-10 h-10 mr-2 rounded-full" />

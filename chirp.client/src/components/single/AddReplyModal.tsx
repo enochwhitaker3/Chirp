@@ -1,3 +1,4 @@
+
 import React, { FC } from "react";
 import { useRef, useState } from "react";
 import ChirpReply from "../../assets/ChirpCard/chirpreply";
@@ -31,7 +32,7 @@ const AddReplyModal: FC<{ post: Post }> = ({ post }) => {
       >
         <div
           ref={modalRef}
-          className={`relative mx-auto w-full max-w-[48rem] h-auto rounded-lg overflow-hidden shadow-xl dark:shadow-gray-800 dark:bg-black bg-white dark:bg-clay-400 transition-transform duration-300 flex flex-col p-8 ${
+          className={`relative mobile:mx-auto w-full max-w-[48rem] h-auto rounded-lg overflow-hidden shadow-xl dark:shadow-gray-800 dark:bg-black bg-white dark:bg-clay-400 transition-transform duration-300 flex flex-col p-8 ${
             isOpen ? "scale-100" : "scale-95"
           }`}
         >
