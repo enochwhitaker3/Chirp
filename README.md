@@ -107,6 +107,18 @@ An evaluation of how well this project is going
 - [ ] Create 3+ generic form input components (9 pts)
 - [ ] Integrate toasts or global notifications (5 pts)
 
+A retrospective of what you (individually) worked on this last cycle and how it went
+-   This period, I was not able to get as much done as last period, but I still got a good amount of things done. The first thing that I got done was making it so that I could reuse my post chirp component so it could also be used in a modal. This allowed me to reply to other chirps without having to navigate pages. The functionality was pretty easy to use since I had done all the work for making a post, just changing the boolean to true in the reply column. I then started to work on creating more pages for this check in, so I then created the Account page. This shows the user, their pfp, their banner, what day they joined the platform, and their bio. Below that, I made a dropdown input to filter between that user's chirps, what they have replied to, and in the future I will show their likes. After that I created a search page with a basic search bar to bring my page total to 5. Afer that I added toasts to show when a user has succesfully made a post.
+
+A rough plan of how you expect to implement the next cycle
+-   My next plan for the next sprint is to really work on getting the authorized and public pages figured out. I think I know how I can do this, so I am not too worried
+
+If you are in a group, comment on how your experience has been working with your group members
+- Not in a group
+
+An evaluation of how well this project is going
+- This sprint was probably one of the more frustrating as I ran into a lot of little issues that I ended up spendng a lot of time on, only for the issue to be someting really small. I still am pleased with how it is coming along but this was definetly not one of the fun sprints
+
 ### Nov 23
 
 - [ ] Complete 4+ generic layout components (12 pts)
