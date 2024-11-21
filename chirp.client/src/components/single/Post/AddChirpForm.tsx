@@ -62,10 +62,15 @@ const AddChirpForm: FC<{
   };
 
   return (
-    <>
-      <div className="dark:text-white text-black text-xl font-bold mb-4 mobile:px-0 px-4">
-        Create Chirp
-      </div>
+    <div
+      className={`${isReply ? "" : `mobile:w-full w-screen mobile:px-0 px-4`}`}
+    >
+      {!isReply && (
+        <div className="dark:text-white text-black text-xl font-bold mb-4">
+          Create Chirp
+        </div>
+      )}
+
       <form
         onSubmit={handleSubmit}
         className={`dark:text-white text-black flex flex-col items-end mobile:w-full  ${
@@ -104,7 +109,7 @@ const AddChirpForm: FC<{
           />
         </div>
       </form>
-    </>
+    </div>
   );
 };
 
