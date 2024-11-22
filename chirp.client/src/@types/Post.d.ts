@@ -1,3 +1,5 @@
+import { UserAccount } from "./UserAccount";
+
 export interface Post {
   id: number;
   body: string;
@@ -7,4 +9,5 @@ export interface Post {
   isReply: boolean;
   username: string;
   userPFP: string;
+  likes: UserAccount[];
 }

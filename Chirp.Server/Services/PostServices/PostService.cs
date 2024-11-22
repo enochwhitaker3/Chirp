@@ -41,6 +41,8 @@ public class PostService : IPostService
 
         var posts = await context.Posts
             .Include(post => post.User)
+            .Include(post => post.Likes)
+                .ThenInclude(Like => Like.User)
             .Where(x => x.IsReply == false)
             .Select(post => post.ToDTO())
             .ToListAsync();
@@ -54,6 +56,8 @@ public class PostService : IPostService
 
         var post = await context.Posts
             .Include(post => post.User)
+            .Include(post => post.Likes)
+                .ThenInclude(Like => Like.User)
             .Where(x => x.Id == id)
             .FirstOrDefaultAsync();
 
@@ -71,6 +75,8 @@ public class PostService : IPostService
 
         var posts = await context.Posts
             .Include(post => post.User)
+            .Include(post => post.Likes)
+                .ThenInclude(Like => Like.User)
             .Where(post => post.UserId == id)
             .Where(x => x.IsReply == false)
             .ToListAsync();                    
@@ -131,7 +137,9 @@ public class PostService : IPostService
         using var context = await dbContextFactory.CreateDbContextAsync();
 
         var posts = await context.Posts
-            .Include(post => post.User) 
+            .Include(post => post.User)
+            .Include(post => post.Likes)
+                .ThenInclude(Like => Like.User)
             .Where(p => p.ParentPostId == parentId) 
             .ToListAsync(); 
 
@@ -146,6 +154,8 @@ public class PostService : IPostService
 
         var posts = await context.Posts
             .Include(post => post.User)
+            .Include(post => post.Likes)
+                .ThenInclude(Like => Like.User)
             .Where(post => post.UserId == id)
             .Where(x => x.IsReply == true)
             .ToListAsync();

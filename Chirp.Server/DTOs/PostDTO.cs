@@ -15,4 +15,5 @@ public class PostDTO
     public bool? IsReply { get; set; }
     public string Username { get; set; } = "";
     public string UserPFP { get; set; } = "";
+    public List<UserDTO> Likes { get; set; }
 }

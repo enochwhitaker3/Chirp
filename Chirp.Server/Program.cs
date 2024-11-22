@@ -1,10 +1,12 @@
 using Chirp.Server.Data;
+using Chirp.Server.Services.LikeServices;
 using Chirp.Server.Services.PostServices;
 using Chirp.Server.Services.UserServices;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +21,7 @@ builder.Services.AddDbContextFactory<ChirpDbContext>(config => config.UseNpgsql(
 
 builder.Services.AddSingleton<IUserService, UserService>();
 builder.Services.AddSingleton<IPostService, PostService>();
+builder.Services.AddSingleton<ILikeService, LikeService>();
 
 bool allowAll = builder.Configuration["allowAll"] == "true";
 
@@ -58,6 +61,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
 		options.Authority = "https://auth.snowse.duckdns.org/realms/advanced-frontend";
     });
+
+builder.Services.AddControllers().AddJsonOptions(x => { x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles; });
 
 
 var app = builder.Build();

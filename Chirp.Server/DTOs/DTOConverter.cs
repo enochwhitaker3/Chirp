@@ -41,7 +41,23 @@ public static class DTOConverter
             ParentPostId = post.ParentPostId,
             TimePosted = post.TimePosted,
             Username = post.User.Username,
-            UserPFP = post.User.UserPFP ?? ""
+            UserPFP = post.User.UserPFP ?? "",
+            Likes = post.Likes.Select(like => like.User.ToDTO()).ToList()
+        };
+    }
+
+    public static LikeDTO ToDTO(this Like like)
+    {
+        if (like is null)
+        {
+            return new LikeDTO();
+        }
+
+        return new LikeDTO()
+        {
+            Id = like.Id,
+            UserId = like.UserId,
+            PostId = like.PostId,
         };
     }
 }

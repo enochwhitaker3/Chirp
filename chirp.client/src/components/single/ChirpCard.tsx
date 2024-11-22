@@ -2,15 +2,46 @@ import Profilesvg from "./Sidebar/Profile";
 import ChirpLike from "./ChirpCard/chirplike";
 import ChirpReply from "./ChirpCard/chirpreply";
 import { Post } from "../../@types/Post";
-import { FC } from "react";
+import { FC, useContext, useState } from "react";
 import { useCalcDaysAgo } from "../../hooks/useCalcDaysAgo";
 import { useNavigate } from "react-router-dom";
+import { UserAccountContextInterface } from "../../@types/UserAccount";
+import { UserAccountContext } from "../../context/UserAccountContext";
+import { LikeQueries } from "../../hooks/LikeQueries";
 
 const ChirpCard: FC<{ post: Post }> = ({ post }) => {
   const navigate = useNavigate();
 
   const handleCardClick = () => {
     navigate(`/post/${post.id}`);
+  };
+
+  const { user } = useContext(
+    UserAccountContext
+  ) as UserAccountContextInterface;
+
+  const { mutate: AddLike } = LikeQueries.useAddLike({
+    userId: user?.id ?? 0,
+    postId: post.id,
+  });
+
+  const { mutate: RemoveLike } = LikeQueries.useRemoveLike({
+    userId: user?.id ?? 0,
+    postId: post.id,
+  });
+
+  const [isLiked, setIsLiked] = useState(
+    post.likes.some((like) => like.id === user?.id)
+  );
+
+  const handleAddLike = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setIsLiked((prevState) => !prevState);
+    if (user && post && !isLiked) {
+      AddLike();
+    } else if (user && post && isLiked) {
+      RemoveLike();
+    }
   };
 
   return (
@@ -34,7 +65,9 @@ const ChirpCard: FC<{ post: Post }> = ({ post }) => {
         </div>
         <div className="mt-2 w-full grow">{post.body}</div>
         <div className="flex flex-row w-full justify-end my-5">
-          <ChirpLike />
+          <div onClick={handleAddLike}>
+            <ChirpLike isLiked={isLiked} />
+          </div>
           <ChirpReply />
         </div>
       </div>

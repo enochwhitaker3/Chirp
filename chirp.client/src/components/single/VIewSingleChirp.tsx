@@ -14,6 +14,7 @@ const VIewSingleChirp: FC<{ Post: Post }> = ({ Post }) => {
   const { user } = useContext(
     UserAccountContext
   ) as UserAccountContextInterface;
+
   return (
     <div className="flex flex-col justify-start w-full mobile:px-0 px-4">
       <div className="flex flex-row justify-start items-center w-full mb-4">
