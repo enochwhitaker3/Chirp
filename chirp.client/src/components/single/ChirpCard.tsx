@@ -2,7 +2,7 @@ import Profilesvg from "./Sidebar/Profile";
 import ChirpLike from "./ChirpCard/chirplike";
 import ChirpReply from "./ChirpCard/chirpreply";
 import { Post } from "../../@types/Post";
-import { FC, useContext, useState } from "react";
+import { FC, useContext, useEffect, useState } from "react";
 import { useCalcDaysAgo } from "../../hooks/useCalcDaysAgo";
 import { useNavigate } from "react-router-dom";
 import { UserAccountContextInterface } from "../../@types/UserAccount";
@@ -16,7 +16,7 @@ const ChirpCard: FC<{ post: Post }> = ({ post }) => {
     navigate(`/post/${post.id}`);
   };
 
-  const { user } = useContext(
+  const { user, isLoading } = useContext(
     UserAccountContext
   ) as UserAccountContextInterface;
 
@@ -34,15 +34,25 @@ const ChirpCard: FC<{ post: Post }> = ({ post }) => {
     post.likes.some((like) => like.id === user?.id)
   );
 
+  useEffect(() => {
+    setIsLiked(post.likes.some((like) => like.id === user?.id));
+  }, [post.likes, user]);
+
+  const timePosted = useCalcDaysAgo(post.timePosted);
   const handleAddLike = (e: React.MouseEvent) => {
     e.stopPropagation();
-    setIsLiked((prevState) => !prevState);
     if (user && post && !isLiked) {
       AddLike();
+      setIsLiked(true);
     } else if (user && post && isLiked) {
       RemoveLike();
+      setIsLiked(false);
     }
   };
+
+  if (isLoading) {
+    return "";
+  }
 
   return (
     <div
@@ -59,9 +69,7 @@ const ChirpCard: FC<{ post: Post }> = ({ post }) => {
       <div className="flex flex-col justify-start items-center mr-5 mt-1 w-full">
         <div className="flex flex-row justify-start w-full">
           <p className="font-bold ">{post.username}&nbsp;</p>
-          <p className="text-neutral-600">
-            - {useCalcDaysAgo(post.timePosted)}
-          </p>
+          <p className="text-neutral-600">- {timePosted}</p>
         </div>
         <div className="mt-2 w-full grow">{post.body}</div>
         <div className="flex flex-row w-full justify-end my-5">
