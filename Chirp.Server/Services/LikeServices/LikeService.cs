@@ -46,6 +46,7 @@ public class LikeService : ILikeService
 
         var likes = await context.Likes
             .Include(like => like.Post)
+                .ThenInclude(like => like.User)
             .Where(like => like.UserId == id)
             .ToListAsync();
 

@@ -1,4 +1,5 @@
 ﻿using Chirp.Server.Data;
+using Microsoft.Extensions.Hosting;
 
 namespace Chirp.Server.DTOs;
 
@@ -58,6 +59,7 @@ public static class DTOConverter
             Id = like.Id,
             UserId = like.UserId,
             PostId = like.PostId,
+            Post = like.Post.ToDTO()
         };
     }
 }

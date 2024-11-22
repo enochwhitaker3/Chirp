@@ -6,6 +6,7 @@ import AccountInfo from "./AccountInfo";
 import { PostQueries } from "../../../hooks/PostQueries";
 import { useState } from "react";
 import AccountPosts from "./AccountPosts";
+import { LikeQueries } from "../../../hooks/LikeQueries";
 
 export const Account = () => {
   const { userName } = useParams<{ userName: string }>();
@@ -17,6 +18,9 @@ export const Account = () => {
 
   const { data: Posts } = PostQueries.useGetPostsByUserId(User?.id ?? 0);
   const { data: Replies } = PostQueries.useGetRepliesByUserId(User?.id ?? 0);
+  const { data: Likes } = LikeQueries.useGetLikesByUserId(User?.id ?? 0);
+
+  Likes
 
   if (isLoading) {
     return (
