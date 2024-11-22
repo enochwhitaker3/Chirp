@@ -20,7 +20,7 @@ export const Account = () => {
   const { data: Replies } = PostQueries.useGetRepliesByUserId(User?.id ?? 0);
   const { data: Likes } = LikeQueries.useGetLikesByUserId(User?.id ?? 0);
 
-  Likes
+
 
   if (isLoading) {
     return (
@@ -30,7 +30,7 @@ export const Account = () => {
     );
   }
 
-  if (!User || !Posts || !Replies) {
+  if (!User || !Posts || !Replies || !Likes) {
     return (
       <div className="w-full flex flex-col items-start ">
         <h1 className="text-base text-neutral-600">
@@ -48,7 +48,17 @@ export const Account = () => {
         setSelectedFilter={setSelectedOption}
         selectedFilter={selectedOption}
       />
-      <AccountPosts posts={selectedOption == "Chirps" ? Posts : Replies} />
+      <AccountPosts
+        posts={
+          selectedOption === "Chirps"
+            ? Posts
+            : selectedOption === "Replies"
+            ? Replies
+            : selectedOption === "Liked Chirps"
+            ? Likes?.map((like) => like.post).flat() || []
+            : []
+        }
+      />
     </div>
   );
 };
