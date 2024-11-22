@@ -31,7 +31,7 @@ Enoch Whitaker
 - [x] View single chirp
 - [x] Search Results
 - [ ] User Page
-- [ ] Login / Register
+- [x] Login / Register
 - [ ] Settings
 - [ ] 404 Page
 
