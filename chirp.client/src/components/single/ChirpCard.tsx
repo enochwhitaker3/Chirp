@@ -2,12 +2,10 @@ import Profilesvg from "./Sidebar/Profile";
 import ChirpLike from "./ChirpCard/chirplike";
 import ChirpReply from "./ChirpCard/chirpreply";
 import { Post } from "../../@types/Post";
-import { FC, useContext, useEffect, useState } from "react";
+import { FC } from "react";
 import { useCalcDaysAgo } from "../../hooks/useCalcDaysAgo";
 import { useNavigate } from "react-router-dom";
-import { UserAccountContextInterface } from "../../@types/UserAccount";
-import { UserAccountContext } from "../../context/UserAccountContext";
-import { LikeQueries } from "../../hooks/LikeQueries";
+import { useLike } from "../../hooks/useLike";
 
 const ChirpCard: FC<{ post: Post }> = ({ post }) => {
   const navigate = useNavigate();
@@ -16,43 +14,9 @@ const ChirpCard: FC<{ post: Post }> = ({ post }) => {
     navigate(`/post/${post.id}`);
   };
 
-  const { user, isLoading } = useContext(
-    UserAccountContext
-  ) as UserAccountContextInterface;
-
-  const { mutate: AddLike } = LikeQueries.useAddLike({
-    userId: user?.id ?? 0,
-    postId: post.id,
-  });
-
-  const { mutate: RemoveLike } = LikeQueries.useRemoveLike({
-    userId: user?.id ?? 0,
-    postId: post.id,
-  });
-
-  const [isLiked, setIsLiked] = useState(
-    post.likes.some((like) => like.id === user?.id)
-  );
-
-  useEffect(() => {
-    setIsLiked(post.likes.some((like) => like.id === user?.id));
-  }, [post.likes, user]);
+  const { isLiked, handleLikeToggle } = useLike(post.id, post.likes);
 
   const timePosted = useCalcDaysAgo(post.timePosted);
-  const handleAddLike = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (user && post && !isLiked) {
-      AddLike();
-      setIsLiked(true);
-    } else if (user && post && isLiked) {
-      RemoveLike();
-      setIsLiked(false);
-    }
-  };
-
-  if (isLoading) {
-    return "";
-  }
 
   return (
     <div
@@ -73,7 +37,7 @@ const ChirpCard: FC<{ post: Post }> = ({ post }) => {
         </div>
         <div className="mt-2 w-full grow">{post.body}</div>
         <div className="flex flex-row w-full justify-end my-5">
-          <div onClick={handleAddLike}>
+          <div onClick={handleLikeToggle}>
             <ChirpLike isLiked={isLiked} />
           </div>
           <ChirpReply />

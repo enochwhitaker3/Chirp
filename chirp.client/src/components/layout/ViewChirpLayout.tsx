@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { PostQueries } from "../../hooks/PostQueries";
-import Reply from "../single/Reply";
 import VIewSingleChirp from "../single/VIewSingleChirp";
+import Reply from "../single/Reply";
 
 const ViewChirp = () => {
   const { id } = useParams<{ id: string }>();

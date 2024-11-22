@@ -4,8 +4,12 @@ import Profilesvg from "./Sidebar/Profile";
 import ChirpLike from "./ChirpCard/chirplike";
 import ChirpReply from "./ChirpCard/chirpreply";
 import { useCalcDaysAgo } from "../../hooks/useCalcDaysAgo";
+import { useLike } from "../../hooks/useLike";
 
 const Reply: FC<{ reply: Post }> = ({ reply }) => {
+  const { isLiked, handleLikeToggle } = useLike(reply.id, reply.likes);
+  const timePosted = useCalcDaysAgo(reply.timePosted);
+
   return (
     <div
       className="mobile:mx-0 p-4 border-2 border-neutral-900 rounded-xl my-4"
@@ -19,16 +23,16 @@ const Reply: FC<{ reply: Post }> = ({ reply }) => {
         )}
         <div className="w-full flex flex-row justify-between">
           <p className="font-bold ">{reply.username}&nbsp;</p>
-          <p className=" text-neutral-600">
-            {useCalcDaysAgo(reply.timePosted)}
-          </p>
+          <p className=" text-neutral-600">{timePosted}</p>
         </div>
       </div>
       <div>
         <p className="ml-1 my-2">{reply.body}</p>
       </div>
       <div className="flex flex-row w-full justify-end">
-        <ChirpLike />
+        <div onClick={handleLikeToggle}>
+          <ChirpLike isLiked={isLiked} />
+        </div>
         <ChirpReply />
       </div>
     </div>

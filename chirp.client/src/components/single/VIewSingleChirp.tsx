@@ -1,4 +1,4 @@
-import { FC, useContext, useEffect, useState } from "react";
+import { FC, useContext } from "react";
 import { Post } from "../../@types/Post";
 import ChirpLike from "./ChirpCard/chirplike";
 import ChirpReply from "./ChirpCard/chirpreply";
@@ -8,42 +8,16 @@ import AddReplyModal from "./Post/AddReplyModal";
 import { Link } from "react-router-dom";
 import { UserAccountContextInterface } from "../../@types/UserAccount";
 import { UserAccountContext } from "../../context/UserAccountContext";
-import { LikeQueries } from "../../hooks/LikeQueries";
+import { useLike } from "../../hooks/useLike";
 
 const VIewSingleChirp: FC<{ Post: Post }> = ({ Post }) => {
   const timePosted = formatTimePosted(Post?.timePosted!);
+
   const { user, isLoading } = useContext(
     UserAccountContext
   ) as UserAccountContextInterface;
 
-  const { mutate: AddLike } = LikeQueries.useAddLike({
-    userId: user?.id ?? 0,
-    postId: Post.id,
-  });
-
-  const { mutate: RemoveLike } = LikeQueries.useRemoveLike({
-    userId: user?.id ?? 0,
-    postId: Post.id,
-  });
-
-  const [isLiked, setIsLiked] = useState(
-    Post.likes.some((like) => like.id === user?.id)
-  );
-
-  useEffect(() => {
-    setIsLiked(Post.likes.some((like) => like.id === user?.id));
-  }, [Post.likes, user]);
-
-  const handleAddLike = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (user && Post && !isLiked) {
-      AddLike();
-      setIsLiked(true);
-    } else if (user && Post && isLiked) {
-      RemoveLike();
-      setIsLiked(false);
-    }
-  };
+  const { isLiked, handleLikeToggle } = useLike(Post.id, Post.likes);
 
   if (isLoading) {
     return (
@@ -70,7 +44,7 @@ const VIewSingleChirp: FC<{ Post: Post }> = ({ Post }) => {
         <p className="ml-1">{Post.body}</p>
       </div>
       <div className="flex flex-row w-full justify-end my-4">
-        <div onClick={handleAddLike}>
+        <div onClick={handleLikeToggle}>
           <ChirpLike isLiked={isLiked} />
         </div>
         {!user ? (
