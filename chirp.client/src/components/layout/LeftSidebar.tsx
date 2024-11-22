@@ -37,7 +37,7 @@ const LeftSidebar = () => {
         </div>
         <Link
           className="flex flex-row justify-start items-center cursor-pointer"
-          to={user?.username ? `/user/${user.username}` : "#"}
+          to={user?.username ? `/user/${user.username}` : "/signup"}
         >
           <Profilesvg />
           <p className="dark:text-white text-black text-xl">Account</p>
@@ -48,7 +48,7 @@ const LeftSidebar = () => {
         </div>
         <Link
           className="dark:bg-brand-500 dark:text-black bg-black text-brand-500 desk:w-1/2 avg:w-3/4 mobile:w-2/3 w-full text-xl p-2 rounded-lg flex flex-row justify-center items-center cursor-pointer "
-          to="/post"
+          to={user ? `/post` : "/signup"}
         >
           <Plussvg />
           Post{" "}

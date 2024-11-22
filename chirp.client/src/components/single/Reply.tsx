@@ -3,6 +3,7 @@ import { Post } from "../../@types/Post";
 import Profilesvg from "./Sidebar/Profile";
 import ChirpLike from "./ChirpCard/chirplike";
 import ChirpReply from "./ChirpCard/chirpreply";
+import { useCalcDaysAgo } from "../../hooks/useCalcDaysAgo";
 
 const Reply: FC<{ reply: Post }> = ({ reply }) => {
   return (
@@ -18,7 +19,9 @@ const Reply: FC<{ reply: Post }> = ({ reply }) => {
         )}
         <div className="w-full flex flex-row justify-between">
           <p className="font-bold ">{reply.username}&nbsp;</p>
-          <p className=" text-neutral-600">12 mins ago</p>
+          <p className=" text-neutral-600">
+            {useCalcDaysAgo(reply.timePosted)}
+          </p>
         </div>
       </div>
       <div>

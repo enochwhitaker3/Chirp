@@ -15,7 +15,6 @@ export const PostService = {
     }
   },
   AddNewPost: async (addPostRequest: AddPostRequest) => {
-    console.log("dude", addPostRequest);
     if (!addPostRequest) {
       console.error("Add psot request was undefined or empty");
       throw new Error("Add post request must be provided");
