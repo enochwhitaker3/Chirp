@@ -6,6 +6,8 @@ import { BrowserRouter } from "react-router-dom";
 import { AuthProvider, AuthProviderProps } from "react-oidc-context";
 import { UserAccountService } from "./ApiService/UserAccountService.ts";
 import { AddUserRequest } from "./@types/Requests/Add/AddUserRequest";
+import { UserAccountProvider } from "./context/UserAccountContext.tsx";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const oidcConfig: AuthProviderProps = {
   authority: "https://auth.snowse.duckdns.org/realms/advanced-frontend/",
@@ -45,11 +47,17 @@ const oidcConfig: AuthProviderProps = {
   },
 };
 
+const queryClient = new QueryClient();
+
 createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
     <StrictMode>
       <AuthProvider {...oidcConfig}>
-        <App />
+        <QueryClientProvider client={queryClient}>
+          <UserAccountProvider>
+            <App />
+          </UserAccountProvider>
+        </QueryClientProvider>
       </AuthProvider>
     </StrictMode>
   </BrowserRouter>
