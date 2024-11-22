@@ -8,6 +8,7 @@ const Search = () => {
     console.log("Searching for:", query);
     setSearchQuery(query);
   };
+  console.log(searchQuery)
 
   return (
     <div className="flex items-center flex-col">
