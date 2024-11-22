@@ -1,4 +1,5 @@
 using Chirp.Server.Data;
+using Chirp.Server.Services.FollowServices;
 using Chirp.Server.Services.LikeServices;
 using Chirp.Server.Services.PostServices;
 using Chirp.Server.Services.UserServices;
@@ -22,6 +23,7 @@ builder.Services.AddDbContextFactory<ChirpDbContext>(config => config.UseNpgsql(
 builder.Services.AddSingleton<IUserService, UserService>();
 builder.Services.AddSingleton<IPostService, PostService>();
 builder.Services.AddSingleton<ILikeService, LikeService>();
+builder.Services.AddSingleton<IFollowUserService, FollowUserService>();
 
 bool allowAll = builder.Configuration["allowAll"] == "true";
 

@@ -38,7 +38,7 @@ public partial class ChirpDbContext : DbContext
                 .HasColumnType("timestamp without time zone")
                 .HasColumnName("followed_at");
 
-            entity.HasOne(d => d.FollowedUserNavigation).WithMany(p => p.FollowedUserFollowedUserNavigations)
+            entity.HasOne(d => d.FollowedUserAccount).WithMany(p => p.FollowedUserFollowedUserNavigations)
                 .HasForeignKey(d => d.FollowedUserId)
                 .HasConstraintName("followed_user_followed_user_id_fkey");
 

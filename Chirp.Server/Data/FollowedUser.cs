@@ -11,7 +11,7 @@ public partial class FollowedUser
 
     public DateTime? FollowedAt { get; set; }
 
-    public virtual UserAccount FollowedUserNavigation { get; set; } = null!;
+    public virtual UserAccount FollowedUserAccount { get; set; } = null!;
 
     public virtual UserAccount FollowingUser { get; set; } = null!;
 }
