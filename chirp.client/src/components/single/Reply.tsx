@@ -5,15 +5,22 @@ import ChirpLike from "./ChirpCard/chirplike";
 import ChirpReply from "./ChirpCard/chirpreply";
 import { useCalcDaysAgo } from "../../hooks/useCalcDaysAgo";
 import { useLike } from "../../hooks/useLike";
+import { useNavigate } from "react-router-dom";
 
 const Reply: FC<{ reply: Post }> = ({ reply }) => {
   const { isLiked, handleLikeToggle } = useLike(reply.id, reply.likes);
   const timePosted = useCalcDaysAgo(reply.timePosted);
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    navigate(`/post/${reply.id}`);
+  };
 
   return (
     <div
       className="mobile:mx-0 p-4 border-2 border-neutral-900 rounded-xl my-4"
       style={{ scrollbarGutter: "stable" }}
+      onClick={handleCardClick}
     >
       <div className="flex flex-row justify-start items-center w-full mb-4 ">
         {reply.userPFP && reply.userPFP != null ? (

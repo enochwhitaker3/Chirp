@@ -30,13 +30,26 @@ const VIewSingleChirp: FC<{ Post: Post }> = ({ Post }) => {
   return (
     <div className="flex flex-col justify-start w-full mobile:px-0 px-4">
       <div className="flex flex-row justify-start items-center w-full mb-4">
-        {Post.userPFP && Post.userPFP != null ? (
-          <img src={Post.userPFP} className="w-10 h-10 mr-2 rounded-full" />
-        ) : (
-          <Profilesvg />
-        )}
+        <Link to={`/user/${Post.username}`}>
+          {Post.userPFP && Post.userPFP != null ? (
+            <img src={Post.userPFP} className="w-10 h-10 mr-2 rounded-full" />
+          ) : (
+            <Profilesvg />
+          )}
+        </Link>
         <div className="w-full flex flex-row justify-between">
-          <p className="font-bold ">{Post.username}&nbsp;</p>
+          <div className="flex flex-row">
+            <p className="font-bold ">{Post.username}&nbsp;</p>
+            {Post.isReply && (
+              <Link
+                className="text-neutral-600 underline"
+                to={`/post/${Post.parentPostId}`}
+              >
+                see parent post
+              </Link>
+            )}
+          </div>
+
           <p className=" text-neutral-600">{timePosted}</p>
         </div>
       </div>
