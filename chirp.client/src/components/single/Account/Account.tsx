@@ -7,6 +7,7 @@ import { PostQueries } from "../../../hooks/PostQueries";
 import { useState } from "react";
 import AccountPosts from "./AccountPosts";
 import { LikeQueries } from "../../../hooks/LikeQueries";
+import FollowButton from "./FollowButton";
 
 export const Account = () => {
   const { userName } = useParams<{ userName: string }>();
@@ -19,8 +20,6 @@ export const Account = () => {
   const { data: Posts } = PostQueries.useGetPostsByUserId(User?.id ?? 0);
   const { data: Replies } = PostQueries.useGetRepliesByUserId(User?.id ?? 0);
   const { data: Likes } = LikeQueries.useGetLikesByUserId(User?.id ?? 0);
-
-
 
   if (isLoading) {
     return (
@@ -41,9 +40,12 @@ export const Account = () => {
   }
 
   return (
-    <div className="w-full flex flex-col items-start">
+    <div key={userName} className="w-full flex flex-col items-start">
       <BannerNPfp User={User} />
-      <AccountInfo User={User} />
+      <div className="flex flex-row justify-between w-full h-fit mt-8">
+        <AccountInfo User={User} />
+        <FollowButton AccountUser={User} />
+      </div>
       <AccountDropdown
         setSelectedFilter={setSelectedOption}
         selectedFilter={selectedOption}
