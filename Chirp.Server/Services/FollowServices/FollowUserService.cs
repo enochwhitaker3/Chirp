@@ -51,7 +51,7 @@ public class FollowUserService : IFollowUserService
 
         var followers = await context.FollowedUsers
             .Where(follow => follow.FollowingUserId == id)
-            .Select(f => f.FollowingUser)
+            .Select(f => f.FollowedUserAccount)
             .ToListAsync();
 
         return followers.Select(follow => follow.ToDTO()).ToList();
