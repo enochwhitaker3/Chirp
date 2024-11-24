@@ -121,8 +121,20 @@ An evaluation of how well this project is going
 
 ### Nov 23
 
-- [ ] Complete 4+ generic layout components (12 pts)
-- [ ] Implement authorized and public pages (5 pts)
+- [x] Complete 4+ generic layout components (12 pts)
+- [x] Implement authorized and public pages (5 pts)
+
+A retrospective of what you (individually) worked on this last cycle and how it went
+-   This period, I was able to get a lot more mobile responsive changes done. I wanted to do this from the start, but I prioritized getting some more pages just in my project versus creating them mobile first. The first thing I got done was making it accessible to get to the post page if you are on mobile. Then I started to work on authorized pages, mainly the post page. To do this I made a landing page that the users would get directed to if they tried to go the post page. From there I add the backend serviecs for both the liking post ability and the following ability. Both now should work, I have a little more work to do on the follow functionality though. 
+
+A rough plan of how you expect to implement the next cycle
+-   My next plan for the next sprint is to start adding some tests.
+
+If you are in a group, comment on how your experience has been working with your group members
+- Not in a group
+
+An evaluation of how well this project is going
+- This sprint was probably the most time I have spent working on this project in a sprint. It wasn't too hard to meet the requirements I set for me, but I just had a lot to do on the backend. This lead to a lot of frontend changes becuase I am a perfectionist and have to make it look perfect on the first try. But this was good becuase it set me up good for break. So I would say that I am still enjoying it a lot.
 
 ### Nov 26
 
