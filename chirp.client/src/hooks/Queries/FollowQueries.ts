@@ -12,13 +12,10 @@ export const FollowQueries = {
       mutationFn: () => FollowService.AddFollow(AddFollowRequest),
       onSuccess: () => {
         queryClient.invalidateQueries({
-          queryKey:
-            (keys.AddFollow(
-              AddFollowRequest.followedUserId,
-              AddFollowRequest.followingUserId
-            ),
-            keys.GetFollowersByUserId(AddFollowRequest.followingUserId),
-            keys.GetFollowingByUserId(AddFollowRequest.followingUserId)),
+          queryKey: keys.GetFollowersByUserId(AddFollowRequest.followedUserId),
+        });
+        queryClient.invalidateQueries({
+          queryKey: keys.GetFollowingByUserId(AddFollowRequest.followingUserId),
         });
       },
     });
@@ -42,13 +39,14 @@ export const FollowQueries = {
       mutationFn: () => FollowService.Unfollow(removeFollowRequest),
       onSuccess: () => {
         queryClient.invalidateQueries({
-          queryKey:
-            (keys.Unfollow(
-              removeFollowRequest.followedUserId,
-              removeFollowRequest.followingUserId
-            ),
-            keys.GetFollowersByUserId(removeFollowRequest.followingUserId),
-            keys.GetFollowingByUserId(removeFollowRequest.followingUserId)),
+          queryKey: keys.GetFollowersByUserId(
+            removeFollowRequest.followedUserId
+          ),
+        });
+        queryClient.invalidateQueries({
+          queryKey: keys.GetFollowingByUserId(
+            removeFollowRequest.followingUserId
+          ),
         });
       },
     });

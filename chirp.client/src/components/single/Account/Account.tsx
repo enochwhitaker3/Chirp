@@ -42,7 +42,7 @@ export const Account = () => {
   return (
     <div key={userName} className="w-full flex flex-col items-start">
       <BannerNPfp User={User} />
-      <div className="flex flex-row justify-between w-full h-fit mt-8">
+      <div className="flex flex-row justify-between w-full h-fit mt-8 ">
         <AccountInfo User={User} />
         <FollowButton AccountUser={User} />
       </div>
