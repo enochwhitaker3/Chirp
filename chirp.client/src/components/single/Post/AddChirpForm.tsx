@@ -2,7 +2,7 @@ import { Circle } from "rc-progress";
 import { FC, useContext, useState, useRef } from "react";
 import { UserAccountContextInterface } from "../../../@types/UserAccount";
 import { UserAccountContext } from "../../../context/UserAccountContext";
-import { useAddNewPost } from "../../../hooks/PostQueries";
+import { useAddNewPost } from "../../../hooks/Queries/PostQueries";
 import { useTheme } from "../../../hooks/useTheme";
 import "../../../index.css";
 import SubmitButton from "./SubmitButton";

@@ -1,12 +1,12 @@
 import { useParams } from "react-router-dom";
-import { UserAccountQueries } from "../../../hooks/UserAccountQueries";
+import { UserAccountQueries } from "../../../hooks/Queries/UserAccountQueries";
 import BannerNPfp from "./BannerNPfp";
 import AccountDropdown from "./AccountDropdown";
 import AccountInfo from "./AccountInfo";
-import { PostQueries } from "../../../hooks/PostQueries";
+import { PostQueries } from "../../../hooks/Queries/PostQueries";
 import { useState } from "react";
 import AccountPosts from "./AccountPosts";
-import { LikeQueries } from "../../../hooks/LikeQueries";
+import { LikeQueries } from "../../../hooks/Queries/LikeQueries";
 import FollowButton from "./FollowButton";
 
 export const Account = () => {

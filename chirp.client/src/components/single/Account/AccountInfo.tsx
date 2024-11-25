@@ -1,5 +1,5 @@
 import { UserAccount } from "../../../@types/UserAccount";
-import { FollowQueries } from "../../../hooks/FollowQueries";
+import { FollowQueries } from "../../../hooks/Queries/FollowQueries";
 import { formatJoinDate } from "../../../hooks/useCalcDaysAgo";
 
 const AccountInfo = ({ User }: { User: UserAccount }) => {

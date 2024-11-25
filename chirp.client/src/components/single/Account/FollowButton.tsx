@@ -1,30 +1,22 @@
-import { useContext, useEffect, useState } from "react";
-import {
-  UserAccount,
-  UserAccountContextInterface,
-} from "../../../@types/UserAccount";
-import { FollowQueries } from "../../../hooks/FollowQueries";
-import { UserAccountContext } from "../../../context/UserAccountContext";
+import { UserAccount } from "../../../@types/UserAccount";
+import { FollowQueries } from "../../../hooks/Queries/FollowQueries";
+import { useFollow } from "../../../hooks/useFollow";
 
 const FollowButton = ({ AccountUser }: { AccountUser: UserAccount }) => {
-  const { user } = useContext(
-    UserAccountContext
-  ) as UserAccountContextInterface;
-
-  const { data: FollowingCount } = FollowQueries.useGetFollowersByUserId(
+  const { data: FollowingList } = FollowQueries.useGetFollowersByUserId(
     AccountUser?.id ?? 0
   );
 
-  const [isFollowed, setIsFollowed] = useState(
-    FollowingCount?.some((x) => x.id === user?.id)
+  const { isFollowed, handleFollowToggle } = useFollow(
+    AccountUser?.id,
+    FollowingList!
   );
 
-  useEffect(() => {
-    setIsFollowed(FollowingCount?.some((like) => like.id === user?.id));
-  }, [FollowingCount, user]);
-
   return (
-    <div className="dark:bg-brand-500 dark:text-black bg-black text-brand-500 max-w-[100px] max-h-[35px] text-sm p-2 rounded-lg flex flex-row justify-center items-center cursor-pointer ">
+    <div
+      className="dark:bg-brand-500 dark:text-black bg-black text-brand-500 max-w-[100px] max-h-[35px] text-sm p-2 rounded-lg flex flex-row justify-center items-center cursor-pointer "
+      onClick={handleFollowToggle}
+    >
       <svg
         viewBox="0 0 32 32"
         version="1.1"

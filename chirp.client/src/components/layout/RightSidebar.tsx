@@ -2,7 +2,7 @@ import DisplayMode from "../single/DisplayMode";
 import { useContext } from "react";
 import { UserAccountContextInterface } from "../../@types/UserAccount";
 import { UserAccountContext } from "../../context/UserAccountContext";
-import { FollowQueries } from "../../hooks/FollowQueries";
+import { FollowQueries } from "../../hooks/Queries/FollowQueries";
 import Friends from "../single/Navigation/Friends";
 
 const RightSidebar = () => {

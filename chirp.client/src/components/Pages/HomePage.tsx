@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { PostQueries } from "../../hooks/PostQueries";
+import { PostQueries } from "../../hooks/Queries/PostQueries";
 import MainLayout from "../layout/MainLayout";
 import ChirpCard from "../single/ChirpCard";
 import Plussvg from "../single/Sidebar/plus";

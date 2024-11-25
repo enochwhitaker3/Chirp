@@ -1,5 +1,4 @@
 export interface RemoveFollowRequest {
-    followedUserId: number;
-    followingUserId: number;
+  followedUserId: number;
+  followingUserId: number;
 }
-    

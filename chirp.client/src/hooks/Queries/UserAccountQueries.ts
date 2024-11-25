@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { UserAccountService } from "../ApiService/UserAccountService";
-import keys from "../hooks/QueryKeys/UserAccountKeys";
-import { AddUserRequest } from "../@types/Requests/Add/AddUserRequest";
+import { UserAccountService } from "../../ApiService/UserAccountService";
+import keys from "../QueryKeys/UserAccountKeys";
+import { AddUserRequest } from "../../@types/Requests/Add/AddUserRequest";
 
 export const UserAccountQueries = {
   useGetAllUsers: () => {

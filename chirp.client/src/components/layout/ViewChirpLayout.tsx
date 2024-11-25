@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { PostQueries } from "../../hooks/PostQueries";
+import { PostQueries } from "../../hooks/Queries/PostQueries";
 import VIewSingleChirp from "../single/VIewSingleChirp";
 import Reply from "../single/Reply";
 

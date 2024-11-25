@@ -1,9 +1,9 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import keys from "../hooks/QueryKeys/LikeKeys";
+import keys from "../QueryKeys/LikeKeys";
 
-import { LikeService } from "../ApiService/LikeService";
-import { AddLikeRequest } from "../@types/Requests/Add/AddLikeRequest";
-import { RemoveLikeRequest } from "../@types/Requests/Remove/RemoveLikeRequest";
+import { LikeService } from "../../ApiService/LikeService";
+import { AddLikeRequest } from "../../@types/Requests/Add/AddLikeRequest";
+import { RemoveLikeRequest } from "../../@types/Requests/Remove/RemoveLikeRequest";
 
 export const LikeQueries = {
   useAddLike: (AddLikeRequest: AddLikeRequest) => {

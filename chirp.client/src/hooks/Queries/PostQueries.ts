@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { PostService } from "../ApiService/PostService";
-import keys from "../hooks/QueryKeys/PostKeys";
-import { AddPostRequest } from "../@types/Requests/Add/AddPostRequest";
+import { PostService } from "../../ApiService/PostService";
+import keys from "../QueryKeys/PostKeys";
+import { AddPostRequest } from "../../@types/Requests/Add/AddPostRequest";
 import toast from "react-hot-toast";
 
 export const PostQueries = {

@@ -1,8 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { UserAccountContextInterface } from "../@types/UserAccount";
 import { UserAccountContext } from "../context/UserAccountContext";
-import { LikeQueries } from "./LikeQueries";
-
+import { LikeQueries } from "./Queries/LikeQueries";
 
 export const useLike = (postId: number, initialLikes: { id: number }[]) => {
   const { user } = useContext(
