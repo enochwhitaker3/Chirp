@@ -6,11 +6,8 @@ import { useAddNewPost } from "../../../hooks/Queries/PostQueries";
 import { useTheme } from "../../../hooks/useTheme";
 import "../../../index.css";
 import SubmitButton from "./SubmitButton";
+import { Errors } from "../../../@types/Errors";
 // import { useNavigate } from "react-router-dom";
-
-type Errors = {
-  body?: string;
-};
 
 const AddChirpForm: FC<{
   replyPostId?: number;

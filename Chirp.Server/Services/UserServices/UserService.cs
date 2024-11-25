@@ -99,6 +99,7 @@ namespace Chirp.Server.Services.UserServices
             uuc.Email = updateUserRequest.Email ?? uuc.Email;
             uuc.Bio = updateUserRequest.Bio;
             uuc.UserPFP = updateUserRequest.UserPFP;
+            uuc.Banner = updateUserRequest.Banner;
             uuc.Guid = updateUserRequest?.Guid;
 
             context.UserAccounts.Update(uuc);

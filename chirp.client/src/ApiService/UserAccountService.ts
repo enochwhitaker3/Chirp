@@ -1,6 +1,7 @@
 import axios from "axios";
 import { UserAccount } from "../@types/UserAccount";
 import { AddUserRequest } from "../@types/Requests/Add/AddUserRequest";
+import { UpdateUserRequest } from "../@types/Requests/Update/UpdateUserRequest";
 
 export const UserAccountService = {
   GetUserByUsername: async (
@@ -77,7 +78,7 @@ export const UserAccountService = {
       throw error;
     }
   },
-  GetAuthenticatedUserEmail: async (id_token: string): Promise<string> => {
+  GetAuthenticatedUserEmail: async (id_token: string): Promise<UserAccount> => {
     try {
       const response = await axios.get(
         `${import.meta.env.VITE_URL}/User/getauthorizeduseremail`,
@@ -91,6 +92,28 @@ export const UserAccountService = {
       return response.data.email;
     } catch (error) {
       console.error("Failed to get authenticated user email");
+      throw error;
+    }
+  },
+  UpdateUser: async (updateUserRequest: UpdateUserRequest) => {
+    console.log(updateUserRequest, "THIS")
+    if (!updateUserRequest) {
+      console.error("update user request was undefined or empty");
+      throw new Error("Add user request must be provided");
+    }
+    try {
+      const response = await axios.patch(
+        `${import.meta.env.VITE_URL}/User/updateuser`,
+        updateUserRequest,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      return response.data;
+    } catch (error) {
+      console.error("Failed to update user");
       throw error;
     }
   },

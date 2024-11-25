@@ -8,9 +8,9 @@ import { useState } from "react";
 import AccountPosts from "./AccountPosts";
 import { LikeQueries } from "../../../hooks/Queries/LikeQueries";
 import FollowButton from "./FollowButton";
-
 export const Account = () => {
   const { userName } = useParams<{ userName: string }>();
+
   const [selectedOption, setSelectedOption] = useState<string>("Chirps");
 
   const { data: User, isLoading } = UserAccountQueries.useGetUserByUsername(

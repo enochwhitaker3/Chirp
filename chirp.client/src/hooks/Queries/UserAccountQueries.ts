@@ -2,6 +2,8 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { UserAccountService } from "../../ApiService/UserAccountService";
 import keys from "../QueryKeys/UserAccountKeys";
 import { AddUserRequest } from "../../@types/Requests/Add/AddUserRequest";
+import { UpdateUserRequest } from "../../@types/Requests/Update/UpdateUserRequest";
+import toast from "react-hot-toast";
 
 export const UserAccountQueries = {
   useGetAllUsers: () => {
@@ -33,4 +35,17 @@ export const UserAccountQueries = {
       },
     });
   },
+};
+
+export const useEditAccount = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (updateUserRequest: UpdateUserRequest) =>
+      UserAccountService.UpdateUser(updateUserRequest),
+    onSuccess: () => {
+      toast.success("Updated!");
+      queryClient.invalidateQueries({ queryKey: keys.EditAccount });
+    },
+  });
 };

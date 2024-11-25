@@ -1,8 +1,18 @@
-import { UserAccount } from "../../../@types/UserAccount";
+import { useContext } from "react";
+import {
+  UserAccount,
+  UserAccountContextInterface,
+} from "../../../@types/UserAccount";
+import { UserAccountContext } from "../../../context/UserAccountContext";
 import { FollowQueries } from "../../../hooks/Queries/FollowQueries";
 import { formatJoinDate } from "../../../hooks/useCalcDaysAgo";
+import EditButton from "../EditAccount/EditButton";
 
 const AccountInfo = ({ User }: { User: UserAccount }) => {
+  const { user } = useContext(
+    UserAccountContext
+  ) as UserAccountContextInterface;
+
   const timePosted = formatJoinDate(User?.dateJoined!);
   const { data: FollowerCount } = FollowQueries.useGetFollowersByUserId(
     User?.id ?? 0
@@ -24,6 +34,7 @@ const AccountInfo = ({ User }: { User: UserAccount }) => {
         </h1>
       </div>
       <h1 className="text-base text-neutral-600">{timePosted}</h1>
+      {user?.username == User.username && <EditButton User={User} />}
       <hr className="border-neutral-600 my-4" />
     </div>
   );

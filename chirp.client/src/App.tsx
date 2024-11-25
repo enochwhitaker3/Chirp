@@ -14,6 +14,7 @@ import SignInPage from "./components/Pages/SignInPage";
 import ProtectedRoute from "./components/authentication/ProtectedRoute";
 import { UserAccountContextInterface } from "./@types/UserAccount";
 import { useContext } from "react";
+import EditAccountPage from "./components/Pages/EditAccountPage";
 
 function App() {
   const { user } = useContext(
@@ -42,6 +43,7 @@ function App() {
           />
           <Route path="/search" element={<SearchPage />} />
           <Route path="/user/:userName" element={<AccountPage />} />
+          <Route path="/edituser/:userName" element={<EditAccountPage />} />
           <Route path="/post/:id" element={<ViewChirpPage />} />
         </Routes>
         {!hideNavbarPaths.includes(location.pathname) && <Bottombar />}
