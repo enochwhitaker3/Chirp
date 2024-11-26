@@ -21,8 +21,6 @@ const AccountInfo = ({ User }: { User: UserAccount }) => {
     User?.id ?? 0
   );
 
-  console.log(user, "yo");
-
   return (
     <div className="flex flex-col dark:text-white text-black mobile:mx-0 mx-4">
       <h1 className="text-2xl font-bold">{User?.username}</h1>

@@ -5,7 +5,6 @@ import EditBannerPfp from "./EditBannerPfp";
 
 export const EditAccount = () => {
   const { userName } = useParams<{ userName: string }>();
-
   const { data: User, isLoading } = UserAccountQueries.useGetUserByUsername(
     userName ?? ""
   );

@@ -15,15 +15,17 @@ import ProtectedRoute from "./components/authentication/ProtectedRoute";
 import { UserAccountContextInterface } from "./@types/UserAccount";
 import { useContext } from "react";
 import EditAccountPage from "./components/Pages/EditAccountPage";
+import { useAuth } from "react-oidc-context";
 
 function App() {
   const { user } = useContext(
     UserAccountContext
   ) as UserAccountContextInterface;
+  const auth = useAuth();
 
   const location = useLocation();
-
   const hideNavbarPaths = ["/signup"];
+
   return (
     <ThemeProvider>
       <div
@@ -43,7 +45,18 @@ function App() {
           />
           <Route path="/search" element={<SearchPage />} />
           <Route path="/user/:userName" element={<AccountPage />} />
-          <Route path="/edituser/:userName" element={<EditAccountPage />} />
+          <Route
+            path="/edituser/:userName"
+            element={
+              <ProtectedRoute
+                isAuthenticated={
+                  !!user && user?.authId === auth.user!.profile.sub
+                }
+              >
+                <EditAccountPage />
+              </ProtectedRoute>
+            }
+          />
           <Route path="/post/:id" element={<ViewChirpPage />} />
         </Routes>
         {!hideNavbarPaths.includes(location.pathname) && <Bottombar />}

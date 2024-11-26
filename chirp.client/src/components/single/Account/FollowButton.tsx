@@ -1,23 +1,36 @@
-import { UserAccount } from "../../../@types/UserAccount";
+import { useContext } from "react";
+import {
+  UserAccount,
+  UserAccountContextInterface,
+} from "../../../@types/UserAccount";
+import { UserAccountContext } from "../../../context/UserAccountContext";
 import { FollowQueries } from "../../../hooks/Queries/FollowQueries";
 import { useFollow } from "../../../hooks/useFollow";
 
 const FollowButton = ({ AccountUser }: { AccountUser: UserAccount }) => {
+  const { user } = useContext(
+    UserAccountContext
+  ) as UserAccountContextInterface;
+
   const { data: FollowingList } = FollowQueries.useGetFollowersByUserId(
     AccountUser?.id ?? 0
   );
 
   const { isFollowed, handleFollowToggle } = useFollow(
     AccountUser?.id,
-    FollowingList!
+    FollowingList || []
   );
+
+  if (!AccountUser || !user) return null;
+
+  if (AccountUser.username === user.username) return null;
 
   return (
     <div
       className="dark:bg-brand-500 dark:text-black bg-black text-brand-500 avg:max-w-[100px] mobile:max-w-[75px] max-w-[100px] avg:max-h-[35px] mobile:max-h-[25px] max-h-[35px] avg:text-sm mobile:text-xs text-sm p-2 rounded-lg flex flex-row justify-center items-center cursor-pointer mobile:mx-0 mx-4"
       onClick={handleFollowToggle}
     >
-      {!isFollowed && (
+      {!isFollowed ? (
         <svg
           viewBox="0 0 32 32"
           version="1.1"
@@ -43,7 +56,7 @@ const FollowButton = ({ AccountUser }: { AccountUser: UserAccount }) => {
             </g>
           </g>
         </svg>
-      )}
+      ) : null}
 
       {isFollowed ? "Following" : "Follow"}
     </div>
