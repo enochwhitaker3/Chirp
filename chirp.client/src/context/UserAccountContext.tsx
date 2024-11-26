@@ -15,7 +15,7 @@ export const UserAccountProvider = ({ children }: { children: ReactNode }) => {
     queryKey: [auth.user?.profile.sub],
     queryFn: () =>
       UserAccountService.GetUserByAuthId(
-        auth.user?.profile.sub || "9a02d2c0-285e-4940-be92-236fcefd1206"
+        auth.user?.profile.sub || ""
       ),
   });
 
