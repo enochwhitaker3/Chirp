@@ -49,6 +49,7 @@ export const useEditAccount = (username: string, authId: string) => {
       queryClient.invalidateQueries({
         queryKey: keys.GetUserByUsername(username),
       });
+      queryClient.invalidateQueries({ queryKey: keys.GetUserByAuthId(authId) });
     },
   });
 };

@@ -1,8 +1,7 @@
 import { createContext, ReactNode } from "react";
 import { useAuth } from "react-oidc-context";
-import { UserAccountService } from "../ApiService/UserAccountService";
 import { UserAccountContextInterface } from "../@types/UserAccount";
-import { useQuery } from "@tanstack/react-query";
+import { UserAccountQueries } from "../hooks/Queries/UserAccountQueries";
 
 export const UserAccountContext = createContext<
   UserAccountContextInterface | undefined
@@ -11,13 +10,9 @@ export const UserAccountContext = createContext<
 export const UserAccountProvider = ({ children }: { children: ReactNode }) => {
   const auth = useAuth();
 
-  const { data, isLoading, error } = useQuery({
-    queryKey: [auth.user?.profile.sub],
-    queryFn: () =>
-      UserAccountService.GetUserByAuthId(
-        auth.user?.profile.sub || ""
-      ),
-  });
+  const { data, isLoading, error } = UserAccountQueries.useGetUserByAuthId(
+    auth.user?.profile.sub ?? ""
+  );
 
   return (
     <UserAccountContext.Provider
