@@ -2,22 +2,26 @@ import React, { useRef, useState } from "react";
 import { Errors } from "../../../@types/Errors";
 import { UserAccount } from "../../../@types/UserAccount";
 import { useEditAccount } from "../../../hooks/Queries/UserAccountQueries";
+import { useNavigate } from "react-router-dom";
 
 const EditField = ({
   User,
   label,
   field,
   maxLength,
+  updateField,
 }: {
   User: UserAccount;
   label: string;
   field: string;
   maxLength: number;
+  updateField: keyof UserAccount;
 }) => {
   const [errors, setErrors] = useState<Errors>({});
   const progressRef = useRef<HTMLTextAreaElement>(null);
+  const navigate = useNavigate();
 
-  const { mutate: updateUser } = useEditAccount();
+  const { mutate: updateUser } = useEditAccount(User.username, User.authId);
 
   const handleInput = (event: React.FormEvent<HTMLTextAreaElement>) => {
     const input = event.currentTarget;
@@ -39,22 +43,24 @@ const EditField = ({
       setErrors({ body: `Chirp must be less than ${maxLength} characters` });
     } else {
       setErrors({});
-      if (User && User.id != 0) {
-        updateUser({
-          Guid: User.guid,
-          Username: "tenK",
-          Email: User.email,
-          Bio: User.bio,
-          UserPFP: User.userPFP,
-          Banner:
-            "https://media4.giphy.com/media/isqxY03RuhGxNbCPzY/200w.gif?cid=6c09b952ykd6m094g2o9xrugj9hod7j5jjroihl8qkxoko2v&ep=v1_gifs_search&rid=200w.gif&ct=g",
-        });
+      if (User && User.id !== 0) {
+        updateUser(
+          {
+            ...User,
+            [updateField]: body,
+          },
+          {
+            onSuccess: (updatedUser: UserAccount) => {
+              navigate(`/user/${updatedUser.username}`);
+            },
+          }
+        );
       }
     }
   };
 
   return (
-    <form className="my-2" onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <h1 className="text-base text-neutral-600">{label}</h1>
       <textarea
         placeholder={field}

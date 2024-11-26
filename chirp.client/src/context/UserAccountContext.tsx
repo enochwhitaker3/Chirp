@@ -11,12 +11,12 @@ export const UserAccountContext = createContext<
 export const UserAccountProvider = ({ children }: { children: ReactNode }) => {
   const auth = useAuth();
 
-  //   console.log("auth", auth);
-
   const { data, isLoading, error } = useQuery({
-    queryKey: ["UserAccount"],
+    queryKey: [auth.user?.profile.sub],
     queryFn: () =>
-      UserAccountService.GetUserByAuthId(auth.user?.profile.sub || ""),
+      UserAccountService.GetUserByAuthId(
+        auth.user?.profile.sub || "9a02d2c0-285e-4940-be92-236fcefd1206"
+      ),
   });
 
   return (

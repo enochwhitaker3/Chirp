@@ -1,8 +1,9 @@
 export interface UpdateUserRequest {
-  Guid: string;
-  Username: string;
-  Email: string;
-  Bio: string;
-  UserPFP: string;
-  Banner: string;
+  guid: string;
+  username: string;
+  email: string;
+  bio: string;
+  userPFP: string;
+  banner: string;
 }
+

@@ -21,7 +21,7 @@ export const UserAccountQueries = {
   useGetUserByAuthId: (authId: string) => {
     return useQuery({
       queryFn: () => UserAccountService.GetUserByAuthId(authId),
-      queryKey: keys.GetUserByAuthId,
+      queryKey: keys.GetUserByAuthId(authId),
     });
   },
   useAddNewUser: (addUserRequest: AddUserRequest) => {
@@ -37,7 +37,7 @@ export const UserAccountQueries = {
   },
 };
 
-export const useEditAccount = () => {
+export const useEditAccount = (username: string, authId: string) => {
   const queryClient = useQueryClient();
 
   return useMutation({
@@ -45,7 +45,10 @@ export const useEditAccount = () => {
       UserAccountService.UpdateUser(updateUserRequest),
     onSuccess: () => {
       toast.success("Updated!");
-      queryClient.invalidateQueries({ queryKey: keys.EditAccount });
+      queryClient.invalidateQueries({ queryKey: keys.EditAccount(authId) });
+      queryClient.invalidateQueries({
+        queryKey: keys.GetUserByUsername(username),
+      });
     },
   });
 };

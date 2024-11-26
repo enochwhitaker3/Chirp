@@ -6,10 +6,12 @@ const EditModal = ({
   User,
   triggerModal,
   label,
+  updateField,
 }: {
   User: UserAccount;
   triggerModal: (callback: () => void) => void;
   label: string;
+  updateField: string;
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
@@ -47,6 +49,7 @@ const EditModal = ({
               label={label}
               field={`Enter link to ${label} here`}
               maxLength={1000}
+              updateField={updateField as keyof UserAccount}
             />
           </div>
         </div>

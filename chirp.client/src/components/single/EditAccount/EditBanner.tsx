@@ -29,7 +29,12 @@ const EditBanner = ({ User }: { User: UserAccount }) => {
           backgroundPosition: "center",
         }}
       ></div>
-      <EditModal User={User} triggerModal={triggerModal} label="Banner" />
+      <EditModal
+        User={User}
+        triggerModal={triggerModal}
+        label="Banner"
+        updateField={"banner"}
+      />
     </>
   );
 };

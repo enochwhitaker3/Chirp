@@ -29,7 +29,10 @@ export const EditAccount = () => {
   }
 
   return (
-    <div key={userName} className="w-full flex flex-col items-start">
+    <div
+      key={userName}
+      className="mobile:w-full w-screen flex flex-col items-start"
+    >
       <EditBannerPfp User={User} />
 
       <div className="flex flex-row justify-between w-full h-fit mt-6 ">

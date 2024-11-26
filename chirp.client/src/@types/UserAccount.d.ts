@@ -15,3 +15,4 @@ export interface UserAccountContextInterface {
   error: string | undefined;
   isLoading: boolean;
 }
+
