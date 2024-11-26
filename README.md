@@ -139,8 +139,20 @@ An evaluation of how well this project is going
 ### Nov 26
 
 - [ ] Ensure tests run in the pipeline and abort if they fail (5 pts)
-- [ ] Ensure mobile-friendly design for all experiences (5 pts)
-- [ ] Implement 3 instances where elements re-order themselves on smaller screens (5 pts)
+- [x] Ensure mobile-friendly design for all experiences (5 pts)
+- [x] Implement 3 instances where elements re-order themselves on smaller screens (5 pts)
+
+A retrospective of what you (individually) worked on this last cycle and how it went
+-   This period, I already had most of the checklist done, so I was able to spend most of it working on some features. The first feature I was able to add was the ability to follow another user by visitng their profile and clicking the follow button. This will update this list of who you are following on the right sidebar as well as live update the person you are followings follwer count. Clicking the button again does the opposite, so it unfollows that person and updates everything accordingly. After that I worked on letting the user update all of their update-able fields. These are the username, bio, userPFP, and banner. I was able to complete this and lock the link and the URL behind a protected route. this ensures that you have to be logged in as the user to edit them. I then made sure that all these pages are mobile responsive. I wasn't able to get some tests in time but I will take the hit on points probably.
+
+A rough plan of how you expect to implement the next cycle
+-   My next plan for the next sprint is to just polish up my sites and add the search / CRUD for chirps
+
+If you are in a group, comment on how your experience has been working with your group members
+- Not in a group
+
+An evaluation of how well this project is going
+- This sprint was pretty good for me. Nothing too crazy happened, but I feel really proud how I was able to get the editing done, especially with how componentized I was able to make it.
 
 ### Dec 4
 
