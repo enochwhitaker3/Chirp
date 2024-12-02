@@ -1,23 +1,23 @@
 import { useState } from "react";
+import { useDebounce } from "../../../hooks/useDebounce";
 import SearchBar from "./Searchbar";
+import Tabs from "./Tabs";
 
 const Search = () => {
   const [searchQuery, setSearchQuery] = useState<string>("");
+  const debouncedSearchQuery = useDebounce(searchQuery, 500);
 
   const handleSearch = (query: string) => {
-    console.log("Searching for:", query);
     setSearchQuery(query);
   };
-  console.log(searchQuery)
 
   return (
     <div className="flex items-center flex-col">
-      <SearchBar
-        placeholder="Search for items..."
-        onSearch={handleSearch}
-        debounceDelay={500}
+      <SearchBar placeholder="Search for items..." onSearch={handleSearch} />
+      <Tabs
+        debouncedSearchQuery={debouncedSearchQuery}
+        searchQuery={searchQuery}
       />
-      <h1 className="text-neutral-600 mt-12">Results will appear here...</h1>
     </div>
   );
 };

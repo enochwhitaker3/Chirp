@@ -24,20 +24,20 @@ const SearchBar: React.FC<SearchBarProps> = ({
   }, [inputValue, debounceDelay, onSearch]);
 
   return (
-    <form className="relative mobile:w-full w-screen px-2">
+    <form className="relative mobile:w-full w-screen mobile:px-0 px-2 pb-4">
       <input
         type="text"
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
         placeholder={placeholder}
-        className="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none dark:bg-neutral-900 bg-[#FFFFFF] "
+        className="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none dark:bg-neutral-900 bg-[#FFFFFF] dark:text-white text-black"
       />
 
       <svg
         viewBox="0 0 24 24"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="absolute top-1/4 right-3 h-5 w-5 dark:stroke-white stroke-black"
+        className="absolute top-3 right-3 h-5 w-5 dark:stroke-white stroke-black"
         style={{ transform: "scale(-1, 1)" }}
       >
         <path
