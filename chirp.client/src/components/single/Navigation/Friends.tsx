@@ -22,7 +22,7 @@ const Friends = ({
       </>
     );
 
-  if (following == undefined)
+  if (following == undefined || !user)
     return (
       <>
         <p className="dark:text-white text-black font-bold text-xl">Friends</p>
@@ -57,7 +57,7 @@ const Friends = ({
       ))}
       <Link
         className="border-2 border-neutral-800 rounded-lg p-2 mt-6 w-full flex justify-center cursor-pointer"
-        to={user ? `/connections` : "/signup"}
+        to={`/connections/${user.username}`}
       >
         <p className="dark:text-white text-black text-base">View all</p>
       </Link>

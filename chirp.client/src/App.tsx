@@ -44,14 +44,7 @@ function App() {
               </ProtectedRoute>
             }
           />
-          <Route
-            path="/connections"
-            element={
-              <ProtectedRoute isAuthenticated={!!user}>
-                <ConnectionsPage />
-              </ProtectedRoute>
-            }
-          />
+          <Route path="/connections/:userName" element={<ConnectionsPage />} />
           <Route path="/search" element={<SearchPage />} />
           <Route path="/user/:userName" element={<AccountPage />} />
           <Route

@@ -1,17 +1,18 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import Tab from "./Tab";
 import ConnectionList from "./ConnectionList";
-import { UserAccountContextInterface } from "../../../@types/UserAccount";
-import { UserAccountContext } from "../../../context/UserAccountContext";
 import { FollowQueries } from "../../../hooks/Queries/FollowQueries";
+import { useParams } from "react-router-dom";
+import { UserAccountQueries } from "../../../hooks/Queries/UserAccountQueries";
 
 const Tabs = () => {
-  const { user, isLoading } = useContext(
-    UserAccountContext
-  ) as UserAccountContextInterface;
+  const { userName } = useParams<{ userName: string }>();
+  const { data: user, isLoading } = UserAccountQueries.useGetUserByUsername(
+    userName!
+  );
 
-  const { data: following } = FollowQueries.useGetFollowingByUserId(user!.id!);
-  const { data: followers } = FollowQueries.useGetFollowersByUserId(user!.id!);
+  const { data: following } = FollowQueries.useGetFollowingByUserId(user?.id!);
+  const { data: followers } = FollowQueries.useGetFollowersByUserId(user?.id!);
 
   const [activeTab, setActiveTab] = useState<string>("Following");
   const tabs = ["Following", "Followers"];
