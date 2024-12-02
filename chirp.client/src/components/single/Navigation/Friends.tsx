@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 import Profilesvg from "../Sidebar/Profile";
 
 const Friends = ({
+  user,
   following,
   isLoading,
 }: {
+  user: UserAccount | undefined;
   following: UserAccount[] | undefined;
   isLoading: boolean;
 }) => {
@@ -53,6 +55,12 @@ const Friends = ({
           </p>
         </Link>
       ))}
+      <Link
+        className="border-2 border-neutral-800 rounded-lg p-2 mt-6 w-full flex justify-center cursor-pointer"
+        to={user ? `/connections` : "/signup"}
+      >
+        <p className="dark:text-white text-black text-base">View all</p>
+      </Link>
     </>
   );
 };

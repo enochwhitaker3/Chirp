@@ -8,7 +8,7 @@ const DisplayModeForm: FC<{ showText: boolean }> = ({ showText }) => {
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    toggleTheme(); // Keep the functionality intact
+    toggleTheme();
   };
 
   return (

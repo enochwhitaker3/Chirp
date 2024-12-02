@@ -16,6 +16,7 @@ import { UserAccountContextInterface } from "./@types/UserAccount";
 import { useContext } from "react";
 import EditAccountPage from "./components/Pages/EditAccountPage";
 import { useAuth } from "react-oidc-context";
+import ConnectionsPage from "./components/Pages/ConnectionsPage";
 
 function App() {
   const { user } = useContext(
@@ -40,6 +41,14 @@ function App() {
             element={
               <ProtectedRoute isAuthenticated={!!user}>
                 <PostPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/connections"
+            element={
+              <ProtectedRoute isAuthenticated={!!user}>
+                <ConnectionsPage />
               </ProtectedRoute>
             }
           />
