@@ -50,7 +50,7 @@ function App() {
             element={
               <ProtectedRoute
                 isAuthenticated={
-                  !!user && user?.authId === auth.user!.profile.sub
+                  !!user && user?.authId === auth.user?.profile.sub
                 }
               >
                 <EditAccountPage />
