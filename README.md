@@ -26,13 +26,13 @@ Enoch Whitaker
 
 - [x] Home Feed
 - [x] Profile
-- [ ] Edit Profile
+- [x] Edit Profile
 - [x] Post Chirp
 - [x] View single chirp
 - [x] Search Results
-- [ ] User Page
+- [x] User Page
 - [x] Login / Register
-- [ ] Settings
+- [ ] Followers / Following
 - [ ] 404 Page
 
 ## New Things
