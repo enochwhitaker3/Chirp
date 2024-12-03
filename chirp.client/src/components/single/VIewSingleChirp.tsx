@@ -39,7 +39,9 @@ const VIewSingleChirp: FC<{ Post: Post }> = ({ Post }) => {
         </Link>
         <div className="w-full flex flex-row justify-between">
           <div className="flex flex-row">
-            <p className="font-bold ">{Post.username}&nbsp;</p>
+            <Link to={`/user/${Post.username}`}>
+              <p className="font-bold ">{Post.username}&nbsp;</p>
+            </Link>
             {Post.isReply && (
               <Link
                 className="text-neutral-600 underline"
