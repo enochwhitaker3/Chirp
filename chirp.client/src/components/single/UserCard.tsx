@@ -23,7 +23,7 @@ const UserCard = ({ User }: { User: UserAccount }) => {
 
       <img
         src={User?.userPFP}
-        className="desk:w-28 desk:h-28 w-20 h-20 rounded-full shadow-xl absolute desk:mt-[-80px] mt-[-60px] mobile:ml-2 mobile:mx-0 mx-6 border-2 dark:border-white border-black z-20"
+        className="desk:w-28 desk:h-28 w-20 h-20 rounded-full shadow-xl absolute desk:mt-[-80px] mt-[-60px] mobile:ml-2 mobile:mx-0 mx-2 border-2 dark:border-white border-black z-20"
       />
       <div className="flex flex-row w-full dark:bg-neutral-900 bg-[#ffffff] dark:text-white text-black desk:p-6 p-4 rounded-b-md ">
         <div className="flex flex-col pt-4 w-full">

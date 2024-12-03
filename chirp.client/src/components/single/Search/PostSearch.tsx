@@ -23,7 +23,7 @@ const PostSearch = ({
         searchQuery !== "" &&
         debouncedSearchQuery === "" && <p>Searching...</p>}
       {!isLoading && !error && debouncedSearchQuery !== "" && (
-        <div className="w-full">
+        <div className="w-full mb-20">
           {filteredPosts?.length ? (
             filteredPosts.map((post) => <ChirpCard key={post.id} post={post} />)
           ) : (

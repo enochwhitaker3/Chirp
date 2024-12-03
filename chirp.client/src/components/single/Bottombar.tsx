@@ -34,9 +34,9 @@ const Bottombar: React.FC = () => {
 
         <div className="w-auto flex flex-row" id="navbar-dropdown">
           <ul className="flex font-medium">
-            <li className="py-2 sm:px-3 px-4 text-white">
+            <Link className="py-2 sm:px-3 px-4 text-white" to="/search">
               <Searchsvg />
-            </li>
+            </Link>
           </ul>
         </div>
 

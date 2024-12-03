@@ -30,7 +30,7 @@ const UserSearch = ({
         searchQuery !== "" &&
         debouncedSearchQuery === "" && <p>Searching...</p>}
       {!isLoading && !error && debouncedSearchQuery !== "" && (
-        <div className="w-full">
+        <div className="w-full mb-20">
           {filteredUsers?.length ? (
             filteredUsers.map((user) => (
               <Link key={user.id} to={`/user/${user.username}`}>
