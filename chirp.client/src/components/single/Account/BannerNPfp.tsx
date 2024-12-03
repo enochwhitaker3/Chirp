@@ -1,6 +1,10 @@
 import { UserAccount } from "../../../@types/UserAccount";
+import { useTheme } from "../../../hooks/useTheme";
+import Contour from "../../../assets/topographic.svg";
+import ContourLight from "../../../assets/topographic_light.svg";
 
 const BannerNPfp = ({ User }: { User: UserAccount }) => {
+  const { theme } = useTheme();
   return (
     <>
       <div
@@ -8,7 +12,7 @@ const BannerNPfp = ({ User }: { User: UserAccount }) => {
         style={{
           backgroundImage: `url(${
             User.banner ??
-            "https://walker-web.imgix.net/cms/Gradient_builder_2.jpg?fm=jpg&auto=format,compress&width=512&height=512&fit=max"
+            `${theme === "dark" ? `${Contour}` : `${ContourLight}`}`
           })`,
           backgroundSize: "cover",
           backgroundPosition: "center",
