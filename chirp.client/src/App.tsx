@@ -18,6 +18,7 @@ import EditAccountPage from "./components/Pages/EditAccountPage";
 import { useAuth } from "react-oidc-context";
 import ConnectionsPage from "./components/Pages/ConnectionsPage";
 import NotFoundPage from "./components/Pages/404Page";
+import TrendingPage from "./components/Pages/TrendingPage";
 
 function App() {
   const { user } = useContext(
@@ -61,6 +62,7 @@ function App() {
             }
           />
           <Route path="/post/:id" element={<ViewChirpPage />} />
+          <Route path="/trending" element={<TrendingPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
         {!hideNavbarPaths.includes(location.pathname) && <Bottombar />}

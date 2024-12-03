@@ -14,7 +14,7 @@ const VIewSingleChirp: FC<{ Post: Post }> = ({ Post }) => {
   const { user, isLoading } = useContext(
     UserAccountContext
   ) as UserAccountContextInterface;
-  
+
   const { isLiked, handleLikeToggle } = useLike(Post.id, Post.likes);
   const timePosted = formatTimePosted(Post.timePosted);
 
@@ -58,8 +58,12 @@ const VIewSingleChirp: FC<{ Post: Post }> = ({ Post }) => {
         <p className="ml-1">{Post.body}</p>
       </div>
       <div className="flex flex-row w-full justify-end my-4">
-        <div onClick={handleLikeToggle}>
+        <div
+          className="flex flex-row items-center mr-2 text-sm"
+          onClick={handleLikeToggle}
+        >
           <ChirpLike isLiked={isLiked} />
+          <p className="ml-1">{Post.likes.length}</p>
         </div>
         {!user ? (
           <Link to="/signup">

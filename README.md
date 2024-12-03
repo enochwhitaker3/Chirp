@@ -25,7 +25,7 @@ Enoch Whitaker
 ## Pages
 
 - [x] Home Feed
-- [ ] Popular Chirps
+- [x] Trending Chirps
 - [x] Edit Profile
 - [x] Post Chirp
 - [x] View single chirp

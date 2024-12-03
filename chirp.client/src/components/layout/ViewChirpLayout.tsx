@@ -23,11 +23,18 @@ const ViewChirp = () => {
           <div>
             <VIewSingleChirp Post={Post} />
           </div>
-          <div className="mobile:p-4 mobile:w-full w-screen px-6">
-            {Replies?.map((reply, i) => (
-              <Reply key={i} reply={reply} />
-            ))}
-          </div>
+
+          {Replies && Replies.length > 0 ? (
+            <div className="mobile:p-4 mobile:w-full w-screen px-6">
+              {Replies?.map((reply, i) => (
+                <Reply key={i} reply={reply} />
+              ))}
+            </div>
+          ) : (
+            <p className="text-neutral-600 py-6 flex justify-center">
+              its quiet in here...why not break the silence?
+            </p>
+          )}
         </div>
       ) : (
         <p>Error loading chirp</p>

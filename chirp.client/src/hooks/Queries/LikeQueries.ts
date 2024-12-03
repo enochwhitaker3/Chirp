@@ -1,5 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import keys from "../QueryKeys/LikeKeys";
+import postKeys from "../QueryKeys/PostKeys";
 
 import { LikeService } from "../../ApiService/LikeService";
 import { AddLikeRequest } from "../../@types/Requests/Add/AddLikeRequest";
@@ -14,6 +15,12 @@ export const LikeQueries = {
       onSuccess: () => {
         queryClient.invalidateQueries({
           queryKey: keys.AddLike(AddLikeRequest.postId),
+        });
+        queryClient.invalidateQueries({
+          queryKey: postKeys.GetAllPosts,
+        });
+        queryClient.invalidateQueries({
+          queryKey: postKeys.GetPostById(AddLikeRequest.postId),
         });
       },
     });
@@ -38,6 +45,12 @@ export const LikeQueries = {
       onSuccess: () => {
         queryClient.invalidateQueries({
           queryKey: keys.RemoveLike(removeLikeRequest.postId),
+        });
+        queryClient.invalidateQueries({
+          queryKey: postKeys.GetAllPosts,
+        });
+        queryClient.invalidateQueries({
+          queryKey: postKeys.GetPostById(removeLikeRequest.postId),
         });
       },
     });

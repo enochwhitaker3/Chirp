@@ -37,8 +37,12 @@ const ChirpCard: FC<{ post: Post }> = ({ post }) => {
         </div>
         <div className="mt-2 w-full grow">{post.body}</div>
         <div className="flex flex-row w-full justify-end my-5">
-          <div onClick={handleLikeToggle}>
+          <div
+            className="flex flex-row items-center mr-2 text-sm"
+            onClick={handleLikeToggle}
+          >
             <ChirpLike isLiked={isLiked} />
+            <p className="ml-1">{post.likes.length}</p>
           </div>
           <ChirpReply />
         </div>

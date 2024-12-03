@@ -15,14 +15,21 @@ export function useCalcDaysAgo(date: Date | string) {
       const diffInHours = Math.floor(diffInMs / (1000 * 60 * 60));
       const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
 
+      const diffInMonths =
+        now.getMonth() -
+        targetDate.getMonth() +
+        12 * (now.getFullYear() - targetDate.getFullYear());
+
       if (diffInMinutes < 60) {
         setTimeAgo(`${diffInMinutes} mins ago`);
       } else if (diffInHours < 24) {
         setTimeAgo(`${diffInHours} hrs ago`);
-      } else if (diffInDays === 1) {
-        setTimeAgo("1 day ago");
-      } else if (diffInDays > 1) {
-        setTimeAgo(`${diffInDays} days ago`);
+      } else if (diffInDays < 30) {
+        setTimeAgo(diffInDays === 1 ? "1 day ago" : `${diffInDays} days ago`);
+      } else if (diffInMonths === 1) {
+        setTimeAgo("1 month ago");
+      } else if (diffInMonths > 1) {
+        setTimeAgo(`${diffInMonths} months ago`);
       } else {
         setTimeAgo("Today");
       }

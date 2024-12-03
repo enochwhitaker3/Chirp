@@ -30,10 +30,13 @@ const LeftSidebar = () => {
           <Searchsvg />
           <p className="dark:text-white text-black text-xl">Search</p>
         </Link>
-        <div className="flex flex-row justify-start items-center cursor-pointer">
+        <Link
+          className="flex flex-row justify-start items-center cursor-pointer"
+          to="/trending"
+        >
           <Trendingsvg />
-          <p className="dark:text-white text-black text-xl">Popular</p>
-        </div>
+          <p className="dark:text-white text-black text-xl">Trending</p>
+        </Link>
         <Link
           className="flex flex-row justify-start items-center cursor-pointer"
           to={user?.username ? `/user/${user.username}` : "/signup"}
