@@ -31,9 +31,11 @@ const HomePage = () => {
 
   return (
     <MainLayout>
-      {Posts?.map((post, i) => (
-        <ChirpCard key={i} post={post} />
-      ))}
+      <div className="mb-16">
+        {Posts?.map((post, i) => (
+          <ChirpCard key={i} post={post} />
+        ))}
+      </div>
       <Link
         className="mobile:hidden block fixed bottom-16 left-2 dark:bg-brand-500 dark:text-black bg-black p-2 rounded-full cursor-pointer "
         to="/post"

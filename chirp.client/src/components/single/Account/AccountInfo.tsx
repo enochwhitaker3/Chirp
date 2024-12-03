@@ -29,13 +29,13 @@ const AccountInfo = ({ User }: { User: UserAccount }) => {
       <div className="flex flex-row">
         <Link
           className="text-base text-neutral-600 mr-1 hover:underline cursor-pointer"
-          to={`/connections/${user?.username}`}
+          to={`/connections/${User?.username}`}
         >
           {FollowerCount?.length} Followers
         </Link>
         <Link
           className="text-base text-neutral-600 mx-1 hover:underline cursor-pointer"
-          to={`/connections/${user?.username}`}
+          to={`/connections/${User?.username}`}
         >
           {FollowingCount?.length} Following
         </Link>
