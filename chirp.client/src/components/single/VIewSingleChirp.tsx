@@ -11,13 +11,12 @@ import { UserAccountContext } from "../../context/UserAccountContext";
 import { useLike } from "../../hooks/useLike";
 
 const VIewSingleChirp: FC<{ Post: Post }> = ({ Post }) => {
-  const timePosted = formatTimePosted(Post?.timePosted!);
-
   const { user, isLoading } = useContext(
     UserAccountContext
   ) as UserAccountContextInterface;
-
+  
   const { isLiked, handleLikeToggle } = useLike(Post.id, Post.likes);
+  const timePosted = formatTimePosted(Post.timePosted);
 
   if (isLoading) {
     return (

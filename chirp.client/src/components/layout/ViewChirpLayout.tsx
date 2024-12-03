@@ -1,12 +1,20 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { PostQueries } from "../../hooks/Queries/PostQueries";
 import VIewSingleChirp from "../single/VIewSingleChirp";
 import Reply from "../single/Reply";
+import { useEffect } from "react";
 
 const ViewChirp = () => {
+  const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
   const { data: Post } = PostQueries.useGetPostById(Number(id));
-  const { data: Replies } = PostQueries.useGetAllRepliesToPost(Post?.id!);
+  const { data: Replies } = PostQueries.useGetAllRepliesToPost(Post?.id ?? -1);
+
+  useEffect(() => {
+    if (Post?.id === 0) {
+      navigate("/notfound");
+    }
+  }, [Post, navigate]);
 
   return (
     <>

@@ -9,7 +9,7 @@ export const useLike = (postId: number, initialLikes: { id: number }[]) => {
   ) as UserAccountContextInterface;
 
   const [isLiked, setIsLiked] = useState(
-    initialLikes.some((like) => like.id === user?.id)
+    initialLikes && initialLikes.some((like) => like.id === user?.id)
   );
 
   const { mutate: AddLike } = LikeQueries.useAddLike({
@@ -23,7 +23,9 @@ export const useLike = (postId: number, initialLikes: { id: number }[]) => {
   });
 
   useEffect(() => {
-    setIsLiked(initialLikes.some((like) => like.id === user?.id));
+    setIsLiked(
+      initialLikes && initialLikes.some((like) => like.id === user?.id)
+    );
   }, [initialLikes, user]);
 
   const handleLikeToggle = (e: React.MouseEvent) => {

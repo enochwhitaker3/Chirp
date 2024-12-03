@@ -25,15 +25,15 @@ Enoch Whitaker
 ## Pages
 
 - [x] Home Feed
-- [x] Profile
+- [ ] Popular Chirps
 - [x] Edit Profile
 - [x] Post Chirp
 - [x] View single chirp
 - [x] Search Results
 - [x] User Page
 - [x] Login / Register
-- [ ] Followers / Following
-- [ ] 404 Page
+- [x] Followers / Following
+- [x] 404 Page
 
 ## New Things
 

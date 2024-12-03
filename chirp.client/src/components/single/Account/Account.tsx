@@ -1,15 +1,16 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { UserAccountQueries } from "../../../hooks/Queries/UserAccountQueries";
 import BannerNPfp from "./BannerNPfp";
 import AccountDropdown from "./AccountDropdown";
 import AccountInfo from "./AccountInfo";
 import { PostQueries } from "../../../hooks/Queries/PostQueries";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AccountPosts from "./AccountPosts";
 import { LikeQueries } from "../../../hooks/Queries/LikeQueries";
 import FollowButton from "./FollowButton";
 export const Account = () => {
   const { userName } = useParams<{ userName: string }>();
+  const navigate = useNavigate();
 
   const [selectedOption, setSelectedOption] = useState<string>("Chirps");
 
@@ -20,6 +21,12 @@ export const Account = () => {
   const { data: Posts } = PostQueries.useGetPostsByUserId(User?.id ?? 0);
   const { data: Replies } = PostQueries.useGetRepliesByUserId(User?.id ?? 0);
   const { data: Likes } = LikeQueries.useGetLikesByUserId(User?.id ?? 0);
+
+  useEffect(() => {
+    if (User?.id === 0) {
+      navigate("/notfound");
+    }
+  }, [User, navigate]);
 
   if (isLoading) {
     return (
