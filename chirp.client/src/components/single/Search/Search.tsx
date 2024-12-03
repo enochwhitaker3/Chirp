@@ -18,6 +18,9 @@ const Search = () => {
         debouncedSearchQuery={debouncedSearchQuery}
         searchQuery={searchQuery}
       />
+      {searchQuery === "" && debouncedSearchQuery === "" && (
+        <p className="text-neutral-600">Search for something new...</p>
+      )}
     </div>
   );
 };

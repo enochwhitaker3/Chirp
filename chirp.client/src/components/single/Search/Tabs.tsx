@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Tab from "../Connections/Tab";
 import PostSearch from "./PostSearch";
+import UserSearch from "./UserSearch";
 
 const Tabs = ({
   debouncedSearchQuery,
@@ -27,6 +28,12 @@ const Tabs = ({
       <div className="mt-4 w-full">
         {activeTab === "Chirps" && (
           <PostSearch
+            debouncedSearchQuery={debouncedSearchQuery}
+            searchQuery={searchQuery}
+          />
+        )}
+        {activeTab === "Users" && (
+          <UserSearch
             debouncedSearchQuery={debouncedSearchQuery}
             searchQuery={searchQuery}
           />

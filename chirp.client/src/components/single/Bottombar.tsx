@@ -17,7 +17,7 @@ const Bottombar: React.FC = () => {
     <nav
       className={`w-full border-t-2 mobile:hidden block ${
         theme === "dark" ? "shadow-lg shadow-gray-700/30" : "shadow-xl"
-      } dark:border-t-neutral-900 border-t-neutral-300 text-white h-14 flex items-center justify-center fixed bottom-0 left-0 z-10 dark:bg-black bg-white`}
+      } dark:border-t-neutral-900 border-t-neutral-300 text-white h-14 flex items-center justify-center fixed bottom-0 left-0 z-30 dark:bg-black bg-white`}
       style={{
         backgroundImage,
         backgroundSize: "cover",

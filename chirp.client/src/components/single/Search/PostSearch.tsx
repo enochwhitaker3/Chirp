@@ -16,9 +16,6 @@ const PostSearch = ({
 
   return (
     <div className="w-full">
-      {searchQuery === "" && debouncedSearchQuery === "" && (
-        <p className="text-neutral-600">Search for something new...</p>
-      )}
       {isLoading && <p>Loading...</p>}
       {error && <p>Something went wrong!</p>}
       {!isLoading &&
