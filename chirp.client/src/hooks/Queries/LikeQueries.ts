@@ -7,7 +7,7 @@ import { AddLikeRequest } from "../../@types/Requests/Add/AddLikeRequest";
 import { RemoveLikeRequest } from "../../@types/Requests/Remove/RemoveLikeRequest";
 
 export const LikeQueries = {
-  useAddLike: (AddLikeRequest: AddLikeRequest) => {
+  useAddLike: (AddLikeRequest: AddLikeRequest, parentId?: number) => {
     const queryClient = useQueryClient();
 
     return useMutation({
@@ -21,6 +21,9 @@ export const LikeQueries = {
         });
         queryClient.invalidateQueries({
           queryKey: postKeys.GetPostById(AddLikeRequest.postId),
+        });
+        queryClient.invalidateQueries({
+          queryKey: postKeys.GetAllRepliesToPost(parentId ?? 0),
         });
       },
     });
@@ -37,7 +40,7 @@ export const LikeQueries = {
       queryKey: keys.LikeByPostId(id),
     });
   },
-  useRemoveLike: (removeLikeRequest: RemoveLikeRequest) => {
+  useRemoveLike: (removeLikeRequest: RemoveLikeRequest, parentId?: number) => {
     const queryClient = useQueryClient();
 
     return useMutation({
@@ -51,6 +54,9 @@ export const LikeQueries = {
         });
         queryClient.invalidateQueries({
           queryKey: postKeys.GetPostById(removeLikeRequest.postId),
+        });
+        queryClient.invalidateQueries({
+          queryKey: postKeys.GetAllRepliesToPost(parentId ?? 0),
         });
       },
     });

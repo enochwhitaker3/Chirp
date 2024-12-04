@@ -3,7 +3,11 @@ import { UserAccountContextInterface } from "../@types/UserAccount";
 import { UserAccountContext } from "../context/UserAccountContext";
 import { LikeQueries } from "./Queries/LikeQueries";
 
-export const useLike = (postId: number, initialLikes: { id: number }[]) => {
+export const useLike = (
+  postId: number,
+  initialLikes: { id: number }[],
+  parentId?: number
+) => {
   const { user } = useContext(
     UserAccountContext
   ) as UserAccountContextInterface;
@@ -12,15 +16,21 @@ export const useLike = (postId: number, initialLikes: { id: number }[]) => {
     initialLikes && initialLikes.some((like) => like.id === user?.id)
   );
 
-  const { mutate: AddLike } = LikeQueries.useAddLike({
-    userId: user?.id ?? 0,
-    postId,
-  });
+  const { mutate: AddLike } = LikeQueries.useAddLike(
+    {
+      userId: user?.id ?? 0,
+      postId,
+    },
+    parentId
+  );
 
-  const { mutate: RemoveLike } = LikeQueries.useRemoveLike({
-    userId: user?.id ?? 0,
-    postId,
-  });
+  const { mutate: RemoveLike } = LikeQueries.useRemoveLike(
+    {
+      userId: user?.id ?? 0,
+      postId,
+    },
+    parentId
+  );
 
   useEffect(() => {
     setIsLiked(

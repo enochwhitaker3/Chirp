@@ -10,7 +10,10 @@ const RightSidebar = () => {
     UserAccountContext
   ) as UserAccountContextInterface;
 
-  const { data: following } = FollowQueries.useGetFollowingByUserId(user?.id!);
+  const { data: following } = FollowQueries.useGetFollowingByUserId(
+    user?.id ?? -1
+  );
+  
   const limitedFollowing = following?.slice(0, 4);
 
   return (

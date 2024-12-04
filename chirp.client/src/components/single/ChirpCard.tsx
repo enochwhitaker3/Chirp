@@ -18,6 +18,8 @@ const ChirpCard: FC<{ post: Post }> = ({ post }) => {
 
   const timePosted = useCalcDaysAgo(post.timePosted);
 
+  const hasSpaces = /\s/.test(post.body);
+
   return (
     <div
       className="flex flex-row mb-5 dark:bg-neutral-900 bg-[#ffffff] shadow-xl dark:shadow-zinc-950 max-w-[600px] dark:text-white text-black rounded-md h-fit pl-5 pt-5 cursor-pointer mobile:mx-0 mx-4"
@@ -35,7 +37,13 @@ const ChirpCard: FC<{ post: Post }> = ({ post }) => {
           <p className="font-bold ">{post.username}&nbsp;</p>
           <p className="text-neutral-600">- {timePosted}</p>
         </div>
-        <div className="mt-2 w-full grow">{post.body}</div>
+        <div
+          className={`mt-2 w-full ${
+            hasSpaces ? "break-words" : "break-all"
+          } overflow-hidden`}
+        >
+          {post.body}
+        </div>
         <div className="flex flex-row w-full justify-end my-5">
           <div
             className="flex flex-row items-center mr-2 text-sm"

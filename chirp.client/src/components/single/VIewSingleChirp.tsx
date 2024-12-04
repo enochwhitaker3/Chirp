@@ -4,11 +4,12 @@ import ChirpLike from "./ChirpCard/chirplike";
 import ChirpReply from "./ChirpCard/chirpreply";
 import Profilesvg from "./Sidebar/Profile";
 import { formatTimePosted } from "../../hooks/useCalcDaysAgo";
-import AddReplyModal from "./Post/AddReplyModal";
+
 import { Link } from "react-router-dom";
 import { UserAccountContextInterface } from "../../@types/UserAccount";
 import { UserAccountContext } from "../../context/UserAccountContext";
 import { useLike } from "../../hooks/useLike";
+import AddReplyModal from "./Post/ReplyBubbleModal";
 
 const VIewSingleChirp: FC<{ Post: Post }> = ({ Post }) => {
   const { user, isLoading } = useContext(
@@ -17,6 +18,8 @@ const VIewSingleChirp: FC<{ Post: Post }> = ({ Post }) => {
 
   const { isLiked, handleLikeToggle } = useLike(Post.id, Post.likes);
   const timePosted = formatTimePosted(Post.timePosted);
+
+  const hasSpaces = /\s/.test(Post.body);
 
   if (isLoading) {
     return (
@@ -27,7 +30,7 @@ const VIewSingleChirp: FC<{ Post: Post }> = ({ Post }) => {
   }
 
   return (
-    <div className="flex flex-col justify-start w-full mobile:px-0 px-4">
+    <div className="flex flex-col justify-start w-full">
       <div className="flex flex-row justify-start items-center w-full mb-4">
         <Link to={`/user/${Post.username}`}>
           {Post.userPFP && Post.userPFP != null ? (
@@ -55,7 +58,13 @@ const VIewSingleChirp: FC<{ Post: Post }> = ({ Post }) => {
         </div>
       </div>
       <div>
-        <p className="ml-1">{Post.body}</p>
+        <p
+          className={`ml-1 w-full ${
+            hasSpaces ? "break-words" : "break-all"
+          } overflow-hidden`}
+        >
+          {Post.body}
+        </p>
       </div>
       <div className="flex flex-row w-full justify-end my-4">
         <div

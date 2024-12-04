@@ -8,13 +8,20 @@ import { useLike } from "../../hooks/useLike";
 import { useNavigate } from "react-router-dom";
 
 const Reply: FC<{ reply: Post }> = ({ reply }) => {
-  const { isLiked, handleLikeToggle } = useLike(reply.id, reply.likes);
+  const { isLiked, handleLikeToggle } = useLike(
+    reply.id,
+    reply.likes,
+    reply.parentPostId
+  );
+
   const timePosted = useCalcDaysAgo(reply.timePosted);
   const navigate = useNavigate();
 
   const handleCardClick = () => {
     navigate(`/post/${reply.id}`);
   };
+
+  const hasSpaces = /\s/.test(reply.body);
 
   return (
     <div
@@ -34,11 +41,18 @@ const Reply: FC<{ reply: Post }> = ({ reply }) => {
         </div>
       </div>
       <div>
-        <p className="ml-1 my-2">{reply.body}</p>
+        <p
+          className={`ml-1 my-2 w-full ${
+            hasSpaces ? "break-words" : "break-all"
+          } overflow-hidden`}
+        >
+          {reply.body}
+        </p>
       </div>
       <div className="flex flex-row w-full justify-end">
-        <div onClick={handleLikeToggle}>
+        <div className="flex flex-row" onClick={handleLikeToggle}>
           <ChirpLike isLiked={isLiked} />
+          <p className="mx-1">{reply.likes.length}</p>
         </div>
         <ChirpReply />
       </div>

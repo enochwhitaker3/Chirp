@@ -3,6 +3,7 @@ import { PostQueries } from "../../hooks/Queries/PostQueries";
 import VIewSingleChirp from "../single/VIewSingleChirp";
 import Reply from "../single/Reply";
 import { useEffect } from "react";
+import TextReplyModal from "../single/Post/TextReplyModal";
 
 const ViewChirp = () => {
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ const ViewChirp = () => {
     <>
       {Post ? (
         <div className="flex flex-col mb-5 dark:text-white text-black rounded-md h-fit cursor-pointer mobile:px-0">
-          <div>
+          <div className="mobile:px-0 mobile:w-full w-screen px-6">
             <VIewSingleChirp Post={Post} />
           </div>
 
@@ -31,9 +32,7 @@ const ViewChirp = () => {
               ))}
             </div>
           ) : (
-            <p className="text-neutral-600 py-6 flex justify-center">
-              its quiet in here...why not break the silence?
-            </p>
+            <TextReplyModal post={Post} />
           )}
         </div>
       ) : (
