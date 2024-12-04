@@ -156,5 +156,17 @@ An evaluation of how well this project is going
 
 ### Dec 4
 
-- [ ] Finalize and ensure a professional, organized, and smooth experience (20 pts)
-- [ ] Review the project for completeness and address any remaining items on the checklist
+- [x] Finalize and ensure a professional, organized, and smooth experience (20 pts)
+- [x] Review the project for completeness and address any remaining items on the checklist
+
+A retrospective of what you (individually) worked on this last cycle and how it went
+-   This period, I spent the entire time polishing up my site. Most of the direct functionality was there, but there was areas that needed to look / function better. One thing I did specifically was add a 404 page. This page does not look much different than rest of the app other than saying that there was nothing to be found at this address. I also did the first round of user testing in class, and took what they told me and fixed those too.
+
+A rough plan of how you expect to implement the next cycle
+-   NA
+
+If you are in a group, comment on how your experience has been working with your group members
+- Not in a group
+
+An evaluation of how well this project is going
+- This sprint felt pretty nice. It was very satisfying to see everything come together and see that all of my hard work and hours has payed off
