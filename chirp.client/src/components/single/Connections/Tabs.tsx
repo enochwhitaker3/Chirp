@@ -46,7 +46,9 @@ const Tabs = () => {
 
   return (
     <div className="mobile:w-full mobile:px-0 w-screen px-4">
-      <p className="font-bold text-xl mb-4">{userName}'s connections</p>
+      <p className="font-bold text-xl mb-4 dark:text-white text-black">
+        {userName}'s connections
+      </p>
       <ul className="flex justify-start pb-4">
         {tabs.map((tab, key) => (
           <Tab
