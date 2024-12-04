@@ -98,7 +98,6 @@ export const UserAccountService = {
   UpdateUser: async (
     updateUserRequest: UpdateUserRequest
   ): Promise<UserAccount> => {
-    console.log(updateUserRequest, "THIS");
     if (!updateUserRequest) {
       console.error("update user request was undefined or empty");
       throw new Error("Add user request must be provided");

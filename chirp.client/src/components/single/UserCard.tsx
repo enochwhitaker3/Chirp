@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { UserAccount } from "../../@types/UserAccount";
 import Contour from "../../assets/topographic.svg";
 import ContourLight from "../../assets/topographic_light.svg";
@@ -6,9 +7,13 @@ import FollowButton from "./Account/FollowButton";
 
 const UserCard = ({ User }: { User: UserAccount }) => {
   const { theme } = useTheme();
+  const navigate = useNavigate();
 
   return (
-    <div className="rounded-md border-2 dark:border-white border-black shadow-xl dark:shadow-zinc-950 my-4 ">
+    <div
+      className="rounded-md border-2 dark:border-white border-black shadow-xl dark:shadow-zinc-950 my-4 "
+      onClick={() => navigate(`/user/${User.username}`)}
+    >
       <div
         className="avg:h-24 h-20 rounded-t-md border-b-2 dark:border-white border-black relative w-full  z-10"
         style={{
@@ -30,7 +35,7 @@ const UserCard = ({ User }: { User: UserAccount }) => {
           <h1 className="text-xl font-bold">{User?.username}</h1>
           <h1 className="text-sm w-3/5 desk:block hidden">{User?.bio}</h1>
         </div>
-        <div className="pt-4">
+        <div className="pt-4" onClick={(e) => e.stopPropagation()}>
           <FollowButton AccountUser={User} />
         </div>
       </div>

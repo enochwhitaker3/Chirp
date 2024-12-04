@@ -26,11 +26,10 @@ export const useFollow = (
 
   const { mutate: RemoveFollow } = FollowQueries.useUnfollow({
     followingUserId: user?.id ?? 0,
-    followedUserId: viewedUserId
+    followedUserId: viewedUserId,
   });
 
-  const handleFollowToggle = (e: React.MouseEvent) => {
-    e.stopPropagation();
+  const handleFollowToggle = () => {
     if (user && viewedUserId) {
       if (!isFollowed) {
         AddFollow();

@@ -1,14 +1,14 @@
 import { UserAccount } from "../../../@types/UserAccount";
-import { Link } from "react-router-dom";
 import UserCard from "../UserCard";
 
 const ConnectionList = ({ list }: { list: UserAccount[] }) => {
+  if (list.length == 0) {
+    return <p className="text-neutral-600">pretty empty in here...</p>;
+  }
   return (
     <div>
       {list.map((list, i) => (
-        <Link key={i} to={`/user/${list.username}`}>
-          <UserCard User={list} />
-        </Link>
+        <UserCard key={i} User={list} />
       ))}
     </div>
   );
