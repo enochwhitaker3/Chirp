@@ -6,6 +6,7 @@ import ChirpReply from "./ChirpCard/chirpreply";
 import { useCalcDaysAgo } from "../../hooks/useCalcDaysAgo";
 import { useLike } from "../../hooks/useLike";
 import { useNavigate } from "react-router-dom";
+import { preprocessText } from "../../hooks/usePreprocessText";
 
 const Reply: FC<{ reply: Post }> = ({ reply }) => {
   const { isLiked, handleLikeToggle } = useLike(
@@ -20,8 +21,6 @@ const Reply: FC<{ reply: Post }> = ({ reply }) => {
   const handleCardClick = () => {
     navigate(`/post/${reply.id}`);
   };
-
-  const hasSpaces = /\s/.test(reply.body);
 
   return (
     <div
@@ -42,11 +41,13 @@ const Reply: FC<{ reply: Post }> = ({ reply }) => {
       </div>
       <div>
         <p
-          className={`ml-1 my-2 w-full ${
-            hasSpaces ? "break-words" : "break-all"
-          } overflow-hidden`}
+          className={`ml-1 my-2 w-full overflow-hidden`}
+          style={{
+            wordBreak: "break-word",
+            overflowWrap: "break-word",
+          }}
         >
-          {reply.body}
+          {preprocessText(reply.body, 1)}
         </p>
       </div>
       <div className="flex flex-row w-full justify-end">

@@ -18,12 +18,6 @@ const oidcConfig: AuthProviderProps = {
       : "http://localhost:5173/",
 
   onSigninCallback: async (user) => {
-    // if (user?.id_token) {
-    //   const backEmail = await UserAccountService.GetAuthenticatedUserEmail(
-    //     user?.id_token
-    //   );
-    //   console.log("USER EMAIL FROM BACKEND", backEmail);
-    // }
     const newUrl = window.location.href.split("?")[0];
     window.history.replaceState({}, document.title, newUrl);
     document.cookie = `jwt_token=${user?.id_token}; SameSite=None; Secure`;

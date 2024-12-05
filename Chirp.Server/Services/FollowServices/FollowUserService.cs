@@ -34,13 +34,11 @@ public class FollowUserService : IFollowUserService
     {
         using var context = await dbContextFactory.CreateDbContextAsync();
 
-        // Find the followers of a user by their `id`
         var followers = await context.FollowedUsers
-            .Where(f => f.FollowedUserId == id)  // Get all FollowedUser entries where the FollowedUserId matches the userId
-            .Select(f => f.FollowingUser)  // Select the `FollowingUser` (the user who follows)
+            .Where(f => f.FollowedUserId == id)  
+            .Select(f => f.FollowingUser) 
             .ToListAsync();
 
-        // Return the corresponding UserAccounts for the users that follow the given userId
         return followers.Select(follow => follow.ToDTO()).ToList();
     }
 

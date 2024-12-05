@@ -10,6 +10,7 @@ import { UserAccountContextInterface } from "../../@types/UserAccount";
 import { UserAccountContext } from "../../context/UserAccountContext";
 import { useLike } from "../../hooks/useLike";
 import AddReplyModal from "./Post/ReplyBubbleModal";
+import { preprocessText } from "../../hooks/usePreprocessText";
 
 const VIewSingleChirp: FC<{ Post: Post }> = ({ Post }) => {
   const { user, isLoading } = useContext(
@@ -18,8 +19,6 @@ const VIewSingleChirp: FC<{ Post: Post }> = ({ Post }) => {
 
   const { isLiked, handleLikeToggle } = useLike(Post.id, Post.likes);
   const timePosted = formatTimePosted(Post.timePosted);
-
-  const hasSpaces = /\s/.test(Post.body);
 
   if (isLoading) {
     return (
@@ -59,11 +58,13 @@ const VIewSingleChirp: FC<{ Post: Post }> = ({ Post }) => {
       </div>
       <div>
         <p
-          className={`ml-1 w-full ${
-            hasSpaces ? "break-words" : "break-all"
-          } overflow-hidden`}
+          className={`ml-1 w-full overflow-hidden`}
+          style={{
+            wordBreak: "break-word",
+            overflowWrap: "break-word",
+          }}
         >
-          {Post.body}
+          {preprocessText(Post.body, 1)}
         </p>
       </div>
       <div className="flex flex-row w-full justify-end my-4">

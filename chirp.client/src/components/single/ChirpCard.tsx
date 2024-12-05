@@ -6,6 +6,7 @@ import { FC } from "react";
 import { useCalcDaysAgo } from "../../hooks/useCalcDaysAgo";
 import { useNavigate } from "react-router-dom";
 import { useLike } from "../../hooks/useLike";
+import { preprocessText } from "../../hooks/usePreprocessText";
 
 const ChirpCard: FC<{ post: Post }> = ({ post }) => {
   const navigate = useNavigate();
@@ -17,8 +18,6 @@ const ChirpCard: FC<{ post: Post }> = ({ post }) => {
   const { isLiked, handleLikeToggle } = useLike(post.id, post.likes);
 
   const timePosted = useCalcDaysAgo(post.timePosted);
-
-  const hasSpaces = /\s/.test(post.body);
 
   return (
     <div
@@ -38,11 +37,13 @@ const ChirpCard: FC<{ post: Post }> = ({ post }) => {
           <p className="text-neutral-600">- {timePosted}</p>
         </div>
         <div
-          className={`mt-2 w-full ${
-            hasSpaces ? "break-words" : "break-all"
-          } overflow-hidden`}
+          className={`mt-2 w-full overflow-hidden`}
+          style={{
+            wordBreak: "break-word",
+            overflowWrap: "break-word",
+          }}
         >
-          {post.body}
+          {preprocessText(post.body, 15)}
         </div>
         <div className="flex flex-row w-full justify-end my-5">
           <div
