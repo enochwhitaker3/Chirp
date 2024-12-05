@@ -1,19 +1,17 @@
 import { Circle } from "rc-progress";
 import { FC, useContext, useState, useRef } from "react";
+import { Errors } from "../../../@types/Errors";
 import { UserAccountContextInterface } from "../../../@types/UserAccount";
 import { UserAccountContext } from "../../../context/UserAccountContext";
-import { useAddNewPost } from "../../../hooks/Queries/PostQueries";
+import { useEditPost } from "../../../hooks/Queries/PostQueries";
 import { useTheme } from "../../../hooks/useTheme";
-import "../../../index.css";
-import SubmitButton from "./SubmitButton";
-import { Errors } from "../../../@types/Errors";
-// import { useNavigate } from "react-router-dom";
+import SubmitButton from "../Post/SubmitButton";
+import { Post } from "../../../@types/Post";
 
-const AddChirpForm: FC<{
-  replyPostId?: number;
-  isReply?: boolean;
+const EditPostForm: FC<{
+  post: Post;
   onSuccess?: () => void;
-}> = ({ replyPostId, isReply, onSuccess }) => {
+}> = ({ post, onSuccess }) => {
   const { user } = useContext(
     UserAccountContext
   ) as UserAccountContextInterface;
@@ -21,9 +19,8 @@ const AddChirpForm: FC<{
 
   const [errors, setErrors] = useState<Errors>({});
   const progressRef = useRef<HTMLTextAreaElement>(null);
-  // const navigate = useNavigate();
 
-  const { mutate: addNewPost } = useAddNewPost(replyPostId!);
+  const { mutate: updatePost } = useEditPost(post.id);
 
   const handleInput = (event: React.FormEvent<HTMLTextAreaElement>) => {
     const input = event.currentTarget;
@@ -46,49 +43,33 @@ const AddChirpForm: FC<{
     } else {
       setErrors({});
       if (user && user.id != 0) {
-        addNewPost({
-          userId: user?.id ?? 0,
-          body: body,
-          ParentId: replyPostId ?? null,
-          isReply: isReply ?? false,
-          TimePosted: new Date(new Date().getTime() - 7 * 60 * 60 * 1000),
+        updatePost({
+          Id: post.id,
+          Body: body,
+          TimePosted: new Date(new Date().getTime() + 14 * 60 * 60 * 1000),
         });
         onSuccess!();
-        // navigate("/");
       }
     }
   };
 
   return (
-    <div
-      className={`${isReply ? "" : `mobile:w-full w-screen mobile:px-0 px-4`}`}
-    >
-      {!isReply && (
-        <div className="dark:text-white text-black text-xl font-bold mb-4">
-          Create Chirp
-        </div>
-      )}
-
+    <div>
       <form
         onSubmit={handleSubmit}
-        className={`dark:text-white text-black flex flex-col items-end mobile:w-full  ${
-          isReply ? "w-full" : ""
-        }`}
+        className={`dark:text-white text-black flex flex-col items-end w-full`}
       >
         <textarea
-          placeholder={
-            isReply
-              ? `What do they need to hear?`
-              : `What's on your mind today?`
-          }
+          placeholder={post.body}
           name="body"
           maxLength={250}
           required
           onInput={handleInput}
+          defaultValue={post.body}
           ref={progressRef}
           className={`w-full dark:text-white text-black p-2 bg-transparent rounded-lg ${
             errors.body ? "border-red border-2" : "border-2 border-neutral-900"
-          } outline-none ${isReply ? "h-24" : "h-48"}`}
+          } outline-none h-24 `}
         />
         {errors.body && <div className="error text-red">{errors.body}</div>}
         <div className="flex flex-row w-full items-center justify-end mt-2">
@@ -111,4 +92,4 @@ const AddChirpForm: FC<{
   );
 };
 
-export default AddChirpForm;
+export default EditPostForm;

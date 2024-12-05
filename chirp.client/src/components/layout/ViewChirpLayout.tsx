@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { PostQueries } from "../../hooks/Queries/PostQueries";
-import VIewSingleChirp from "../single/VIewSingleChirp";
+import VIewSingleChirp from "../single/ViewChirp/VIewSingleChirp";
 import Reply from "../single/Reply";
 import { useEffect } from "react";
 import TextReplyModal from "../single/Post/TextReplyModal";

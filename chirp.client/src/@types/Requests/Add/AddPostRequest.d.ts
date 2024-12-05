@@ -3,4 +3,5 @@ export interface AddPostRequest {
   body: string;
   ParentId: number | null;
   isReply: boolean;
+  TimePosted: Date;
 }

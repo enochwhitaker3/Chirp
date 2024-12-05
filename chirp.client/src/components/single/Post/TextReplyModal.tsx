@@ -14,6 +14,7 @@ const TextReplyModal: FC<{ post: Post }> = ({ post }) => {
       closeModal();
     }
   };
+  
   return (
     <>
       <div

@@ -3,6 +3,8 @@ import { PostService } from "../../ApiService/PostService";
 import keys from "../QueryKeys/PostKeys";
 import { AddPostRequest } from "../../@types/Requests/Add/AddPostRequest";
 import toast from "react-hot-toast";
+import { UpdatePostRequest } from "../../@types/Requests/Update/UpdatePostRequest";
+import { useNavigate } from "react-router-dom";
 
 export const PostQueries = {
   useGetAllPosts: () => {
@@ -36,6 +38,21 @@ export const PostQueries = {
       queryKey: keys.GetAllRepliesToPost(parentId),
     });
   },
+  useDeletePost: (id: number) => {
+    const navigate = useNavigate();
+    const queryClient = useQueryClient();
+
+    return useMutation({
+      mutationFn: () => PostService.DeletePost(id),
+      onSuccess: () => {
+        navigate("/");
+        toast.success("Deleted Chirp!");
+        queryClient.invalidateQueries({
+          queryKey: keys.GetAllPosts,
+        });
+      },
+    });
+  },
 };
 
 export const useAddNewPost = (parentId: number) => {
@@ -51,6 +68,20 @@ export const useAddNewPost = (parentId: number) => {
       queryClient.invalidateQueries({
         queryKey: keys.GetAllRepliesToPost(parentId),
       });
+    },
+  });
+};
+
+export const useEditPost = (id: number) => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (updatePostRequest: UpdatePostRequest) =>
+      PostService.UpdatePost(updatePostRequest),
+    onSuccess: () => {
+      toast.success("Updated!");
+      queryClient.invalidateQueries({ queryKey: keys.GetAllPosts });
+      queryClient.invalidateQueries({ queryKey: keys.GetPostById(id) });
     },
   });
 };

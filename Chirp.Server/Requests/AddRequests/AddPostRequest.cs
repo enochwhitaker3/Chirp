@@ -6,5 +6,5 @@ public class AddPostRequest
     public string Body { get; set; } = "";
     public bool? IsReply { get; set; }
     public int? ParentId { get; set; }
-
+    public DateTime? TimePosted { get; set; }
 }

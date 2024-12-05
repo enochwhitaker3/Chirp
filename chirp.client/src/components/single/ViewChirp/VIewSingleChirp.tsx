@@ -1,16 +1,16 @@
 import { FC, useContext } from "react";
-import { Post } from "../../@types/Post";
-import ChirpLike from "./ChirpCard/chirplike";
-import ChirpReply from "./ChirpCard/chirpreply";
-import Profilesvg from "./Sidebar/Profile";
-import { formatTimePosted } from "../../hooks/useCalcDaysAgo";
-
 import { Link } from "react-router-dom";
-import { UserAccountContextInterface } from "../../@types/UserAccount";
-import { UserAccountContext } from "../../context/UserAccountContext";
-import { useLike } from "../../hooks/useLike";
-import AddReplyModal from "./Post/ReplyBubbleModal";
-import { preprocessText } from "../../hooks/usePreprocessText";
+import { Post } from "../../../@types/Post";
+import { UserAccountContextInterface } from "../../../@types/UserAccount";
+import { UserAccountContext } from "../../../context/UserAccountContext";
+import { formatTimePosted } from "../../../hooks/useCalcDaysAgo";
+import { useLike } from "../../../hooks/useLike";
+import { preprocessText } from "../../../hooks/usePreprocessText";
+import ChirpLike from "../ChirpCard/chirplike";
+import ChirpReply from "../ChirpCard/chirpreply";
+import AddReplyModal from "../Post/ReplyBubbleModal";
+import Profilesvg from "../Sidebar/Profile";
+import PostActions from "./PostActions";
 
 const VIewSingleChirp: FC<{ Post: Post }> = ({ Post }) => {
   const { user, isLoading } = useContext(
@@ -52,20 +52,22 @@ const VIewSingleChirp: FC<{ Post: Post }> = ({ Post }) => {
               </Link>
             )}
           </div>
-
-          <p className=" text-neutral-600">{timePosted}</p>
+          <div className="flex flex-row">
+            <p className=" text-neutral-600 mx-2">{timePosted}</p>
+            {user?.id == Post.userId && <PostActions post={Post} />}
+          </div>
         </div>
       </div>
       <div>
-        <p
-          className={`ml-1 w-full overflow-hidden`}
+        <span
+          className={`ml-1 w-full overflow-hidden flex flex-row`}
           style={{
             wordBreak: "break-word",
             overflowWrap: "break-word",
           }}
         >
           {preprocessText(Post.body, 1)}
-        </p>
+        </span>
       </div>
       <div className="flex flex-row w-full justify-end my-4">
         <div

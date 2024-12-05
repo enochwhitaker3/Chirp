@@ -27,6 +27,7 @@ public class PostService : IPostService
         post.Body = addPostRequest.Body;
         post.IsReply = addPostRequest.IsReply;
         post.ParentPostId = addPostRequest.ParentId;
+        post.TimePosted = DateTime.Now;
 
         using var context = await dbContextFactory.CreateDbContextAsync();
         context.Posts.Add(post);
@@ -90,6 +91,7 @@ public class PostService : IPostService
         using var context = await dbContextFactory.CreateDbContextAsync();
 
         var puc = await context.Posts
+            .Include(post => post.User)
             .Where(x => x.Id == updatePostRequest.Id)
             .FirstOrDefaultAsync();
 
