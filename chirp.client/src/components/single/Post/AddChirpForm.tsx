@@ -54,7 +54,7 @@ const AddChirpForm: FC<{
           TimePosted: new Date(),
         });
         onSuccess!();
-        if (isReply === false) {
+        if (!isReply) {
           navigate("/");
         }
       }
