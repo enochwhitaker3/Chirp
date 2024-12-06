@@ -51,7 +51,7 @@ const AddChirpForm: FC<{
           body: body,
           ParentId: replyPostId ?? null,
           isReply: isReply ?? false,
-          TimePosted: new Date(new Date().getTime() - 7 * 60 * 60 * 1000),
+          TimePosted: new Date(),
         });
         onSuccess!();
         // navigate("/");
