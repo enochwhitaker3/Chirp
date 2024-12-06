@@ -55,6 +55,7 @@ const AddChirpForm: FC<{
         });
         onSuccess!();
         if (!isReply) {
+          console.log("WHYYYYYYY", isReply);
           navigate("/");
         }
       }
