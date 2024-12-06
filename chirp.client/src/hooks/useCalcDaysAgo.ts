@@ -6,7 +6,7 @@ export function useCalcDaysAgo(date: Date | string) {
   useEffect(() => {
     const calculateTimeAgo = () => {
       const targetDate = new Date(date);
-      targetDate.setHours(targetDate.getHours());
+      targetDate.setHours(targetDate.getHours() - 7);
 
       const now = new Date();
       const diffInMs = now.getTime() - targetDate.getTime();
@@ -49,7 +49,7 @@ export function formatTimePosted(timePosted: Date): string {
   const date = new Date(timePosted);
   date.setHours(date.getHours());
 
-  let hours = date.getHours();
+  let hours = date.getHours() - 7;
   const minutes = date.getMinutes();
   const ampm = hours >= 12 ? "PM" : "AM";
   hours = hours % 12 || 12;
@@ -81,7 +81,7 @@ export function formatJoinDate(timePosted: Date): string {
   const date = new Date(timePosted);
   date.setHours(date.getHours());
 
-  const day = date.getDate();
+  const day = date.getDate() - 7;
   const month = date.toLocaleString("default", { month: "short" });
   const year = date.getFullYear();
 
