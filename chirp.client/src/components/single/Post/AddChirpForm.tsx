@@ -7,7 +7,7 @@ import { useTheme } from "../../../hooks/useTheme";
 import "../../../index.css";
 import SubmitButton from "./SubmitButton";
 import { Errors } from "../../../@types/Errors";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const AddChirpForm: FC<{
   replyPostId?: number;
@@ -21,7 +21,7 @@ const AddChirpForm: FC<{
 
   const [errors, setErrors] = useState<Errors>({});
   const progressRef = useRef<HTMLTextAreaElement>(null);
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const { mutate: addNewPost } = useAddNewPost(replyPostId!);
 
@@ -54,7 +54,9 @@ const AddChirpForm: FC<{
           TimePosted: new Date(),
         });
         onSuccess!();
-        // navigate("/");
+        if (isReply === false) {
+          navigate("/");
+        }
       }
     }
   };
