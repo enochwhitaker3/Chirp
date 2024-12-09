@@ -13,7 +13,7 @@ import { Toaster } from "react-hot-toast";
 import SignInPage from "./components/Pages/SignInPage";
 import ProtectedRoute from "./components/authentication/ProtectedRoute";
 import { UserAccountContextInterface } from "./@types/UserAccount";
-import { useContext } from "react";
+import react, { useContext } from "react";
 import EditAccountPage from "./components/Pages/EditAccountPage";
 import { useAuth } from "react-oidc-context";
 import ConnectionsPage from "./components/Pages/ConnectionsPage";
