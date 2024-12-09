@@ -46,18 +46,23 @@ const AddChirpForm: FC<{
     } else {
       setErrors({});
       if (user && user.id != 0) {
-        addNewPost({
-          userId: user?.id ?? 0,
-          body: body,
-          ParentId: replyPostId ?? null,
-          isReply: isReply ?? false,
-          TimePosted: new Date(),
-        });
+        addNewPost(
+          {
+            userId: user?.id ?? 0,
+            body: body,
+            ParentId: replyPostId ?? null,
+            isReply: isReply ?? false,
+            TimePosted: new Date(),
+          },
+          {
+            onSuccess: () => {
+              if (!isReply) {
+                navigate("/");
+              }
+            },
+          }
+        );
         onSuccess!();
-        if (!isReply) {
-          console.log("WHYYYYYYY", isReply);
-          navigate("/");
-        }
       }
     }
   };
