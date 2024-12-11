@@ -59,15 +59,15 @@ const VIewSingleChirp: FC<{ Post: Post }> = ({ Post }) => {
         </div>
       </div>
       <div>
-        <span
+        <div
           className={`ml-1 w-full overflow-hidden flex flex-row`}
           style={{
             wordBreak: "break-word",
             overflowWrap: "break-word",
           }}
         >
-          {preprocessText(Post.body, 1)}
-        </span>
+          {preprocessText(Post.body, 2)}
+        </div>
       </div>
       <div className="flex flex-row w-full justify-end my-4">
         <div
